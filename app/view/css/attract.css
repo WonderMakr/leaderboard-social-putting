@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+html {
+    background-image: url("../images/bg.jpg");
+}
+
+html, body, #page-content {
+	height: 100%;
+}
+
+body {
+	padding: 3.9%;
+}
+
+#page-content {
+	text-align: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-image: url('../images/attract.jpg');
+}
+
+#w-logo {
+	padding-top: 150px;
+}

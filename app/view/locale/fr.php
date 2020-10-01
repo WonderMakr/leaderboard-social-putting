@@ -1,0 +1,8 @@
+<?php
+
+/// French language file
+
+
+
+
+?>

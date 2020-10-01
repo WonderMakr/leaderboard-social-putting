@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+html {
+    background-image: url("../images/bg.jpg");
+}
+
+html, body, #page-content {
+	height: 100%;
+}
+
+body {
+	padding: 3.9%;
+}
+
+#page-content {
+	text-align: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-image: url('../images/getty.jpg');
+}
+
+#header {
+	color: #FFF;
+    padding-top: 12.5vh;
+	margin-bottom: 9vh;
+}
+
+body.big-screen #w-logo {
+	margin: 100px 0;
+}
+
+body.small-screen #w-logo {
+	width: 30%;
+	height: auto;
+	margin-bottom: 40px;
+}
+
+h1, h3 {
+	margin: 0;
+}
+
+h1 {
+	margin: 10px 0;
+	font-size: 100px;
+	font-family: cursive;
+}
+
+h3 {
+	color: #FFF;
+	text-align: center;
+	font-family: 'DIN-Alternate';
+}
+
+.button {
+	background-color: #24362b;
+}
+
+.button.active {
+	color: #24362b;
+	background-color: #e4c771;
+}
+
+.large.button {
+	margin-top: 0;
+}
+
+.large.button.active {
+	color: #24362b;
+    background-color: #71f175;
+}
+
+.large.button.active.no-cred {
+	color: #FFF;
+    border-color: #f07072;
+    background-color: #792929;
+}
+
+p.error {
+	color: #f17271;
+	margin-bottom: 0;
+}
+
+#error {
+	margin-top: 0;
+	font-weight: bold;
+}
+
+.button.freeplay {
+	opacity: 0;
+}

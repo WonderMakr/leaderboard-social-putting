@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+#page-content {
+	
+}
+
+#header {
+	height: 12.5vh;
+	padding: 0 3.9%;
+}
+
+#games {
+	width: 100vw;
+	height: 65.5vh;
+	font-size: 0;
+	text-align: center;
+}
+
+.game {
+	width: 29vw;
+	margin-top: 14vh;
+	text-align: center;
+	display: inline-block;
+}
+
+body.big-screen .game {
+    margin-top: 18vh;
+}
+
+.game img {
+	margin-bottom: 3.5vh;
+}
+
+.game .button {
+	color: #FFF;
+	padding: 20px 80px;
+	border-color: #29793d;
+	background-color: #29793d;
+}
+
+.back.button {
+	background-color: #24362b;
+}
+
+.how-to {
+	color: #53b557;
+	font-size: 24px;
+	margin-top: 10px;
+	padding: 2px 10px;
+	display: inline-block;
+	text-transform: uppercase;
+	text-decoration: underline;
+}
+
+.how-to.active {
+    color: #e4c771;
+}

@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+.w30-w70 .w70 {
+	text-align: center;
+    padding-top: 120px;
+	padding-right: 7vw;
+	
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("../images/checkers.jpg");
+}
+
+body.big-screen ol {
+	margin-top: 0;
+}
+
+body.big-screen ol li {
+    color: #51b757;
+    margin: 15px;
+    font-size: 74px;
+    text-align: left;
+}
+
+h3 {
+	margin-bottom: 0;
+	text-align: center;
+}
+
+h4 {
+	margin: 0;
+	color: #51b757;
+	font-size: 24px;
+}
+
+body.big-screen h3 {
+    font-size: 40px;
+}
+
+.w70 .t-center {
+    margin-left: 0;
+}
+
+.input {
+	margin: 20px 0 20px;
+}
+
+input {
+    width: 90%;
+    color: #2a783d;
+    font-size: 40px;
+    padding: 5px 10px;
+    border: 2px solid #e6c56f;
+    background-color: #fffbe3;
+}
+
+#name_error {
+	color: red;
+    height: 34px;
+    padding-top: 5px;
+}
+
+#keyboard-container {
+	margin-bottom: 50px;
+}
+
+.key-left {
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.t-center .button {
+	margin: 20px 50px;
+	padding: 15px 100px;
+}
+
+.t-center .back.button.active {
+	color: #FFF;
+}
+
+.t-center .complete.button {
+    color: #FFF;
+    border-color: #29783e;
+    background-color: #29783e;
+}
+
+.t-center .complete.button.active {
+    color: #24362b;
+    border-color: #71f175;
+    background-color: #71f175;
+}

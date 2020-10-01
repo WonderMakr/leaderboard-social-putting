@@ -1,0 +1,158 @@
+@charset "UTF-8";
+
+#header {
+	height: 13vh;
+	line-height: 13vh;
+}
+
+#header img {
+	vertical-align: middle;
+}
+
+#logo {
+	margin-left: 3.9%;
+}
+
+#game-img {
+    width: auto;
+    height: 10vh;
+    float: right;
+    margin-top: 1.5vh;
+    margin-right: 3.9%;
+}
+
+#content {
+	height: 87vh;
+	padding: 3.9%;
+    background-color: #fffbe3;
+}
+
+#content > div {
+	font-size: 0;
+	height: 100%;
+	vertical-align: top;
+	display: inline-block;
+}
+
+#players {
+    width: 37%;
+}
+
+#player-conainer {
+	height: 65vh;
+}
+
+.player > div {
+	height: 100%;
+	font-size: 4vh;
+	display: inline-block;
+}
+
+.player {
+    width: 100%;
+    height: 6.27vh;
+	line-height: 6.27vh;
+    margin-bottom: 1.5vh;
+    background-color: #e4c46f;
+	transition: all .5s;
+}
+
+.player .num {
+    width: 6.27vh;
+    color: #e9e348;
+    text-align: center;
+	margin-right: 1vw;
+    background-color: #c3964a;
+}
+
+.player .name {
+	color: #FFF;
+	font-size: 3vh;
+	vertical-align: top;
+	text-transform: uppercase;
+}
+
+.player .score {
+	float: right;
+    color: #c3964a;
+	text-align: right;
+	padding-right: 1vw;
+}
+
+.player.current > div {
+	font-size: 6vh;
+	line-height: 9vh;
+	display: inline-block;
+}
+
+.player.current {
+	width: 100%;
+	height: 9vh;
+	background-color: #51b757;
+}
+
+.player.current .name {
+	font-size: 4.5vh;
+}
+
+.player.current .num {
+	width: 9vh;
+	color: #71f175;
+	background-color: #24362b;
+}
+
+.player.current .score {
+	color: #e9e246;
+}
+
+#board {
+	width: 60%;
+	float: right;
+}
+
+#game-board {
+    margin: 0;
+    float: right;
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.end.button,
+.success.button {
+    padding: 15px 60px;
+}
+
+.success.button {
+	color: #FFF;
+	border-color: #29793d;
+	background-color: #29793d;
+}
+
+.end.button {
+	float: right;
+	color: #f07072;
+    border-color: #f07072;
+}
+
+#p-buttons .button {
+	width: 230px;
+	color: #fffbe3;
+	border: none;
+	padding: 10px 0;
+	font-size: 25px;
+}
+
+#p-buttons .cancel.button {
+	background-color: #29793d;
+}
+
+#p-buttons .clear.button {
+	margin: 0 30px;
+	background-color: #f17171;
+}
+
+#p-buttons .new_game.button {
+	color: #24362b;
+	background-color: #71f175;
+}
