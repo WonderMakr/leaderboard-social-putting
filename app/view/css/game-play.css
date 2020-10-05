@@ -186,9 +186,18 @@ body.big-screen .player.current .num {
 }
 
 .end.button,
-.success.button {
+.success.button,
+.instructions.button {
     padding: 15px 40px;
 	margin: 11px 0 0; 
+}
+
+.instructions.button {
+	padding: 15px 50px;
+}
+.instructions.button.active {
+	color: #FFF;
+	background-color: #e4c771;
 }
 
 .success.button {
@@ -202,6 +211,10 @@ body.big-screen .player.current .num {
 	float: right;
 	color: #f07072;
     border-color: #f07072;
+}
+.end.button.active {
+	color: #FFF;
+    background-color: #f07072;
 }
 
 #p-buttons .button {

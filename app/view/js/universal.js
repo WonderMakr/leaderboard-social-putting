@@ -4,6 +4,7 @@ $(document).ready(function () {
 		
 		var $this = $(this);
 		$this.addClass('active');
+		$('.end.button').removeClass('active');
 		
 		$('#popup').fadeOut(500, function() {
 			$('body').removeClass('open-pop-up');

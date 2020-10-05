@@ -37,10 +37,15 @@
 		<?php if ($screen == 'small') : ?>
 		<div class="t-center">
 			<div class="back button">Back</div>
-			<div class="next button">Next</div>
+			<div class="next button"><?php echo (payment_system() == 'swipe') ? 'Pay Now' : 'Next'; ?></div>
 		</div>
 		
-		<p class="t-center">Available Credits: <?php echo numOfCredits(); ?><span id="error"></span></p>
+			<?php if (payment_system() == 'swipe') : ?>
+			<p class="t-center">Pay to play: 1 Credit is $5<span id="error"></span></p>
+			<?php else : ?>
+			<p class="t-center">Available Credits: <?php echo numOfCredits(); ?><span id="error"></span></p>
+			<?php endif; ?>
+		
 		<?php endif; ?>
 		
 	</div>

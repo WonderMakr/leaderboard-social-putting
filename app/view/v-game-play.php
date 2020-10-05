@@ -56,7 +56,8 @@
 			
 			<?php if ($screen == 'small') : ?>
 			<div id="buttons">
-				<div class="success button">Successful Putt</div>
+				<!--<div class="success button">Successful Putt</div>-->
+				<div class="instructions button">Instructions</div>
 				<div class="end button">End Game</div>
 			</div>
 			<?php endif; ?>

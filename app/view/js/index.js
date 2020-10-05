@@ -78,7 +78,7 @@ $(document).ready(function () {
 						});
 					}, logo_transition);
 				});
-			}, 5000);
+			}, 2000);
 		}
 	} 
 	
@@ -115,7 +115,7 @@ $(document).ready(function () {
 
 						$('#credits').text(obj.credits);
 
-						if (obj.credits == '<em>Free Play</em>' || obj.credits > 0) {
+						if (obj.credits == '<em>Free Play</em>' || obj.credits > 0 || obj.credits == 'swipe') {
 							socket.emit('change-screen', {new_screen: 'select-game'});
 							changeScreen("select-game");
 						} else {

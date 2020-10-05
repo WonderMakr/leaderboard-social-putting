@@ -15,6 +15,15 @@ $(document).ready(function () {
 	
 	$('.end.button').on(event_action, function() {
 		
+		$(this).addClass('active');
+		$('body').addClass('open-pop-up');
+		$('#popup').fadeIn(500);
+		
+	});
+	
+	$('.instructions.button').on(event_action, function() {
+		
+		$(this).addClass('active');
 		$('body').addClass('open-pop-up');
 		$('#popup').fadeIn(500);
 		
