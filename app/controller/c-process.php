@@ -35,14 +35,20 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['command']) ) {
 				foreach ($_POST['names'] as $name) {
 					
 					$player_name = filter_var($name, FILTER_SANITIZE_STRING);
+					$score = 0;
+
+					if ($game_type_id == 2) {
+						$score = 30;
+					}
 					
 					$player_data = array(
 						"game_id"		=> $game_id,
 						"name"			=> $player_name,
+						"score"			=> $score,
 						"created_at"	=> $time,
 						"updated_at"	=> $time
 					);
-					$insertPl = $db->prepare("INSERT INTO players (game_id, name, created_at, updated_at) VALUES (:game_id, :name, :created_at, :updated_at)");
+					$insertPl = $db->prepare("INSERT INTO players (game_id, name, score, created_at, updated_at) VALUES (:game_id, :name, :score, :created_at, :updated_at)");
 					$insertPl->execute($player_data);
 					
 				}
