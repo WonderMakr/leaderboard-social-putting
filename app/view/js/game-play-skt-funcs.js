@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	
-	
+	// Runs at beginning of someones turn
 	function tellSomeoneToPutt(name) {
 		
 		$('#flow-screens').addClass('putt3');
@@ -10,7 +10,7 @@ $(document).ready(function () {
 		//$('#flow-screens').append('<div id="shots"><div id="s1" class="golf-ball"></div><div id="s2" class="golf-ball"></div><div id="s3" class="golf-ball"></div></div>');
 	}
 	
-	
+	// # for 3 and a randomized message (runs at the end of a player's turn)
 	function displayScoreAndMessageWithName(name, score, message) {
 		
 		$('#flow-screens #putt-score').fadeOut(500);
@@ -23,12 +23,14 @@ $(document).ready(function () {
 		});
 	}
 	
+	// Calls displayScoreAndMessageWithName using the player number
 	function displayScoreAndMessageWithPlayerNum(pNum, score, message) {
 		
 		var $player = $('.p'+pNum+'.player');
 		displayScoreAndMessageWithName($player.children('.name').text(), score, message);
 	}
 	
+	// Display after a successful putt
 	function displayGreatPuttWithName(name) {
 		$('#putt-score').fadeOut(500);
 		$('#flow-screens #putt-message').fadeOut(500, function() {
@@ -42,6 +44,7 @@ $(document).ready(function () {
 		});
 	}
 	
+	// Calls displayGreatPuttWithName using player number
 	function displayGreatPuttWithPlayerNum(pNum) {
 		var $player = $('.p'+pNum+'.player');
 		displayGreatPuttWithName($player.children('.name').text());
