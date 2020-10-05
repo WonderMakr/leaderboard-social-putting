@@ -1,8 +1,7 @@
-
-
 node_modules
 
 app/.htaccess
 app/config.inc.php
 app/view/videos/attract-video.mov
 app/view/videos/attract-video.mp4
+.DS_Store
