@@ -48,9 +48,6 @@ body.big-screen .vid-playing #w-logo {
     width: 41.6vw;
 	margin-top: 15vh;
 }
-body.big-screen .vid-playing h3 {
-   /* display: none; */
-}
 
 body.small-screen #w-logo {
 	width: 30%;
@@ -134,7 +131,7 @@ p.error {
 }
 
 #green-overlay {
-	background-color: rgba(29,67,40,0.50);
+	background-color: rgba(0, 74, 21, 60%);
 }
 
 #attract-video {
