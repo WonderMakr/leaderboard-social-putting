@@ -220,7 +220,7 @@ $(document).ready(function () {
 	}
 	*/
 	
-	
+	/*
 	socket.on('game-play-alert', function(msg) {
 
 		console.log('Calling Function: ' + msg.func);
@@ -259,5 +259,61 @@ $(document).ready(function () {
 			break;
 		}
 	});
+	*/
+
+	main();
 	
 });
+
+const main = async () => {
+	await startGame();
+
+	// Fetch current credits
+	const currentCredits = (await app.service('game-data').get(1)).credits;
+	updateCredits(currentCredits);
+
+	const currentGame = await app.service('games').find({
+		query: {
+			status: 1,
+			$limit: 1,
+		}
+	});
+
+	if (currentGame.length && currentGame[0].players.length) {
+		currentGame[0].players.forEach(player => {
+			$(`#p${player.id} > .score`).html(`${player.score}`);
+		});
+	}
+
+	app.service('games').on('patched', async function (game) {
+		console.log(game);
+		if (game.players.length) {
+			game.players.forEach(player => {
+				$(`#p${player.id} > .score`).html(`${player.score}`);
+			});
+		}
+		// document.getElementById('game-info').innerHTML = `Current Game: ${JSON.stringify(game, undefined, 2)}`;
+
+		if (!game.length && game.status === "in_progress" && game.current_player_id) {
+			updateCurrentPlayer(game.current_player_id);
+		} else if (!game.length && game.status === "completed" && game.winner_id) {
+			// document.getElementById('game-info').innerHTML = `Current Game:`;
+
+			await updateWinner(game.winner_id);
+			setTimeout(function () {
+				// document.getElementById('current-player').innerHTML = `Current Player:`;
+			}, 10000);
+		}
+
+	});
+
+	app.service('holes').on('patched', function (hole) {
+		// This may come back as an array on a multi patch
+		console.log(hole);
+	});
+
+	app.service('game-data').on('patched', function (gameData) {
+		console.log(gameData);
+		// updateCredits(gameData.credits);
+	});
+};
