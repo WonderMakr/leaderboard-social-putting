@@ -33,7 +33,7 @@
 			<div id="player-conainer">
 
 				<?php foreach ($players as $p => $player) : ?>
-
+				
 				<div id="p<?php echo $player['id']; ?>" class="p<?php echo $p+1; ?> player<?php echo $p == 0 ? ' current' : ''; ?>">
 					<div class="num"><?php echo $p+1; ?></div>
 					<div class="name"><?php echo $player['name']; ?></div>
@@ -76,5 +76,15 @@
 	</div>
 	
 </div>
+
+<div id="instructions-points">
+	<ol>
+		<?php foreach($instructions[$game_name] as $instruction) {
+			echo '<li>'.$instruction.'</li>';
+		} ?>
+	</ol>
+</div>
+
+<div id="end-game">Are you sure you want to quit the game?<br><br>Quitting the game will result in a loss of credits<br>and game play information.</div>
 
 <?php include ('include/bottom.php'); ?>

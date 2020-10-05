@@ -106,7 +106,7 @@ $(document).ready(function () {
 					
 					$('#credits').text(obj.credits);
 					
-					if (obj.credits == 'swipe') {
+					/*if (obj.credits == 'swipe') {
 						
 						if (confirm('Did you pay already?', 'Yes', 'No')) {
 							socket.emit('change-screen', {new_screen: 'player-names?game='+game_name+'&players='+current_players});
@@ -119,7 +119,8 @@ $(document).ready(function () {
 							processing = false;
 						}
 						
-					} else if (obj.credits == '<em>Free Play</em>' || parseInt(obj.credits) >= current_players) {
+					} else */
+					if (obj.credits == '<em>Free Play</em>' || parseInt(obj.credits) >= current_players) {
 						
 						socket.emit('change-screen', {new_screen: 'player-names?game='+game_name+'&players='+current_players});
 						changeScreen("player-names?game="+game_name+"&players="+current_players);
