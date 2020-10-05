@@ -108,6 +108,8 @@ function getMetaValue($meta_data) {
 function numOfCredits() {
 	if (getMetaValue('payment') == 'free_play')
 		return '<em>Free Play</em>';
+	else if (getMetaValue('payment') == 'swipe')
+		return 'swipe';
 	else
 		return getMetaValue('credits');	
 }

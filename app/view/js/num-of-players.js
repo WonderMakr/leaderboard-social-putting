@@ -106,10 +106,26 @@ $(document).ready(function () {
 					
 					$('#credits').text(obj.credits);
 					
-					if (obj.credits == '<em>Free Play</em>' || parseInt(obj.credits) >= current_players) {
+					if (obj.credits == 'swipe') {
+						
+						if (confirm('Did you pay already?', 'Yes', 'No')) {
+							socket.emit('change-screen', {new_screen: 'player-names?game='+game_name+'&players='+current_players});
+							changeScreen("player-names?game="+game_name+"&players="+current_players);
+						} else {
+							$this.addClass('no-cred');
+							$('p').addClass('error');
+							var money = current_players * 5;
+							$('#error').html('<br>Please pay $'+money+' to play the game.');
+							processing = false;
+						}
+						
+					} else if (obj.credits == '<em>Free Play</em>' || parseInt(obj.credits) >= current_players) {
+						
 						socket.emit('change-screen', {new_screen: 'player-names?game='+game_name+'&players='+current_players});
 						changeScreen("player-names?game="+game_name+"&players="+current_players);
+						
 					} else {
+						
 						$this.addClass('no-cred');
 						$('p').addClass('error');
 						var more_credits = current_players - parseInt(obj.credits);

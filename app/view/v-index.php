@@ -13,7 +13,9 @@
 		<br>
 		<div id="games" class="button b4-animate<?php echo (payment_system() == 'free_play') ? ' freeplay' : ''; ?>">Games</div>
 		<br>
+		<?php if (payment_system() != 'swipe') : ?>
 		<p class="available">Available Credits: <span id="credits"><?php echo numOfCredits(); ?></span></p>
+		<?php endif; ?>
 		<p id="error"></p>
 	
 	<?php else : ?>
