@@ -46,4 +46,9 @@ io.on('connection', function(socket) {
 		io.in('big screen').emit('add-name', {name: arr.name, status: arr.status});
 	});
 	
+	socket.on('game-play-alert', function(arr) {
+		console.log('Game Play Alert: ' + arr.func + ' | Params: ' + arr.params);
+		io.emit('game-play-alert', arr);
+	});
+	
 });

@@ -17,7 +17,7 @@ $(document).ready(function () {
 		$this.addClass('active');
 		
 		socket.emit('change-screen', {new_screen: 'go_back'});
-		history.back();
+		changeScreen('go_back');
 		
 	});
 	
@@ -35,7 +35,7 @@ $(document).ready(function () {
 		
 		setTimeout(function() {
 			
-			if ($this.text() == 'Complete') {
+			if ($this.text() == 'Start Game') {
 				
 				$.ajax({
 					method: "POST",
@@ -56,7 +56,7 @@ $(document).ready(function () {
 						if (obj.result == 'success') {
 
 							socket.emit('change-screen', {new_screen: 'game-play'});
-							window.location = "game-play";
+							changeScreen("game-play");
 							return false;
 
 						} else {
@@ -90,7 +90,7 @@ $(document).ready(function () {
 					if (parseInt($('#play_num').text()) == num_of_players) {
 
 						$('h3, h4, .input, #keyboard-container').css('opacity', 0.25);
-						$('.next.button').removeClass('next').addClass('complete').text('Complete');
+						$('.next.button').removeClass('next').addClass('complete').text('Start Game');
 
 					} else {
 
@@ -124,7 +124,7 @@ $(document).ready(function () {
 			
 			if (status == 'complete') {
 				setTimeout(function() {
-					window.location = "game-play";
+					changeScreen("game-play");
 				}, 1500);
 			}
 

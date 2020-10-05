@@ -9,8 +9,8 @@
 <div id="page-content" class="w30-w70">
 	
 	<div class="w30">
-		<div id="header"><img src="<?php echo $cfg['img_path']; ?>logo-green.jpg" /></div>
-		<img id="game-img" src="<?php echo $cfg['img_path'].$game_name; ?>-lrg.png" />
+		<div id="header"><img id="g-logo" src="<?php echo $cfg['img_path']; ?>logo-green.jpg" /></div>
+		<img id="game-img" src="<?php echo $cfg['img_path'].$game_name; ?>.png" />
 	</div>
 	
 	<div class="w70">

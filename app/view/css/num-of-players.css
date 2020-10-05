@@ -6,6 +6,7 @@ h3 {
 }
 
 body.big-screen h3 {
+	opacity: 0;
     font-size: 40px;
     text-align: center;
     font-weight: normal;
@@ -13,7 +14,7 @@ body.big-screen h3 {
 
 .w30-w70 .w70 {
 	text-align: center;
-	padding-top: 10vh;
+	padding-top: 15vh;
 	padding-left: 0;
 	
     background-size: cover;
@@ -50,9 +51,21 @@ body.big-screen h3 {
 	background-color: #fffbe3;
 }
 
+body.big-screen #num {
+	width: 70vh;
+	height: 70vh;
+	font-size: 64vh;
+	line-height: 70vh;
+	border-color: #fffbe3;
+}
+
 .num {
     width: 100%;
     height: 59vh;
+}
+
+body.big-screen .num {
+	height: 70vh;
 }
 
 .button.active.no-cred {

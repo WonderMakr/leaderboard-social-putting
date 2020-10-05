@@ -1,23 +1,43 @@
 @charset "UTF-8";
 
 @font-face {
-	font-family: 'DIN--Condensed';
-	src: url('../font/DINCondensed-Bold.eot?#iefix') format('embedded-opentype'),  
-		url('../font/DINCondensed-Bold.woff') format('woff'), 
-		url('../font/DINCondensed-Bold.ttf')  format('truetype'), 
-		url('../font/DINCondensed-Bold.svg#DINCondensed-Bold') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'DIN2014-light';
+    src: url('../font/DIN2014-Light.eot');
+    src: url('../font/DIN2014-Light.eot?#iefix') format('embedded-opentype'),
+        url('../font/DIN2014-Light.woff') format('woff'),
+        url('../font/DIN2014-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
 }
 
 @font-face {
-	font-family: 'DIN-Alternate';
-	src: url('../font/DINAlternate-Bold.eot?#iefix') format('embedded-opentype'),  
-		url('../font/DINAlternate-Bold.woff') format('woff'), 
-		url('../font/DINAlternate-Bold.ttf')  format('truetype'), 
-		url('../font/DINAlternate-Bold.svg#DINAlternate-Bold') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'DIN2014-Regular';
+    src: url('../font/DIN2014-Regular.eot');
+    src: url('../font/DIN2014-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../font/DIN2014-Regular.woff') format('woff'),
+        url('../font/DIN2014-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DIN2014-Demi';
+    src: url('../font/DIN2014-Demi.eot');
+    src: url('../font/DIN2014-Demi.eot?#iefix') format('embedded-opentype'),
+        url('../font/DIN2014-Demi.woff') format('woff'),
+        url('../font/DIN2014-Demi.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DIN2014-Bold';
+    src: url('../font/DIN2014-Bold.eot');
+    src: url('../font/DIN2014-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../font/DIN2014-Bold.woff') format('woff'),
+        url('../font/DIN2014-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
 }
 
 html {
@@ -34,14 +54,26 @@ html {
 *:before,
 *:after {
 	box-sizing: inherit;
+	-webkit-user-select: none;
 }
 
 body {
-	font-family: 'DIN-Alternate', "Helvetica Neue", Helvetica, Arial, "sans-serif";
+	font-family: 'DIN2014-Regular', "Helvetica Neue", Helvetica, Arial, "sans-serif";
+}
+
+#black-fade {
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 5000;
+	position: absolute;
+	background-color: #000;
 }
 
 h1, h2, h3, h4, h5 {
 	text-align: center;
+    font-family: 'DIN2014-Bold';
 }
 
 h1 {
@@ -51,6 +83,7 @@ h1 {
 h2 {
 	color: #e4c771;
 	font-size: 44px;
+    font-size: 2.3vw;
 	font-weight: lighter;
 	text-transform: uppercase;
 }
@@ -58,7 +91,9 @@ h2 {
 h3 {
 	color: #29793d;
 	font-size: 30px;
+	font-size: 1.6vw;
 	text-align: left;
+    line-height: 100%;
 	text-transform: uppercase;
 }
 
@@ -73,13 +108,18 @@ a, .button {
 }
 
 .button {
-	margin: 20px 0;
 	color: #e4c771;
+	margin: 20px 0;
 	font-size: 30px;
 	padding: 15px 80px;
 	display: inline-block;
 	border: 2px solid #e4c771;
 	text-transform: uppercase;
+    font-family: 'DIN2014-Demi';
+	transition: opacity 1.5s;
+}
+.button.b4-animate {
+	opacity: 0;
 }
 
 .game .button.active {
@@ -89,7 +129,7 @@ a, .button {
 }
 
 .back.button.active {
-	color: #24362b;
+	color: #FFF;
 	background-color: #e4c771;
 }
 
@@ -101,7 +141,7 @@ a, .button {
 .large.button {
     color: #FFF;
     font-size: 50px;
-    padding: 25px 130px;
+    padding: 20px 130px;
 	border-width: 5px;
     border-color: #6ff176;
     background-color: #29793d;
@@ -128,10 +168,17 @@ p {
 	color: #e4c771;
 	font-size: 30px;
 	text-transform: uppercase;
+    font-family: 'DIN2014-light';
 }
 
 p.available {
-	margin-top: 60px;
+	margin-top: 80px;
+}
+
+#header #g-logo {
+    width: auto;
+    height: 12vh;
+    max-height: 259px;
 }
 
 .w30-w70 {
@@ -154,7 +201,7 @@ p.available {
 .w30-w70 .w30 #header {
     height: 12.5vh;
 	text-align: left;
-	padding-left: 75px;
+	padding-left: 3.9vw;
 }
 
 .w30-w70 .w70 {
@@ -162,12 +209,16 @@ p.available {
     font-size: 16px;
     padding-left: 7vw;
     background-color: #fffbe3;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("../images/bg-light.jpg");
 }
 
 .w30-w70 .w70 .instructions {
-    height: 72vh;
+    height: 74vh;
     display: table;
-	padding-top: 10vh;
+    padding-top: 16vh;
 }
 
 .w30-w70 .w70 .instructions .center {
@@ -177,11 +228,37 @@ p.available {
 }
 
 .w30 #game-img {
-	margin-top: 250px;
+    width: 20vw;
+    height: auto;
+    margin-top: 19.5vh;
 }
 
 .w70 .t-center {
 	margin-left: -7vw;
+}
+
+#w-logo {
+	transition: all 2s;
+}
+
+#w-logo.b4-animate {
+    width: 0 !important;
+    transform: rotate(1080deg);
+}
+
+h3.playHere > span {
+	left: 0;
+	position: relative;
+	transition: all 1.25s;
+	display: inline-block;
+    white-space: break-spaces;
+}
+
+h3.playHere.b4-animate .play {
+	left: -50vw;
+}
+h3.playHere.b4-animate .legend {
+	left: 60vw;
 }
 
 /* POP UP STYLES */

@@ -3,6 +3,7 @@
 #header {
 	height: 14vh;
 	line-height: 14vh;
+	background-color: #24362b;
 }
 
 #header img {
@@ -10,6 +11,7 @@
 }
 
 #logo {
+	width: 13.9vw;
 	margin-left: 3.9%;
 }
 
@@ -36,11 +38,15 @@
 }
 
 #players {
-    width: 33%;
+    width: 31.5%;
 }
 
 #player-conainer {
-	height: 65vh;
+	height: 64.75vh;
+}
+
+body.big-screen #player-conainer {
+	height: 72vh;
 }
 
 .player > div {
@@ -58,9 +64,14 @@
 	transition: all .5s;
 }
 
-body.big-screen .player{
-	height: 7.27vh;
-	line-height: 7.27vh;
+.player > div {
+	transition: all .5s;
+}
+
+body.big-screen .player {
+	height: 7.5vh;
+	line-height: 7.5vh;
+	margin-bottom: 1.375vh;
 }
 
 .player .num {
@@ -69,6 +80,10 @@ body.big-screen .player{
     text-align: center;
 	margin-right: 1vw;
     background-color: #c3964a;
+}
+
+body.big-screen .player .num {
+	width: 7.5vh;
 }
 
 .player .name {
@@ -98,11 +113,11 @@ body.big-screen .player{
 }
 
 body.big-screen .player.current > div {
-	line-height: 10.8vh;
+	line-height: 10vh;
 }
 
 body.big-screen .player.current {
-	height: 10.8vh;
+	height: 10vh;
 }
 
 .player.current .name {
@@ -115,13 +130,17 @@ body.big-screen .player.current {
 	background-color: #24362b;
 }
 
+body.big-screen .player.current .num {
+	width: 10vh;
+}
+
 .player.current .score {
 	color: #e9e246;
 }
 
 #board {
-	width: 1130px;
-	height: 780px !important;
+    width: 58.85vw;
+	height: auto;
 	float: right;
 	position: relative;
 }
@@ -134,6 +153,8 @@ body.big-screen .player.current {
 
 #game-board {
 	z-index: 10;
+    width: 100%;
+    height: auto;
 }
 
 .hole {
@@ -143,6 +164,7 @@ body.big-screen .player.current {
 	height: 100%;
 	z-index: 20;
 	position: absolute;
+    -webkit-mask-size: contain;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
 }
@@ -159,6 +181,9 @@ body.big-screen .player.current {
 .hole.red {
 	background-color: #9f4327;
 }
+.hole.blue {
+	background-color: #00adff;
+}
 
 .end.button,
 .success.button {
@@ -168,6 +193,7 @@ body.big-screen .player.current {
 
 .success.button {
 	color: #FFF;
+	padding: 15px 23px;
 	border-color: #29793d;
 	background-color: #29793d;
 }
@@ -181,22 +207,40 @@ body.big-screen .player.current {
 #p-buttons .button {
 	width: 230px;
 	color: #fffbe3;
-	border: none;
 	padding: 10px 0;
 	font-size: 25px;
 }
 
 #p-buttons .cancel.button {
+	color: #29793d;
+	border-color: #29793d;
+}
+
+#p-buttons .cancel.button.active {
+	color: #FFF;
 	background-color: #29793d;
 }
 
 #p-buttons .clear.button {
 	margin: 0 30px;
+	color: #f17171;
+	border-color: #f17171;
+}
+
+#p-buttons .clear.button.active {
+	color: #FFF;
 	background-color: #f17171;
 }
 
 #p-buttons .new_game.button {
+	color: #FFF;
+	border-color: #51b757;
+	background-color: #51b757;
+}
+
+#p-buttons .new_game.button.active {
 	color: #24362b;
+	border-color: #71f175;
 	background-color: #71f175;
 }
 
@@ -210,27 +254,55 @@ body.big-screen .player.current {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
+    background-image: url("../images/grass.jpg");
 }
 
 #flow-screens h1 {
 	color: #71f175;
-	font-size: 100px;
+	font-size: 7vw;
+	margin: 7vh 0 0;
 	text-transform: uppercase;
+	font-family: 'DIN2014-Bold';
+	-webkit-text-stroke: 2px #FFF;
+	text-shadow: 0px 1px 1px #0a2c13, 0px 2px 1px #0a2c13, 0px 3px 1px #0a2c13, 0px 4px 1px #0a2c13, 0px 5px 1px #0a2c13, 0px 6px 1px #0a2c13, 0px 7px 1px #0a2c13, 0px 8px 1px #0a2c13, 0px 9px 1px #0a2c13, 0px 10px 1px #0a2c13, 0px 11px 1px #0a2c13, 0px 12px 1px #0a2c13, 0px 13px 1px #0a2c13, 0px 14px 1px #0a2c13, 0px 15px 1px #0a2c13, 0px 16px 1px #0a2c13, 0px 17px 1px #0a2c13, 0px 18px 1px #0a2c13, 1px 19px 2px #000, 2px 20px 2px #000, 3px 21px 2px #000, 4px 22px 2px #000, 5px 23px 2px #000, 6px 24px 2px #000, 7px 25px 2px #000;
 }
 
-#flow-screens.putt3 {
-    background-image: url("../images/putt-3.jpg");
+#putt-score,
+#putt-message {
+	color: #71f175;
+	font-size: 7vw;
+	text-align: center;
+	line-height: 100%;
+	text-transform: uppercase;
+    font-family: 'DIN2014-Bold';
+	-webkit-text-stroke: 2px #FFF;
+	text-shadow: 0px 1px 1px #0a2c13, 0px 2px 1px #0a2c13, 0px 3px 1px #0a2c13, 0px 4px 1px #0a2c13, 0px 5px 1px #0a2c13, 0px 6px 1px #0a2c13, 0px 7px 1px #0a2c13, 0px 8px 1px #0a2c13, 0px 9px 1px #0a2c13, 0px 10px 1px #0a2c13, 0px 11px 1px #0a2c13, 0px 12px 1px #0a2c13, 0px 13px 1px #0a2c13, 0px 14px 1px #0a2c13, 0px 15px 1px #0a2c13, 0px 16px 1px #0a2c13, 0px 17px 1px #0a2c13, 0px 18px 1px #0a2c13, 1px 19px 2px #000, 2px 20px 2px #000, 3px 21px 2px #000, 4px 22px 2px #000, 5px 23px 2px #000, 6px 24px 2px #000, 7px 25px 2px #000;
 }
-#flow-screens.shots-0-3 {
-    background-image: url("../images/shots-0-3.jpg");
+
+#putt-score {
+	font-size: 13vw;
+	margin: 6vh 0 4vh;
 }
-#flow-screens.great-shot {
-    background-image: url("../images/great-shot.jpg");
+#putt-score span {
+	font-size: 40%;
+    vertical-align: text-bottom;
+}
+
+.putt3 #putt-message {
+    font-size: 10vw;
+    text-align: left;
+    padding-left: 25vw;
+}
+#putt-message .lrg {
+    font-size: 130%;
+    line-height: 100%;
 }
 
 #winner-container {
 	top: 0;
 	left: 0;
+	width: 100vw;
+	height: 100vh;
 	z-index: 500;
 	display: none;
 	position: absolute;
@@ -258,9 +330,100 @@ body.big-screen .player.current {
     text-transform: uppercase;
 }
 
-#winner-is h1 {
-	font-size: 150px;
+/* Winner name locations */
+#winner-is.fireworks {
+    top: 6vh;
 }
-#winner-is h2 {
-	font-size: 120px;
+#winner-is.fireworks h1 {
+	font-size: 11vw;
 }
+#winner-is.fireworks h2 {
+    font-size: 6vw;
+}
+
+#winner-is.rocket {
+    top: 13vh;
+}
+#winner-is.rocket h1 {
+    left: 0vw;
+    width: 46vw;
+    color: #fdfd58;
+    font-size: 9vw;
+    position: absolute;
+    text-align: right;
+}
+#winner-is.rocket h2 {
+    right: 20vw;
+    color: #fdfd58;
+    font-size: 9vw;
+    position: absolute;
+}
+
+#winner-is.shark {
+    top: 20vh;
+}
+#winner-is.shark h1 {
+    left: 20vw;
+    width: 60vw;
+    color: #fffeff;
+    font-size: 9vw;
+    position: absolute;
+    text-align: left;
+}
+#winner-is.shark h2 {
+    top: 14vh;
+    right: 20vw;
+    color: #fffeff;
+    font-size: 6.5vw;
+    position: absolute;
+}
+
+#winner-is.trophy {
+    top: 24vh;
+}
+#winner-is.trophy h1 {
+    right: 1.25vw;
+    width: 59vw;
+    color: #b4a565;
+    font-size: 9vw;
+    position: absolute;
+    text-align: center;
+    font-family: 'DIN2014-light';
+}
+#winner-is.trophy h2 {
+    top: 15vh;
+    right: 1.25vw;
+    width: 59vw;
+    color: #b4a565;
+    font-size: 6.5vw;
+    position: absolute;
+    font-family: 'DIN2014-light';
+}
+
+#winner-is.wrecking-ball {
+    top: 18vh;
+}
+#winner-is.wrecking-ball h1 {
+    left: 17.65vw;
+    width: 60vw;
+    color: #c6a25d;
+    font-size: 9vw;
+    position: absolute;
+    text-align: left;
+}
+#winner-is.wrecking-ball h2 {
+    top: 14vh;
+    left: 17.65vw;
+    color: #c6a25d;
+    font-size: 6.5vw;
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+

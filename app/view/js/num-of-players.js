@@ -13,7 +13,7 @@ $(document).ready(function () {
 		$this.addClass('active');
 		
 		socket.emit('change-screen', {new_screen: 'go_back'});
-		history.back();
+		changeScreen('go_back');
 		
 	});
 	
@@ -29,6 +29,10 @@ $(document).ready(function () {
 		
 		var $current =  $('.num.current');
 		var current_players = $current.text();
+		
+		$('.next.button').removeClass('no-cred').removeClass('active');
+		$('p').removeClass('error');
+		$('#error').html('');
 		
 		if ( (current_players == '8' && $this.hasClass('plus')) || (current_players == '0' && $this.hasClass('minus')) ) {
 			setTimeout(function() {
@@ -102,13 +106,13 @@ $(document).ready(function () {
 					
 					$('#credits').text(obj.credits);
 					
-					if (obj.credits == '<em>Free Play</em>' || obj.credits >= current_players) {
+					if (obj.credits == '<em>Free Play</em>' || parseInt(obj.credits) >= current_players) {
 						socket.emit('change-screen', {new_screen: 'player-names?game='+game_name+'&players='+current_players});
-						window.location = "player-names?game="+game_name+"&players="+current_players;
+						changeScreen("player-names?game="+game_name+"&players="+current_players);
 					} else {
 						$this.addClass('no-cred');
 						$('p').addClass('error');
-						var more_credits = current_players - obj.credits;
+						var more_credits = current_players - parseInt(obj.credits);
 						var plural = "";
 						if (more_credits > 1)
 							plural = "s";

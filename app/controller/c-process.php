@@ -57,7 +57,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['command']) ) {
 		break;
 			
 		case 'end-clear-game':
-
+			
 			if (isset($_POST['game_id'])) {
 				
 				$game_id = filter_var($_POST['game_id'], FILTER_SANITIZE_STRING);

@@ -2,7 +2,7 @@
 
 .w30-w70 .w70 {
 	text-align: center;
-    padding-top: 120px;
+    padding-top: 11vh;
 	padding-right: 7vw;
 	
     background-size: cover;
@@ -17,8 +17,9 @@ body.big-screen ol {
 
 body.big-screen ol li {
     color: #51b757;
-    margin: 15px;
+    margin: 1.5vh 1vw;
     font-size: 74px;
+    font-size: 3.75vw;
     text-align: left;
 }
 
@@ -34,7 +35,7 @@ h4 {
 }
 
 body.big-screen h3 {
-    font-size: 40px;
+    font-size: 3vw;
 }
 
 .w70 .t-center {

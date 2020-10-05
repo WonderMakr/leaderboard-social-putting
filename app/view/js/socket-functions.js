@@ -24,11 +24,16 @@ socket.on('disconnect', function() {
 });
 
 socket.on('change-screen', function(msg) {
-	if (cfg_screen == 'big') {
-		console.log('changing screen to: ' + msg);
+	
+	console.log('changing screen to: ' + msg);
+
+	$('#black-fade').fadeIn(cfg_fade_time, function() {
+
 		if (msg.screen == 'go_back')
 			history.back();
 		else
 			window.location = msg.screen;
-	}
+	});
+
+	
 });

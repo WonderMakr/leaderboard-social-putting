@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+#guides {
+    /* top: 0; */
+    /* left: 0; */
+    /* width: 100vw; */
+    /* height: 100vh; */
+    /* position: absolute; */
+}
+
+#guides > div {
+	position: absolute;
+	background-color: #003473;
+	background-color: #FFF;
+}
+
+#guides .vertical {
+	width: 2px;
+	height: 100vh;
+	z-index: 1000;
+}
+
+#guides .horizontal {
+	width: 100vw;
+	height: 2px;
+	z-index: 1000;
+}
+
+#guides #h-center {
+	top: 0;
+	left: 50%;
+    left: calc(50% - 1px);
+}
+
+#guides #v-center {
+	top: 50%;
+    top: calc(50% - 1px);
+	left: 0;
+}
+
+#border-left {
+	top: 0;
+	left: 3.9vw;
+	left: calc(3.9vw - 1px);
+}
+#border-right {
+	top: 0;
+	right: 3.9vw;
+	right: calc(3.9vw - 1px);
+}
+#border-top {
+	left: 0;
+	top: 6.944444vh;
+	top: calc(6.944444vh - 1px);
+}
+#border-bottom {
+	left: 0;
+	bottom: 6.944444vh;
+	bottom: calc(6.944444vh - 1px);
+}
+
+#third {
+	top: 0;
+	left: 33%;
+	left: calc(33% - 1px);
+}
+
+#thirty7 {
+	top: 0;
+	left: 37.24%;
+	left: calc(37.24% - 1px);
+}
+
+#twentyISH{
+	left: 0;
+	top: 20.83333vh;
+	top: calc(20.83333vh - 1px);
+}
+
+#third-R {
+	top: 0;
+	right: 33%;
+	right: calc(33% - 1px);
+}

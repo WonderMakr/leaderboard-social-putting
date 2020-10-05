@@ -2,7 +2,7 @@
 
 <div id="page-content">
 	
-	<div id="header"><img src="<?php echo $cfg['img_path']; ?>logo-green.jpg" /></div>
+	<div id="header"><img id="g-logo" src="<?php echo $cfg['img_path']; ?>logo-green.jpg" /></div>
 	
 	<?php $activeGames = getActiveGames(); ?>
 	
@@ -12,7 +12,16 @@
 		
 		<div class="game">
 			
-			<img src="<?php echo $cfg['img_path'] . $slug; echo ($screen == 'big') ? '-lrg' : ''; ?>.png" /><br>
+			<?php if ($screen == 'big') : ?>
+			
+			<div class="golf-ball b4-animate">
+				<img class="b4-animate" src="<?php echo $cfg['img_path'] . $slug; ?>.png" /><br>
+			</div>
+			
+			<?php else : ?>
+				<img src="<?php echo $cfg['img_path'] . $slug; ?>.png" /><br>
+			<?php endif; ?>
+			
 			
 			<?php if ($screen == 'small') : ?>
 			<div data-link="num-of-players?game=<?php echo $slug; ?>" class="button">Play Now</div><br>

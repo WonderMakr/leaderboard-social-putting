@@ -24,6 +24,8 @@
 		
 		<div id="flow-screens">
 			<h1></h1>
+			<div id="putt-score"></div>
+			<div id="putt-message"></div>
 		</div>
 		
 		<div id="players">

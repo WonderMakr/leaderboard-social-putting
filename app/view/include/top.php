@@ -16,17 +16,18 @@
 		<meta property="og:description" content="<?php echo ($pagedata['og:description']); ?>" />
 		<meta property="og:image" content="<?php echo ($pagedata['og:image']); ?>" />
 		<meta property="fb:app_id" content="<?php echo ($cfg['fb_appId']); ?>" />
-
+		 
 		<?php
 		// Include page CSS
 		getCSS('normalize');
+		if ($cfg['guides']) getCSS('guides');
 		getCSS('universal');
 		if (isset($required_css)) { foreach ($required_css as $library) { getCSS($library); } }
 		?>
 		
 	</head>
 
-	<body class="<?php echo $screen; ?>-screen">
+	<body id="page-<?php echo $page; ?>" class="<?php echo $screen; ?>-screen">
 		<?php if ($cfg['stage'] == 'production' && FALSE) { ?>
 			<!-- Google Analytics -->
 
@@ -49,5 +50,29 @@
 			
 			var cfg_url = '<?php echo $cfg['url']; ?>';
 			var cfg_screen = '<?php echo $screen; ?>';
+			var cfg_sound_path = '<?php echo $cfg['sound_path']; ?>';
+			var cfg_fade_time = <?php echo $cfg['fade_time']; ?>;
+			var cfg_index_timeout = <?php echo $cfg['index_timeout']; ?>;
 		</script>
 		
+		<div id="black-fade"></div>
+		
+		<?php if ($cfg['guides']) : ?>
+		<div id="guides">
+
+			<div id="border-left" class="vertical"></div>
+			<div id="border-right" class="vertical"></div>
+			<div id="border-top" class="horizontal"></div>
+			<div id="border-bottom" class="horizontal"></div>
+
+			<div id="third" class="vertical"></div>
+			<div id="thirty7" class="vertical"></div>
+
+			<div id="h-center" class="vertical"></div>
+			<div id="v-center" class="horizontal"></div>
+
+			<div id="twentyISH" class="horizontal"></div>
+
+			<div id="third-R" class="vertical"></div>
+		</div>
+		<?php endif; ?>

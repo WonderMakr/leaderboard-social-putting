@@ -2,7 +2,7 @@
 
 // Required CSS and JS
 $required_css = array('game-play');
-$required_js = array('game-play' => 1);
+$required_js = array('game-play' => 1, 'game-play-skt-funcs' => 1);
 $required_modal = array();
 
 $pagedata['title']          = "";
