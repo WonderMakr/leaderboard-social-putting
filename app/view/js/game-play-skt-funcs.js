@@ -268,23 +268,6 @@ $(document).ready(function () {
 const main = async () => {
 	await startGame();
 
-	// Fetch current credits
-	const currentCredits = (await app.service('game-data').get(1)).credits;
-	updateCredits(currentCredits);
-
-	const currentGame = await app.service('games').find({
-		query: {
-			status: 1,
-			$limit: 1,
-		}
-	});
-
-	if (currentGame.length && currentGame[0].players.length) {
-		currentGame[0].players.forEach(player => {
-			$(`#p${player.id} > .score`).html(`${player.score}`);
-		});
-	}
-
 	app.service('games').on('patched', async function (game) {
 		console.log(game);
 		if (game.players.length) {
@@ -317,3 +300,54 @@ const main = async () => {
 		// updateCredits(gameData.credits);
 	});
 };
+
+/******* ALL HELPER FUNCTIONS ********/
+
+// Starts golf game on server (work out a cleaner solution)
+async function startGame() {
+	const gameInProgress = await app.service('games').find({
+		query: {
+			status: 1,
+			current_player_id: 0,
+			$limit: 1,
+		}
+	});
+	console.log(gameInProgress);
+	if (gameInProgress.length) {
+		let game = gameInProgress[0];
+		await app.service('games').patch(game.id, {
+			status: 1
+		});
+	} else {
+		console.log("Sorry, there is no game available to start.");
+	}
+}
+
+// End all games
+async function endGames() {
+	await app.service('games').patch(null, {
+		status: 2
+	}, {
+		query: {
+			status: 1
+		}
+	});
+}
+
+// Update current player
+async function updateCurrentPlayer(playerId) {
+	console.log("Update Current Player to ID: ", playerId);
+	const currentPlayer = (await app.service('players').get(playerId)).name;
+	$(".player").removeClass("current");
+	$(`#p${playerId}`).addClass("current");
+	// document.getElementById('current-player').innerHTML = `Current Player: ${currentPlayer}`;
+}
+
+async function updateWinner(playerId) {
+	const currentPlayer = await app.service('players').get(playerId);
+	$(`#p${playerId} > .score`).html(`WINNER`);
+	setTimeout(function () {
+		window.location = 'index';
+	}, 5000)
+	// document.getElementById('current-player').innerHTML = `WINNER: ${currentPlayer.name} (${currentPlayer.score} Points)`;
+}
