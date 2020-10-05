@@ -55,7 +55,7 @@ $(document).ready(function () {
 		});
 	}
 	
-	/* Tests */
+	/* Tests
 	if (cfg_screen == 'smalll') {
 		setTimeout(function() {
 			//socket.emit('game-play-alert', {func: 'removeUserFlowScreen', params : []});
@@ -78,7 +78,7 @@ $(document).ready(function () {
 			socket.emit('game-play-alert', {func: 'removeUserFlowScreen', params : []});
 		}, 9000);
 	}
-	
+	*/
 	
 	
 	
@@ -95,7 +95,7 @@ $(document).ready(function () {
 			$('.hole').removeClass().addClass('hole '+color);
 	}
 	
-	/* Tests */ 
+	/* Tests 
 	if (cfg_screen == 'smalll') {
 		setTimeout(function() {
 			socket.emit('game-play-alert', {func: 'changeAllHoleColors', params : ['green']});
@@ -105,6 +105,7 @@ $(document).ready(function () {
 			socket.emit('game-play-alert', {func: 'changeHoleColor', params : ['1', 'red']});
 		}, 4000);
 	}
+	*/
 	
 	
 	var videos = ['fireworks', 'rocket', 'shark', 'trophy', 'wrecking-ball'];
