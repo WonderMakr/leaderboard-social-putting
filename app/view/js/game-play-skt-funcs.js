@@ -212,7 +212,7 @@ $(document).ready(function () {
 	}
 	
 	/* TESTS */
-	if (cfg_screen == 'small') {
+	if (cfg_screen == 'smalll') {
 		setTimeout(function() {
 			socket.emit('game-play-alert', {func: 'displayWinnerWithPlayerNum', params : ['rocket', '1']});
 		}, 1000);
