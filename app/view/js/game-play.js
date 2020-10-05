@@ -16,18 +16,43 @@ $(document).ready(function () {
 	$('.end.button').on(event_action, function() {
 		
 		$(this).addClass('active');
+		$('#p-content h1').text('End Game?');
+		$('#p-content p').html($('#end-game').clone());
+		$('.cancel.button').text('Close');
+		$('.clear.button, .new_game.button').show();
 		$('body').addClass('open-pop-up');
 		$('#popup').fadeIn(500);
 		
 	});
 	
-	$('.instructions.button').on(event_action, function() {
-		
+	function openInstructions() {
 		$(this).addClass('active');
+		$('#p-content h1').text('Instructions');
+		$('#p-content p').html($('#instructions-points').clone());
+		$('.cancel.button').text('Close');
+		$('.clear.button, .new_game.button').hide();
 		$('body').addClass('open-pop-up');
 		$('#popup').fadeIn(500);
+	}
+	
+	$('.instructions.button').on(event_action, function() {
+		socket.emit('popup', {popup: 'instructions', action: 'open'});
+		openInstructions();	
+	});
+	
+	socket.on('popup', function(msg) {
+	
+		if (msg.popup == 'instructions') {
+			
+			if (msg.action == 'open')
+				openInstructions();
+			else if (msg.action == 'close')
+				$('.cancel.button').trigger(event_action);
+		}
 		
 	});
+	
+	
 	
 	var processing = false;
 	

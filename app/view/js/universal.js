@@ -5,7 +5,9 @@ $(document).ready(function () {
 		var $this = $(this);
 		$this.addClass('active');
 		$('.end.button').removeClass('active');
-		
+		$('.instructions.button').removeClass('active');
+		if (cfg_screen == 'small')
+			socket.emit('popup', {popup: 'instructions', action: 'close'});
 		$('#popup').fadeOut(500, function() {
 			$('body').removeClass('open-pop-up');
 			$this.removeClass('active');

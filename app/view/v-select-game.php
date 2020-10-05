@@ -39,9 +39,9 @@
 		<div class="t-center">
 			<div class="back button">Back</div>
 		</div>
-		<?php if (payment_system() != 'swipe') : ?>
+
 		<p class="t-center">Available Credits: <?php echo numOfCredits(); ?></p>
-		<?php endif; ?>
+
 	<?php else : ?>
 	
 		<h2>Choose the game you want to play</h2>

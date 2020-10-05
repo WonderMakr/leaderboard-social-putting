@@ -297,8 +297,7 @@ body.open-pop-up {
 }
 
 #p-content {
-	min-width: 40%;
-	max-width: 45%;
+	width: 45vw;
 	display: inline-block;
 	padding: 20px 50px 40px;
 	background-color: #fffbe3;
@@ -306,12 +305,13 @@ body.open-pop-up {
 
 #p-content h1 {
 	color: #29793d;
+    font-size: 2.75vw;
 	text-transform: uppercase;
 }
 
 #p-content p {
     color: #23372c;
-    font-size: 24px;
+    font-size: 1.5vw;
     line-height: 120%;
     text-transform: none;
 }
