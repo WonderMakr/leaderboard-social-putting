@@ -212,12 +212,13 @@ $(document).ready(function () {
 		displayWinnerWithName(videoName, $player.children('.name').text());
 	}
 	
-	/* TESTS */
+	/* TESTS 
 	if (cfg_screen == 'smalll') {
 		setTimeout(function() {
 			socket.emit('game-play-alert', {func: 'displayWinnerWithPlayerNum', params : ['rocket', '1']});
 		}, 1000);
 	}
+	*/
 	
 	
 	socket.on('game-play-alert', function(msg) {
