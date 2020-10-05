@@ -1,6 +1,6 @@
 
 
-app/node/node_modules/*
+node/node_modules/*
 
 app/.htaccess
 app/config.inc.php

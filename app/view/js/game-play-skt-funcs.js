@@ -67,20 +67,23 @@ $(document).ready(function () {
 		setTimeout(function() {
 			//socket.emit('game-play-alert', {func: 'displayScoreAndMessageWithName', params : ['Andrew', '0', 'Better Luck<br>Next Time']});
 			//socket.emit('game-play-alert', {func: 'displayScoreAndMessageWithPlayerNum', params : [1, '1', 'One is better<br>than nothing']});
-			//socket.emit('game-play-alert', {func: 'displayScoreAndMessageWithName', params : ['Andrew', '2', "Way to go!<br>Almost Perfect"]});
+			socket.emit('game-play-alert', {func: 'displayScoreAndMessageWithName', params : ['Andrew', '2', "Way to go!<br>Almost Perfect"]});
 			//socket.emit('game-play-alert', {func: 'displayScoreAndMessageWithPlayerNum', params : [2, '3', "We got a<br>pro over here!"]});
 		}, 5000);
 		setTimeout(function() {
 			//socket.emit('game-play-alert', {func: 'displayGreatPuttWithName', params : ['Andrew']});
 			socket.emit('game-play-alert', {func: 'displayGreatPuttWithPlayerNum', params : [1]});
-		}, 6000);
+		}, 7000);
+		setTimeout(function() {
+			socket.emit('game-play-alert', {func: 'removeUserFlowScreen', params : []});
+		}, 9000);
 	}
 	
 	
 	
 	
 	
-	var hole_colors = ['white', 'green', 'yellow', 'red'];
+	var hole_colors = ['white', 'green', 'yellow', 'red', 'blue'];
 	
 	function changeHoleColor(hole, color) {
 		if (hole_colors.includes(color))
@@ -155,6 +158,50 @@ $(document).ready(function () {
 		
 		video.onended = function() {
 			console.log('Video Ended');
+			if (cfg_screen == 'small') {
+				
+				$.ajax({
+					method: "POST",
+					url: "process",
+					data: {
+						command		: 'complete-game',
+						game_id		: current_game_id
+					}
+				}).done(function( msg ) {
+
+					console.log(msg);
+					//return false;
+
+					try {
+
+						var obj = $.parseJSON(msg);
+
+						if (obj.result == 'success') {
+							
+							console.log('finished');
+							
+							$('#popup #p-content h1').text('Great Game');
+							$('#popup #p-content p').html('Thank you for playing.<br>We hope to see you again soon!');
+							$('#popup #p-content .button.cancel').remove();
+							$('#winner-container').fadeOut(1000, function() {
+								$('body').addClass('open-pop-up');
+								$('#popup').fadeIn(500);
+							});
+							
+							return false;
+
+						} else {
+							console.log(obj);
+							alert(obj.message);
+						}
+
+					} catch(err) {
+						console.log(err);
+						console.log(msg);
+					}
+
+				});	
+			}
 		};
 		
 	}
@@ -167,7 +214,7 @@ $(document).ready(function () {
 	/* TESTS */
 	if (cfg_screen == 'small') {
 		setTimeout(function() {
-			socket.emit('game-play-alert', {func: 'displayWinnerWithPlayerNum', params : ['wrecking-ball', '1']});
+			socket.emit('game-play-alert', {func: 'displayWinnerWithPlayerNum', params : ['rocket', '1']});
 		}, 1000);
 	}
 	

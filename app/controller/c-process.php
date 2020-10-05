@@ -81,6 +81,31 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['command']) ) {
 			
 		break;
 			
+		case 'complete-game':
+			
+			if (isset($_POST['game_id'])) {
+				
+				$game_id = filter_var($_POST['game_id'], FILTER_SANITIZE_STRING);
+				
+				$game_data = array(
+					"game_id" 		=> $game_id,
+					"status"		=> "in_progress",
+					"updated_at"	=> time()
+				);
+				$update = $db->prepare("UPDATE `games` SET `status` = :status, `updated_at` = :updated_at WHERE `games`.`id` = :game_id");
+				$update->execute($game_data);
+				
+				$output = array('result' => 'success', 'message' => "Game has been marked as completed");
+				exit(json_encode($output));
+
+			} else {
+				
+				$output = array('result' => 'error', 'message' => 'Invalid post values');
+				exit (json_encode($output));
+			}
+			
+		break;
+			
 		default :
 			$output = array('result' => 'error', 'message' => 'Invalid command');
 			exit (json_encode($output));
