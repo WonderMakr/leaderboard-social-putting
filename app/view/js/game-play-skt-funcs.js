@@ -1,62 +1,12 @@
+var currentGame = {};
+
 $(document).ready(function () {
+	// displayGreatPuttWithPlayerNum(1);
+
+	// setTimeout(removeUserFlowScreen, 2000)
+
 	
-	// Runs at beginning of someones turn
-	function tellSomeoneToPutt(name) {
-		
-		$('#flow-screens').addClass('putt3');
-		$('#flow-screens h1').text(name);
-		$('#flow-screens #putt-message').html('Putt<br><span class="lrg">3 Balls</span>');
-		$('#flow-screens').fadeIn(500);
-		//$('#flow-screens').append('<div id="shots"><div id="s1" class="golf-ball"></div><div id="s2" class="golf-ball"></div><div id="s3" class="golf-ball"></div></div>');
-	}
-	
-	// # for 3 and a randomized message (runs at the end of a player's turn)
-	function displayScoreAndMessageWithName(name, score, message) {
-		
-		$('#flow-screens #putt-score').fadeOut(500);
-		$('#flow-screens #putt-message').fadeOut(500, function() {
-			$('#flow-screens').removeClass();
-			$('#flow-screens h1').text(name);
-			$('#flow-screens #putt-score').html(score+' <span>for</span> 3');
-			$('#flow-screens #putt-message').html(message);
-			$('#flow-screens, #putt-score, #putt-message').fadeIn(500);
-		});
-	}
-	
-	// Calls displayScoreAndMessageWithName using the player number
-	function displayScoreAndMessageWithPlayerNum(pNum, score, message) {
-		
-		var $player = $('.p'+pNum+'.player');
-		displayScoreAndMessageWithName($player.children('.name').text(), score, message);
-	}
-	
-	// Display after a successful putt
-	function displayGreatPuttWithName(name) {
-		$('#putt-score').fadeOut(500);
-		$('#flow-screens #putt-message').fadeOut(500, function() {
-			$('#flow-screens').removeClass().addClass('greatShot');
-			$('#flow-screens h1').text(name);
-			$('#flow-screens #putt-message').addClass('b4-animate').html('<span class="lrg">Great<br>Shot!</span>').show().addClass('animate');
-			$('#flow-screens').fadeIn(500);
-			setTimeout(function() {
-				$('#flow-screens #putt-message').removeClass('b4-animate');
-			}, 500);
-		});
-	}
-	
-	// Calls displayGreatPuttWithName using player number
-	function displayGreatPuttWithPlayerNum(pNum) {
-		var $player = $('.p'+pNum+'.player');
-		displayGreatPuttWithName($player.children('.name').text());
-	}
-	
-	function removeUserFlowScreen() {
-		$('#flow-screens').fadeOut(500, function() {
-			$('#flow-screens h1').html('');
-			$('#flow-screens #putt-score').html('');
-			$('#flow-screens #putt-message').html('');
-		});
-	}
+
 	
 	/* Tests
 	if (cfg_screen == 'smalll') {
@@ -291,15 +241,23 @@ const main = async () => {
 			}, 10000);
 		}
 
+		// This logic needs to be corrected for a single player
+		if (currentGame.current_ball === undefined || (game.current_player_id !== currentGame.current_player_id)) {
+			// New player turn
+			tellSomeoneToPuttWithPlayerId(game.current_player_id);
+			setTimeout(removeUserFlowScreen, 2000);
+		}
+
+		currentGame = game;
 	});
 
 	app.service('holes').on('patched', function (hole) {
 		// This may come back as an array on a multi patch
-		console.log(hole);
+		// console.log(hole);
 	});
 
 	app.service('game-data').on('patched', function (gameData) {
-		console.log(gameData);
+		// console.log(gameData);
 		// updateCredits(gameData.credits);
 	});
 };
@@ -339,7 +297,7 @@ async function endGames() {
 
 // Update current player
 async function updateCurrentPlayer(playerId) {
-	console.log("Update Current Player to ID: ", playerId);
+	// console.log("Update Current Player to ID: ", playerId);
 	const currentPlayer = (await app.service('players').get(playerId)).name;
 	$(".player").removeClass("current");
 	$(`#p${playerId}`).addClass("current");
@@ -354,3 +312,69 @@ async function updateWinner(playerId) {
 	}, 5000)
 	// document.getElementById('current-player').innerHTML = `WINNER: ${currentPlayer.name} (${currentPlayer.score} Points)`;
 }
+
+/***** Andrew functions	****/
+	// Runs at beginning of someones turn
+	function tellSomeoneToPutt(name) {
+		
+		$('#flow-screens').addClass('putt3');
+		$('#flow-screens h1').text(name);
+		$('#flow-screens #putt-message').html('Putt<br><span class="lrg">3 Balls</span>');
+		$('#flow-screens').fadeIn(500);
+		//$('#flow-screens').append('<div id="shots"><div id="s1" class="golf-ball"></div><div id="s2" class="golf-ball"></div><div id="s3" class="golf-ball"></div></div>');
+	}
+
+	// Calls tellSomeoneToPutt using the player ID
+	function tellSomeoneToPuttWithPlayerId(pId) {
+		var $player = $('#p'+pId);
+		tellSomeoneToPutt($player.children('.name').text());
+	}
+	
+	// # for 3 and a randomized message (runs at the end of a player's turn)
+	function displayScoreAndMessageWithName(name, score, message) {
+		
+		$('#flow-screens #putt-score').fadeOut(500);
+		$('#flow-screens #putt-message').fadeOut(500, function() {
+			$('#flow-screens').removeClass();
+			$('#flow-screens h1').text(name);
+			$('#flow-screens #putt-score').html(score+' <span>for</span> 3');
+			$('#flow-screens #putt-message').html(message);
+			$('#flow-screens, #putt-score, #putt-message').fadeIn(500);
+		});
+	}
+	
+	// Calls displayScoreAndMessageWithName using the player number
+	function displayScoreAndMessageWithPlayerNum(pNum, score, message) {
+		
+		var $player = $('.p'+pNum+'.player');
+		displayScoreAndMessageWithName($player.children('.name').text(), score, message);
+	}
+	
+	// Display after a successful putt
+	function displayGreatPuttWithName(name) {
+		$('#putt-score').fadeOut(500);
+		$('#flow-screens #putt-message').fadeOut(500, function() {
+			$('#flow-screens').removeClass().addClass('greatShot');
+			$('#flow-screens h1').text(name);
+			$('#flow-screens #putt-message').addClass('b4-animate').html('<span class="lrg">Great<br>Shot!</span>').show().addClass('animate');
+			$('#flow-screens').fadeIn(500);
+			setTimeout(function() {
+				$('#flow-screens #putt-message').removeClass('b4-animate');
+			}, 500);
+		});
+	}
+	
+	// Calls displayGreatPuttWithName using player number
+	function displayGreatPuttWithPlayerNum(pNum) {
+		var $player = $('.p'+pNum+'.player');
+		displayGreatPuttWithName($player.children('.name').text());
+	}
+	
+	// Hides the interstitial screen
+	function removeUserFlowScreen() {
+		$('#flow-screens').fadeOut(500, function() {
+			$('#flow-screens h1').html('');
+			$('#flow-screens #putt-score').html('');
+			$('#flow-screens #putt-message').html('');
+		});
+	}
