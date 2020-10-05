@@ -1,10 +1,10 @@
 $(document).ready(function () {
 	
 	//ANIMATIONS
+	var logo_transition = parseFloat($('#w-logo').css('transition-duration').replace('s', ''))*1000;
+	var play_here_transitions = parseFloat($('h3.playHere > span').css('transition-duration').replace('s', ''))*1000;
+	
 	setTimeout(function() {
-		
-		var logo_transition = parseFloat($('#w-logo').css('transition-duration').replace('s', ''))*1000;
-		var play_here_transitions = parseFloat($('h3.playHere > span').css('transition-duration').replace('s', ''))*1000;
 		
 		$('#w-logo').removeClass('b4-animate');
 		
@@ -19,6 +19,7 @@ $(document).ready(function () {
 	
 	var processing = false;
 	
+	/*
 	if (cfg_screen == 'small') {
 
 		setTimeout(function() {
@@ -26,7 +27,60 @@ $(document).ready(function () {
 			changeScreen("attract");
 		}, cfg_index_timeout);
 		
-	}
+	} */
+	
+	
+	if (cfg_screen == 'big') {
+		
+		var music = new Audio(cfg_sound_path+'high-dreams-full.wav');
+		music.onended = function() {
+			//playSong();
+			//music.pause();
+			//music.currentTime = 0;
+			//music.play();
+		};
+		var video = document.getElementById('attract-video');
+		
+		function prepareAndPlayVideo() {
+			music.play();
+			$('#black-fade').fadeIn(cfg_fade_time, function() {
+				$('h3.playHere').addClass('b4-animate');
+				$('#page-content').addClass('vid-playing');
+				setTimeout(function() {
+					$('#black-fade').fadeOut(cfg_fade_time, function() {
+						video.play();
+					});
+				}, play_here_transitions);
+			});
+			
+		}
+		
+		setTimeout(function() {
+			prepareAndPlayVideo();
+		}, logo_transition+play_here_transitions+5000);
+		
+		video.onended = function() {
+			setTimeout(function() {
+				music.pause();
+				music.currentTime = 0;
+				$('#black-fade').fadeIn(cfg_fade_time, function() {
+					$('#page-content').removeClass('vid-playing');
+					$('#w-logo, h3.playHere').addClass('b4-animate');
+					setTimeout(function() {
+						$('#black-fade').fadeOut(cfg_fade_time, function() {
+							$('#w-logo').removeClass('b4-animate');
+							setTimeout(function() {
+								$('h3.playHere').removeClass('b4-animate');
+								setTimeout(function() {
+									prepareAndPlayVideo();
+								}, play_here_transitions+5000);
+							}, logo_transition);
+						});
+					}, logo_transition);
+				});
+			}, 5000);
+		}
+	} 
 	
 	$('#start').on(event_action, function() {
 	
