@@ -101,6 +101,10 @@ h3 {
 	text-transform: uppercase;
 }
 
+b {
+    font-family: 'DIN2014-Bold';
+}
+
 a, .button {
 	-webkit-touch-callout: none;
     -webkit-user-select: none;

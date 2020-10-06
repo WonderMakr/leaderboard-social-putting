@@ -50,7 +50,12 @@ $(document).ready(function() {
 
   // click listener for each key
   $('.keyboard li').on(event_action, function() {
-    if ($(this).hasClass('opaque') || $('#player').val().length >= char_limit || $('.complete.button').length > 0) return false;
+    if ($(this).hasClass('opaque')) return false;
+	  
+	if ($('body').attr('id') == 'page-player-names') {
+		if ($('#player').val().length >= char_limit || $('.complete.button').length > 0)
+			return false;
+	}
     // Shift keys
 	
     if ($(this).hasClass('left-shift')) {

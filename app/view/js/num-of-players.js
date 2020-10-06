@@ -133,7 +133,7 @@ $(document).ready(function () {
 						var plural = "";
 						if (more_credits > 1)
 							plural = "s";
-						$('#error').html(' / Required Credits: '+current_players+'<br>Insert <b>'+more_credits+'</b> more credit'+plural+' to continue');
+						$('#error').html(' / Required Credits: '+current_players+'<br>1 Credit is $5');
 						processing = false;
 					}
 					
@@ -146,6 +146,26 @@ $(document).ready(function () {
 				console.log(msg);
 			}
 			
+		});
+		
+	});
+	
+	$('#purchase.button').on(event_action, function() {
+	
+		$(this).addClass('active');
+		$('body').addClass('open-pop-up');
+		$('#popup').fadeIn(500);
+		
+	});
+	
+	$('#popup .cancel.button').on(event_action, function() {
+		
+		var $this = $(this);
+		$this.addClass('active');
+		$('#purchase.button').removeClass('active');
+		$('#popup').fadeOut(500, function() {
+			$('body').removeClass('open-pop-up');
+			$this.removeClass('active');
 		});
 		
 	});

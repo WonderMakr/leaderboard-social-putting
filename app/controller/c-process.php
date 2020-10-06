@@ -62,6 +62,17 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['command']) ) {
 				
 				$game_id = filter_var($_POST['game_id'], FILTER_SANITIZE_STRING);
 				
+				// Check status
+				$sql = "SELECT status FROM games WHERE id = :id";
+				$select = $db->prepare($sql);
+				$select->execute(array("id" => $game_id));
+				$game_status = $select->fetch(PDO::FETCH_COLUMN);
+				
+				if ($game_status == 'completed') {
+					$output = array('result' => 'success', 'message' => "Game is already completed");
+					exit(json_encode($output));
+				}
+				
 				$game_data = array(
 					"game_id" 		=> $game_id,
 					"status"		=> "incomplete",
@@ -89,7 +100,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['command']) ) {
 				
 				$game_data = array(
 					"game_id" 		=> $game_id,
-					"status"		=> "in_progress",
+					"status"		=> "completed",
 					"updated_at"	=> time()
 				);
 				$update = $db->prepare("UPDATE `games` SET `status` = :status, `updated_at` = :updated_at WHERE `games`.`id` = :game_id");

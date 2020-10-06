@@ -85,15 +85,15 @@ $(document).ready(function () {
 
 					player_names.push(player_name);
 					$('#player').val('');
-					socket.emit('add-name', {name: player_name, status: 'next'});
-
+					
 					if (parseInt($('#play_num').text()) == num_of_players) {
-
+						
+						socket.emit('add-name', {name: player_name, status: 'complete'});
 						$('h3, h4, .input, #keyboard-container').css('opacity', 0.25);
 						$('.next.button').removeClass('next').addClass('complete').text('Start Game');
 
 					} else {
-
+						socket.emit('add-name', {name: player_name, status: 'next'});
 						$('#play_num').text(parseInt($('#play_num').text())+1);
 					}
 
@@ -116,18 +116,12 @@ $(document).ready(function () {
 	if (cfg_screen == 'big') {
 		var player_number = 1;
 		function add_name(name, status = 'next') {
-		
-			$('#pl'+player_number+' .name').text(name).fadeIn(500);
-			
-			player_number++;
-			$('#play_num').text(parseInt($('#play_num').text())+1);
-			
-			if (status == 'complete') {
-				setTimeout(function() {
-					changeScreen("game-play");
-				}, 1500);
-			}
 
+			$('#pl'+player_number+' .name').text(name).fadeIn(500);
+			player_number++;
+			
+			if (status == 'next')
+				$('#play_num').text(parseInt($('#play_num').text())+1);
 		}
 
 		socket.on('add-name', function(msg) {

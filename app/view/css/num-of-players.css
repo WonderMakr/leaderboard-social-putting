@@ -23,9 +23,18 @@ body.big-screen h3 {
     background-image: url("../images/checkers.jpg");
 }
 
+body.small-screen .w30-w70 .w70 {
+	padding-top: 12vh;
+}
+
 .w70 .t-center {
     margin-left: 0;
     margin-right: 6.7vw;
+}
+
+.w70 p.t-center {
+	margin-top: 0.5em;
+	margin-bottom: 0;
 }
 
 #num-toggle {
@@ -116,4 +125,125 @@ p.error {
 }
 .back.button.active {
     color: #FFF;
+}
+
+#popup b {
+    color: #f17171;
+    padding-top: 5px;
+    display: inline-block;
+}
+
+#purchase {
+	width: 350px;
+	color: #f17171;
+	border-color: #f17171;
+}
+#purchase.active {
+	color: #FFF;
+	background-color: #f17171;
+}
+
+#p-content {
+	position: relative;
+}
+
+#p-buttons .cancel.button {
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    width: 80px;
+    height: 80px;
+    font-size: 50px;
+    line-height: 80px;
+    color: #FFF;
+    border: none;
+    position: absolute;
+    background-color: #29793d;
+}
+
+#p-buttons .cancel.button.active {
+    color: #29793d;
+    background-color: #fdfbe3;
+}
+
+#p-buttons .confirm.button {
+	color: #FFF;
+	border-color: #51b757;
+	background-color: #51b757;
+}
+
+#p-buttons .confirm.button.active {
+	color: #24362b;
+	border-color: #71f175;
+	background-color: #71f175;
+}
+
+#keyboard-container .key-left {
+	display: none;
+}
+
+#credit-info {
+    width: 100%;
+    height: 250px;
+    margin: 25px 0;
+	text-align: left;
+}
+
+#credit-info .half {
+	width: 35%;
+	height: 100%;
+	padding-top: 20px;
+	vertical-align: top;
+	display: inline-block;
+}
+
+#credit-info .half:first-child {
+	width: 56%;
+	margin-right: 5%;
+}
+
+#credit-info label {
+	width: 100%;
+	color: #29793d;
+	font-size: 26px;
+	padding-bottom: 5px;
+	display: inline-block;
+    font-family: 'DIN2014-Bold';
+}
+
+#credit-info input {
+    color: #29793d;
+    font-size: 24px;
+    width: 100%;
+    padding: 10px 0px 10px 10px;
+    margin-bottom: 18px;
+    display: inline-block;
+    font-family: 'DIN2014-Regular';
+    border: 1px solid #e6c56f;
+    background-color: #fdfcf3;
+}
+
+#cred-amount,
+.amount {
+    width: 150px;
+    height: 150px;
+}
+
+#cred-amount {
+    color: #2a793d;
+    overflow: hidden;
+    font-size: 150px;
+    line-height: 170px;
+    text-align: center;
+	display: inline-block;
+    border: 1px solid #efdb9e;
+    background-color: #fdfcf3;
+}
+
+.amount {
+}
+
+#cred-toggle {
+	display: inline-block;
 }
