@@ -184,10 +184,22 @@ p.error {
 }
 
 #credit-info {
-    width: 100%;
-    height: 250px;
-    margin: 25px 0;
-	text-align: left;
+    width: 39.5vw;
+    height: 220px;
+    margin: 20px 0 10px;
+    text-align: left;
+    overflow: hidden;
+}
+
+#slide-scroll {
+	width: 200%;
+	height: 200px;
+}
+
+#slide-scroll .slide {
+    width: 39.5vw;
+    height: 200px;
+	float: left;
 }
 
 #credit-info .half {
@@ -220,8 +232,11 @@ p.error {
     margin-bottom: 18px;
     display: inline-block;
     font-family: 'DIN2014-Regular';
-    border: 1px solid #e6c56f;
+    border: 1px solid #e7c772;
     background-color: #fdfcf3;
+}
+#credit-info input.error {
+	border-color: #FF0000;
 }
 
 #cred-amount,
@@ -236,14 +251,71 @@ p.error {
     font-size: 150px;
     line-height: 170px;
     text-align: center;
+	margin-right: 10px;
 	display: inline-block;
-    border: 1px solid #efdb9e;
+    border: 1px solid #e7c772;
     background-color: #fdfcf3;
-}
-
-.amount {
+    font-family: 'DIN2014-Regular';
 }
 
 #cred-toggle {
+	height: 150px;
 	display: inline-block;
+    vertical-align: top;
+}
+
+#cred-toggle .up,
+#cred-toggle .down {
+    width: 90px;
+    height: 70px;
+    line-height: 70px;
+    vertical-align: top;
+    border: 1px solid #e7c772;
+    background-color: #fdfcf3;
+    text-align: center;
+    font-size: 50px;
+    color: #e7c772;
+}
+
+#cred-toggle .up.active,
+#cred-toggle .down.active {
+	color: #fdfcf3;
+    background-color: #e7c772;
+}
+
+#cred-toggle .up {
+	margin-bottom: 10px;
+}
+
+#purchase-buttons {
+	margin-bottom: 10px;
+}
+
+#purchase-buttons .button {
+	color: #29793d;
+	border-color: #29793d;
+}
+#purchase-buttons .button.active {
+	color: #FFF;
+	background-color: #29793d;
+}
+
+.second.slide h4 {
+	margin-top: 0;
+	font-size: 28px;
+	text-transform: uppercase;
+}
+#fName, #lName, #cAmount, #cCharge {
+	color: #29793d;
+	font-size: 26px;
+    text-align: right;
+}
+#cAmount {
+	padding: 10px 0;
+    font-family: 'DIN2014-Bold';
+}
+#cCharge {
+    font-size: 30px;
+    padding-top: 20px;
+    font-family: 'DIN2014-Bold';
 }

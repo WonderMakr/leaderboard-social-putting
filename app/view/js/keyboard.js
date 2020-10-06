@@ -56,6 +56,10 @@ $(document).ready(function() {
 		if ($('#player').val().length >= char_limit || $('.complete.button').length > 0)
 			return false;
 	}
+	if ($('body').attr('id') == 'page-num-of-players' && write) {
+		if (write.val().length >= write.attr('maxlength'))
+			return false;
+	}
     // Shift keys
 	
     if ($(this).hasClass('left-shift')) {

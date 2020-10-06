@@ -116,6 +116,10 @@ function payment_system() {
 	return getMetaValue('payment');
 }
 
+function credit_price() {
+	return getMetaValue('credit_price');
+}
+
 function gameInProgress() {
 	
 	global $db;

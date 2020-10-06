@@ -133,7 +133,7 @@ $(document).ready(function () {
 						var plural = "";
 						if (more_credits > 1)
 							plural = "s";
-						$('#error').html(' / Required Credits: '+current_players+'<br>1 Credit is $5');
+						$('#error').html(' / Required Credits: '+current_players+'<br>1 Credit is $'+cfg_credit_price);
 						processing = false;
 					}
 					
@@ -158,6 +158,48 @@ $(document).ready(function () {
 		
 	});
 	
+	$('#cred-toggle > div').on(event_action, function() {
+		
+		if (processing)
+			return false;
+		
+		var $this = $(this);
+		
+		processing = true;
+		$this.addClass('active');
+		
+		var $current =  $('.amount.current');
+		var current_credits = $current.text();
+		
+		if ( (current_credits == '8' && $this.hasClass('up')) || (current_credits == '1' && $this.hasClass('down')) ) {
+			setTimeout(function() {
+				$this.removeClass('active');
+				processing = false;
+			}, 150);
+			return false;
+		}
+		
+		var change;
+		var height = $('.amount').css('height');
+		
+		if ($this.hasClass('up')) {
+			change = '-='+height;
+			$current.removeClass('current').next().addClass('current');
+		} else {
+			change = '+='+height;
+			$current.removeClass('current').prev().addClass('current');
+		}
+		
+		$('#cred-amount-scroll').animate({
+			marginTop: change
+		}, 500, function() {
+			$this.removeClass('active');
+			processing = false;
+		});
+			
+		
+	});
+	
 	$('#popup .cancel.button').on(event_action, function() {
 		
 		var $this = $(this);
@@ -167,6 +209,39 @@ $(document).ready(function () {
 			$('body').removeClass('open-pop-up');
 			$this.removeClass('active');
 		});
+		
+	});
+	
+	$('#purchase-buttons .button.proceed').on(event_action, function() {
+		
+		var $this = $(this); 
+		$(this).addClass('active');
+		$('#firstname, #lastname').removeClass('error');
+		
+		var firstname = $.trim($('#firstname').val());
+		var lastname = $.trim($('#lastname').val());
+		
+		if (firstname == '')
+			$('#firstname').addClass('error');
+		if (lastname == '')
+			$('#lastname').addClass('error');
+		
+		if (firstname != '' && lastname != '') {
+			console.log('proceed');
+			$('#fName').text(firstname);
+			$('#lName').text(lastname);
+			$('#cAmount').text('Credits: '+$('.amount.current').text());
+			var cCharge = parseInt($('.amount.current').text()) * parseInt(cfg_credit_price);
+			$('#cCharge').text('Cost: $'+cCharge);
+			$('#slide-scroll').animate({
+				marginLeft: '-'+$('#slide-scroll .slide').css('width')
+			}, 500);
+		} else {
+			setTimeout(function() {
+				$this.removeClass('active');
+			}, 150);
+		}
+		
 		
 	});
 	
