@@ -117,7 +117,13 @@ const main = async () => {
 			if (currentGame.id) {
 				// The very first person has already putted
 				multiplier = 2;
-				displayScoreAndMessageWithPlayerId(currentGame.current_player_id, 0, "Cool!");
+				let currentPlayerPutts = currentGame.players[getCurrentPlayerIndex()].putts;
+				let sumOfLastThreePutts = 
+					currentPlayerPutts[currentPlayerPutts.length - 1].success + 
+					currentPlayerPutts[currentPlayerPutts.length - 2].success + 
+					currentPlayerPutts[currentPlayerPutts.length - 3].success;
+				let messageArray = ['Better Luck<br>Next Time', 'One is better<br>than nothing', 'Way to go!<br>Almost Perfect', 'We got a<br>pro over here!'];
+				displayScoreAndMessageWithPlayerId(currentGame.current_player_id, sumOfLastThreePutts, messageArray[sumOfLastThreePutts]);
 			}
 
 			if (multiplier === 2) {
@@ -219,7 +225,7 @@ async function updateWinner(playerId) {
 	// document.getElementById('current-player').innerHTML = `WINNER: ${currentPlayer.name} (${currentPlayer.score} Points)`;
 }
 
-async function getCurrentPlayerIndex() {
+function getCurrentPlayerIndex() {
 	let lastPlayerId = currentGame.players[currentGame.player_count - 1].id;
 	let currentAndLastPlayerDifference = lastPlayerId - currentGame.current_player_id;
 	let currentPlayerIndex = (currentGame.player_count - 1) - currentAndLastPlayerDifference;
