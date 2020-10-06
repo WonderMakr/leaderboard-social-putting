@@ -8,7 +8,7 @@
 					<div class="button cancel">X</div>
 				</div>
 				
-				<h1>Purchase Credits</h1>
+				<h1><?php echo $lang_purchase; ?></h1>
 				<p>Fill out the information below to purchase more credits.<br><b>1 Credit = $<?php echo credit_price(); ?></b></p>
 				
 				<div id="credit-info">
@@ -60,8 +60,8 @@
 				</div>
 				
 				<div id="purchase-buttons">
-					<div class="button previous">Back</div>
-					<div class="button proceed">Next</div>
+					<div class="button previous"><?php echo $lang_back; ?></div>
+					<div class="button proceed"><?php echo $lang_next; ?></div>
 				</div>
 				
 				<?php include ('keyboard.php'); ?>

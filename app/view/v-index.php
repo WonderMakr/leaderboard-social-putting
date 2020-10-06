@@ -6,22 +6,20 @@
 	
 		<div id="header">
 			<img id="w-logo" class="b4-animate" src="<?php echo $cfg['img_path']; ?>logo-white.png" />
-			<h3 class="playHere b4-animate"><span class="play">Play Here, </span><span class="legend">Become a Legend</span></h3>
+			<h3 class="playHere b4-animate"><span class="play"><?php echo $lang_play_here; ?> </span><span class="legend"><?php echo $lang_be_legend; ?></span></h3>
 		</div>
 
-		<div id="start" class="button large b4-animate">Start</div>
+		<div id="start" class="button large b4-animate"><?php echo $lang_start; ?></div>
 		<br>
-		<div id="games" class="button b4-animate<?php echo (payment_system() == 'free_play') ? ' freeplay' : ''; ?>">Games</div>
+		<div id="games" class="button b4-animate<?php echo (payment_system() == 'free_play') ? ' freeplay' : ''; ?>"><?php echo $lang_games; ?></div>
 		<br>
-		<?php if (payment_system() != 'swipe') : ?>
-		<p class="available">Available Credits: <span id="credits"><?php echo numOfCredits(); ?></span></p>
-		<?php endif; ?>
+		<p class="available"><?php echo $lang_aval_cred; ?>: <span id="credits"><?php echo numOfCredits(); ?></span></p>
 		<p id="error"></p>
 	
 	<?php else : ?>
 	
 		<img id="w-logo" class="b4-animate" src="<?php echo $cfg['img_path']; ?>logo-white.png" />
-		<h3 class="playHere b4-animate"><span class="play">Play Here, </span><span class="legend">Become a Legend</span></h3>
+		<h3 class="playHere b4-animate"><span class="play"><?php echo $lang_play_here; ?> </span><span class="legend"><?php echo $lang_be_legend; ?></span></h3>
 
 		<div id="video-cont">
 			<video id="attract-video"><source src="<?php echo $cfg['vid_path']; ?>attract-video.mp4" type="video/mp4"></video>

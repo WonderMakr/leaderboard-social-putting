@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-#page-content {
-	
-}
-
 #header {
 	height: 12.5vh;
 	padding: 0 3.9%;
@@ -40,9 +36,9 @@ body.big-screen #games .game:first-child {
     padding-top: 6vh;
     border-radius: 50%;
     display: inline-block;
-    background-color: #FFF;
-	/*border: 1px solid #000;*/
 	transition: all 2.5s;
+	/*
+    background-color: #FFF;
     box-shadow: inset -10px -10px 300px -20px #000, 0px 0px 5px 3px black, inset 0px 0px 10px black;
 	box-shadow: inset -10px -10px 10vw -20px #000, inset -10px -10px 1vw -20px #000, 0px 0px 5px 3px black, inset 0px 0px 10px black;
 	
@@ -50,6 +46,7 @@ body.big-screen #games .game:first-child {
     background-repeat: no-repeat;
     background-position: center center;
     background-image: url("../images/dimples.jpg");
+	*/
 }
 
 .golf-ball.b4-animate {
@@ -71,7 +68,7 @@ body.big-screen #games .game:first-child {
 }
 
 .game img.b4-animate {
-	opacity: 0;
+	/*opacity: 0;*/
 }
 
 body.small-screen .game img {

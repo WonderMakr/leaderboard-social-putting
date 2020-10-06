@@ -1,20 +1,5 @@
 $(document).ready(function () {
 	
-	var music;
-	var music_options = ['desert-biker-preview-full.mp3', 'lift-up-preview-full.mp3'];
-	function playSong() {
-		var music_choice = music_options[Math.floor(Math.random() * music_options.length)];
-		music = new Audio(cfg_sound_path+music_choice);
-		music.play();
-	}
-	
-	if (cfg_screen == 'big') {
-		playSong();
-		music.onended = function() {
-			playSong();
-		};
-	}
-	
 	$('.end.button').on(event_action, function() {
 		
 		$(this).addClass('active');

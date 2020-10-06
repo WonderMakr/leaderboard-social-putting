@@ -1,7 +1,7 @@
 <?php
 
 // Required CSS and JS
-$required_css = array('select-game');
+$required_css = array('games-preview', 'select-game');
 $required_js = array('select-game' => 1);
 $required_modal = array();
 

@@ -254,6 +254,11 @@ p.available {
     transform: rotate(1080deg);
 }
 
+h3.playHere {
+    font-size: 2vw;
+    font-family: 'DIN2014-Bold';
+}
+
 h3.playHere > span {
 	left: 0;
 	position: relative;

@@ -35,6 +35,15 @@ function trim_value(&$value) {
 	$value = trim($value);
 }
 
+function js_str($s) {
+    return '"' . $s . '"';
+}
+
+function js_array($array) {
+    $temp = array_map('js_str', $array);
+    return '[' . implode(',', $temp) . ']';
+}
+
 function isValidLanguage($language) {
 	$valid_langs = array('en');
 	return in_array($language, $valid_langs);

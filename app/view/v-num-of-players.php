@@ -37,13 +37,13 @@
 		
 		<?php if ($screen == 'small') : ?>
 		<div class="t-center">
-			<div class="back button">Back</div>
-			<div class="next button">Next</div>
+			<div class="back button"><?php echo $lang_back; ?></div>
+			<div class="next button"><?php echo $lang_next; ?></div>
 		</div>
 		
-		<p class="t-center">Available Credits: <?php echo numOfCredits(); ?><span id="error"></span></p>
+		<p class="t-center"><?php echo $lang_aval_cred . ': ' . numOfCredits(); ?><span id="error"></span></p>
 		
-		<div class="t-center"><div id="purchase" class="button">Purchase Credits</div></div>
+		<div class="t-center"><div id="purchase" class="button"><?php echo $lang_purchase; ?></div></div>
 		<?php endif; ?>
 		
 	</div>

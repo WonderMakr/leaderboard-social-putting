@@ -54,6 +54,7 @@
 			var cfg_fade_time = <?php echo $cfg['fade_time']; ?>;
 			var cfg_index_timeout = <?php echo $cfg['index_timeout']; ?>;
 			var cfg_credit_price = '<?php echo credit_price(); ?>';
+			var cfg_game_play_volume = <?php echo $cfg['game_play_volume']; ?>;
 		</script>
 		
 		<div id="black-fade"></div>

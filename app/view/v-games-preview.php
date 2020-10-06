@@ -23,7 +23,7 @@
 			<?php endif; ?>
 			
 			<?php if ($screen == 'small') : ?>
-			<div class="button" data-link="game-instructions?game=<?php echo $slug; ?>">How To Play</div>
+			<div class="button" data-link="game-instructions?game=<?php echo $slug; ?>"><?php echo $lang_how_to_play; ?></div>
 			<?php endif; ?>
 			
 		</div>
@@ -35,10 +35,10 @@
 	<?php if ($screen == 'small') : ?>
 
 		<div class="t-center">
-			<div class="back button">Back</div>
+			<div class="back button"><?php echo $lang_back; ?></div>
 		</div>
 		
-		<p class="t-center">Available Credits: <?php echo numOfCredits(); ?></p>
+		<p class="t-center"><?php echo $lang_aval_cred . ': ' . numOfCredits(); ?></p>
 	
 	<?php endif; ?>
 	

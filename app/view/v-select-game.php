@@ -14,9 +14,9 @@
 			
 			<?php if ($screen == 'big') : ?>
 			
-			<div class="golf-ball b4-animate">
-				<img class="b4-animate" src="<?php echo $cfg['img_path'] . $slug; ?>.png" /><br>
-			</div>
+				<div class="golf-ball b4-animate">
+					<img class="b4-animate" src="<?php echo $cfg['img_path'] . $slug; ?>.png" /><br>
+				</div>
 			
 			<?php else : ?>
 				<img src="<?php echo $cfg['img_path'] . $slug; ?>.png" /><br>
@@ -24,8 +24,8 @@
 			
 			
 			<?php if ($screen == 'small') : ?>
-			<div data-link="num-of-players?game=<?php echo $slug; ?>" class="button">Play Now</div><br>
-			<div class="how-to" data-link="game-instructions?game=<?php echo $slug; ?>">How To Play</div>
+				<div data-link="num-of-players?game=<?php echo $slug; ?>" class="button"><?php echo $lang_play_now; ?></div><br>
+				<div class="how-to" data-link="game-instructions?game=<?php echo $slug; ?>"><?php echo $lang_how_to_play; ?></div>
 			<?php endif; ?>
 			
 		</div>
@@ -37,14 +37,14 @@
 	<?php if ($screen == 'small') : ?>
 	
 		<div class="t-center">
-			<div class="back button">Back</div>
+			<div class="back button"><?php echo $lang_back; ?></div>
 		</div>
 
-		<p class="t-center">Available Credits: <?php echo numOfCredits(); ?></p>
+		<p class="t-center"><?php echo $lang_aval_cred . ': ' . numOfCredits(); ?></p>
 
 	<?php else : ?>
 	
-		<h2>Choose the game you want to play</h2>
+		<h2><?php echo $lang_choose_game; ?></h2>
 	
 	<?php endif; ?>
 	

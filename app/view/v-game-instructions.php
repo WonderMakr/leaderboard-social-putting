@@ -13,7 +13,7 @@
 
 			<div class="center">
 
-				<h3>Game Instructions</h3>
+				<h3><?php echo $lang_game_instructions; ?></h3>
 
 				<ol>
 					<?php foreach($instructions[$game_name] as $instruction) {
@@ -28,10 +28,10 @@
 		<?php if ($screen == 'small') : ?>
 		
 			<div class="t-center">
-				<div class="back button">Back</div>
+				<div class="back button"><?php echo $lang_back; ?></div>
 			</div>
 
-			<p class="available t-center">Available Credits: <?php echo numOfCredits(); ?></p>
+			<p class="available t-center"><?php echo $lang_aval_cred . ': ' . numOfCredits(); ?></p>
 		
 		<?php endif; ?>
 		

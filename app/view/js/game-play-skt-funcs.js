@@ -1,6 +1,37 @@
 var currentGame = {};
+var music;
 var videos = ['fireworks', 'rocket', 'shark', 'trophy', 'wrecking-ball'];
 var hole_colors = ['white', 'green', 'yellow', 'red', 'blue'];
+var game_play_songs = music_options.slice(0);
+
+
+function playSong() {
+	
+	if (game_play_songs.length == 0)
+		game_play_songs = music_options.slice(0)
+	
+	var randID = Math.floor(Math.random()*game_play_songs.length);
+	
+	var music_choice = game_play_songs[randID];
+	
+	console.log('Playing: '+music_choice);
+	
+	music = new Audio(cfg_sound_path+'game-play/'+music_choice);
+	music.volume = cfg_game_play_volume;
+	music.play();
+	music.onended = function() {
+		playSong();
+	};
+	
+	game_play_songs.splice(randID, 1);
+}
+
+if (cfg_screen == 'big')
+	playSong();
+
+setTimeout(function() {
+	//displayScoreAndMessageWithName('Andrew', '0', 'Better Luck<br>Next Time');
+}, 2000);
 
 $(document).ready(function () {
 	// displayGreatPuttWithPlayerNum(1);
@@ -372,6 +403,7 @@ function getCurrentPlayerIndex() {
 		var video = document.getElementById('winner-video');
 		
 		video.load();
+		music.pause();
 		video.onloadeddata = function() {
 			$('#winner-container').fadeIn(500, function() {
 				video.play();
@@ -379,12 +411,12 @@ function getCurrentPlayerIndex() {
 				var winner_timeout;
 				switch(videoName) {
 					
-					case 'fireworks':
-						winner_timeout = 7000;
-					break;
-					
 					case 'rocket':
 						winner_timeout = 3000;
+					break;
+					
+					case 'wrecking-ball':
+						winner_timeout = 5000;
 					break;
 					
 					case 'shark':
@@ -392,8 +424,8 @@ function getCurrentPlayerIndex() {
 						winner_timeout = 5500;
 					break;
 					
-					case 'wrecking-ball':
-						winner_timeout = 4500;
+					case 'fireworks':
+						winner_timeout = 7000;
 					break;
 					
 					default:
@@ -410,6 +442,7 @@ function getCurrentPlayerIndex() {
 		
 		video.onended = function() {
 			console.log('Video Ended');
+			music.play();
 			if (cfg_screen == 'small') {
 				console.log('finished');
 							

@@ -29,8 +29,8 @@
 		<?php include ('include/keyboard.php'); ?>
 		
 		<div class="t-center">
-			<div class="back button">Back</div>
-			<div class="next button">Next</div>
+			<div class="back button"><?php echo $lang_back; ?></div>
+			<div class="next button"><?php echo $lang_next; ?></div>
 		</div>
 		
 		<?php else : ?>
