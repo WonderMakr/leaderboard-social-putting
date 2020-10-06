@@ -34,137 +34,6 @@ $(document).ready(function () {
 	*/
 	
 	
-	
-	
-	var hole_colors = ['white', 'green', 'yellow', 'red', 'blue'];
-	
-	function changeHoleColor(hole, color) {
-		if (hole_colors.includes(color))
-			$('#hole-'+hole).removeClass().addClass('hole '+color);
-	}
-	
-	function changeAllHoleColors(color) {
-		if (hole_colors.includes(color))
-			$('.hole').removeClass().addClass('hole '+color);
-	}
-	
-	/* Tests 
-	if (cfg_screen == 'smalll') {
-		setTimeout(function() {
-			socket.emit('game-play-alert', {func: 'changeAllHoleColors', params : ['green']});
-		}, 1000);
-		setTimeout(function() {
-			socket.emit('game-play-alert', {func: 'changeHoleColor', params : ['3', 'red']});
-			socket.emit('game-play-alert', {func: 'changeHoleColor', params : ['1', 'red']});
-		}, 4000);
-	}
-	*/
-	
-	
-	var videos = ['fireworks', 'rocket', 'shark', 'trophy', 'wrecking-ball'];
-	
-    function displayWinnerWithName(videoName, winnerName) {
-		
-		if (!videos.includes(videoName))
-			videoName = videos[Math.floor(Math.random() * videos.length)];
-		
-		$('#winner-is').removeClass().addClass(videoName);
-		$('#winner-video source').attr('src', $('#winner-container').attr('data-vid-loc') + videoName + '.mp4');
-		
-		var video = document.getElementById('winner-video');
-		
-		video.load();
-		video.onloadeddata = function() {
-			$('#winner-container').fadeIn(500, function() {
-				video.play();
-				$('#winner-is h1').text(winnerName);
-				var winner_timeout;
-				switch(videoName) {
-					
-					case 'fireworks':
-						winner_timeout = 7000;
-					break;
-					
-					case 'rocket':
-						winner_timeout = 3000;
-					break;
-					
-					case 'shark':
-					case 'trophy':
-						winner_timeout = 5500;
-					break;
-					
-					case 'wrecking-ball':
-						winner_timeout = 4500;
-					break;
-					
-					default:
-						winner_timeout = 10000;
-					break;
-				}
-				
-				setTimeout(function() {
-					$('#winner-is').fadeIn(1000);
-				}, winner_timeout);
-				
-			});
-		}
-		
-		video.onended = function() {
-			console.log('Video Ended');
-			if (cfg_screen == 'small') {
-				
-				$.ajax({
-					method: "POST",
-					url: "process",
-					data: {
-						command		: 'complete-game',
-						game_id		: current_game_id
-					}
-				}).done(function( msg ) {
-
-					console.log(msg);
-					//return false;
-
-					try {
-
-						var obj = $.parseJSON(msg);
-
-						if (obj.result == 'success') {
-							
-							console.log('finished');
-							
-							$('#popup #p-content h1').text('Great Game');
-							$('#popup #p-content p').html('Thank you for playing.<br>We hope to see you again soon!');
-							$('#popup #p-content .button.cancel').remove();
-							$('#winner-container').fadeOut(1000, function() {
-								$('body').addClass('open-pop-up');
-								$('#popup').fadeIn(500);
-							});
-							
-							return false;
-
-						} else {
-							console.log(obj);
-							alert(obj.message);
-						}
-
-					} catch(err) {
-						console.log(err);
-						console.log(msg);
-					}
-
-				});	
-			}
-		};
-		
-	}
-	
-	function displayWinnerWithPlayerNum(videoName, pNum) {
-		var $player = $('.p'+pNum+'.player');
-		displayWinnerWithName(videoName, $player.children('.name').text());
-	}
-	
 	/* TESTS 
 	if (cfg_screen == 'smalll') {
 		setTimeout(function() {
@@ -432,4 +301,133 @@ async function getCurrentPlayerIndex() {
 			$('#flow-screens #putt-score').html('');
 			$('#flow-screens #putt-message').html('');
 		});
+	}
+
+	var hole_colors = ['white', 'green', 'yellow', 'red', 'blue'];
+	
+	function changeHoleColor(hole, color) {
+		if (hole_colors.includes(color))
+			$('#hole-'+hole).removeClass().addClass('hole '+color);
+	}
+	
+	function changeAllHoleColors(color) {
+		if (hole_colors.includes(color))
+			$('.hole').removeClass().addClass('hole '+color);
+	}
+	
+	/* Tests 
+	if (cfg_screen == 'smalll') {
+		setTimeout(function() {
+			socket.emit('game-play-alert', {func: 'changeAllHoleColors', params : ['green']});
+		}, 1000);
+		setTimeout(function() {
+			socket.emit('game-play-alert', {func: 'changeHoleColor', params : ['3', 'red']});
+			socket.emit('game-play-alert', {func: 'changeHoleColor', params : ['1', 'red']});
+		}, 4000);
+	}
+	*/
+	
+	
+	var videos = ['fireworks', 'rocket', 'shark', 'trophy', 'wrecking-ball'];
+	
+    function displayWinnerWithName(videoName, winnerName) {
+		
+		if (!videos.includes(videoName))
+			videoName = videos[Math.floor(Math.random() * videos.length)];
+		
+		$('#winner-is').removeClass().addClass(videoName);
+		$('#winner-video source').attr('src', $('#winner-container').attr('data-vid-loc') + videoName + '.mp4');
+		
+		var video = document.getElementById('winner-video');
+		
+		video.load();
+		video.onloadeddata = function() {
+			$('#winner-container').fadeIn(500, function() {
+				video.play();
+				$('#winner-is h1').text(winnerName);
+				var winner_timeout;
+				switch(videoName) {
+					
+					case 'fireworks':
+						winner_timeout = 7000;
+					break;
+					
+					case 'rocket':
+						winner_timeout = 3000;
+					break;
+					
+					case 'shark':
+					case 'trophy':
+						winner_timeout = 5500;
+					break;
+					
+					case 'wrecking-ball':
+						winner_timeout = 4500;
+					break;
+					
+					default:
+						winner_timeout = 10000;
+					break;
+				}
+				
+				setTimeout(function() {
+					$('#winner-is').fadeIn(1000);
+				}, winner_timeout);
+				
+			});
+		}
+		
+		video.onended = function() {
+			console.log('Video Ended');
+			if (cfg_screen == 'small') {
+				
+				$.ajax({
+					method: "POST",
+					url: "process",
+					data: {
+						command		: 'complete-game',
+						game_id		: current_game_id
+					}
+				}).done(function( msg ) {
+
+					console.log(msg);
+					//return false;
+
+					try {
+
+						var obj = $.parseJSON(msg);
+
+						if (obj.result == 'success') {
+							
+							console.log('finished');
+							
+							$('#popup #p-content h1').text('Great Game');
+							$('#popup #p-content p').html('Thank you for playing.<br>We hope to see you again soon!');
+							$('#popup #p-content .button.cancel').remove();
+							$('#winner-container').fadeOut(1000, function() {
+								$('body').addClass('open-pop-up');
+								$('#popup').fadeIn(500);
+							});
+							
+							return false;
+
+						} else {
+							console.log(obj);
+							alert(obj.message);
+						}
+
+					} catch(err) {
+						console.log(err);
+						console.log(msg);
+					}
+
+				});	
+			}
+		};
+		
+	}
+	
+	function displayWinnerWithPlayerNum(videoName, pNum) {
+		var $player = $('.p'+pNum+'.player');
+		displayWinnerWithName(videoName, $player.children('.name').text());
 	}
