@@ -167,27 +167,27 @@ p.error {
     background-color: #fdfbe3;
 }
 
-#p-buttons .confirm.button {
-	color: #FFF;
-	border-color: #51b757;
-	background-color: #51b757;
-}
-
-#p-buttons .confirm.button.active {
-	color: #24362b;
-	border-color: #71f175;
-	background-color: #71f175;
-}
-
 #keyboard-container .key-left {
 	display: none;
 }
 
 #credit-info {
-    width: 100%;
-    height: 250px;
-    margin: 25px 0;
-	text-align: left;
+    width: 39.5vw;
+    height: 240px;
+    margin: 10px 0;
+    text-align: left;
+    overflow: hidden;
+}
+
+#slide-scroll {
+	width: 200%;
+	height: 220px;
+}
+
+#slide-scroll .slide {
+    width: 39.5vw;
+    height: 100%;
+	float: left;
 }
 
 #credit-info .half {
@@ -220,8 +220,11 @@ p.error {
     margin-bottom: 18px;
     display: inline-block;
     font-family: 'DIN2014-Regular';
-    border: 1px solid #e6c56f;
+    border: 1px solid #e7c772;
     background-color: #fdfcf3;
+}
+#credit-info input.error {
+	border-color: #FF0000;
 }
 
 #cred-amount,
@@ -236,14 +239,97 @@ p.error {
     font-size: 150px;
     line-height: 170px;
     text-align: center;
+	margin-right: 10px;
 	display: inline-block;
-    border: 1px solid #efdb9e;
+    border: 1px solid #e7c772;
     background-color: #fdfcf3;
-}
-
-.amount {
+    font-family: 'DIN2014-Regular';
 }
 
 #cred-toggle {
+	height: 150px;
 	display: inline-block;
+    vertical-align: top;
+}
+
+#cred-toggle .up,
+#cred-toggle .down {
+    width: 90px;
+    height: 70px;
+    line-height: 70px;
+    vertical-align: top;
+    border: 1px solid #e7c772;
+    background-color: #fdfcf3;
+    text-align: center;
+    font-size: 50px;
+    color: #e7c772;
+}
+
+#cred-toggle .up.active,
+#cred-toggle .down.active {
+	color: #fdfcf3;
+    background-color: #e7c772;
+}
+
+#cred-toggle .up {
+	margin-bottom: 10px;
+}
+
+#purchase-buttons {
+	margin-bottom: 20px;
+}
+
+#purchase-buttons .button {
+	margin-top: 0;
+}
+
+#purchase-buttons .proceed {
+	color: #29793d;
+	border-color: #29793d;
+}
+#purchase-buttons .proceed.active {
+	color: #FFF;
+	background-color: #29793d;
+}
+
+#purchase-buttons .previous {
+	display: none;
+	color: #e4c771;
+	border-color: #e4c771;
+	transition: none;
+}
+#purchase-buttons .previous.active {
+	color: #FFF;
+	background-color: #e4c771;
+}
+
+#credit-info .second.slide .half {
+	height: 85%;
+}
+
+.second.slide h4 {
+	margin: 0;
+	color: #29793d;
+	font-size: 28px;
+	text-transform: uppercase;
+}
+
+#fName, #lName, #cAmount, #cCharge {
+	font-size: 30px;
+	padding-left: 80px;
+}
+#fName {
+	padding-top: 10px;
+}
+#cCharge {
+    color: #f07171;
+    font-size: 40px;
+    padding-top: 10px;
+    font-family: 'DIN2014-Bold';
+}
+
+#swipe-img {
+	width: auto;
+	height: 100%;
+	margin-left: 50px;
 }

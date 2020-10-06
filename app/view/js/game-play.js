@@ -8,10 +8,10 @@ $(document).ready(function () {
 		music.play();
 	}
 	
-	/*playSong();
+	playSong();
 	music.onended = function() {
 		playSong();
-	};*/
+	};
 	
 	$('.end.button').on(event_action, function() {
 		

@@ -9,39 +9,59 @@
 				</div>
 				
 				<h1>Purchase Credits</h1>
-				<p>Fill out the information below to purchase more credits.<br><b>1 Credit = $5</b></p>
+				<p>Fill out the information below to purchase more credits.<br><b>1 Credit = $<?php echo credit_price(); ?></b></p>
 				
 				<div id="credit-info">
 					
-					<div class="slide">
-						
-						<div class="half">
-							<label>First Name</label>
-							<input type="text" id="firstname" autocomplete="off" />
+					<div id="slide-scroll">
+
+						<div class="slide">
+
+							<div class="half">
+								<label>First Name</label>
+								<input type="text" id="firstname" autocomplete="off" maxlength="20" />
+
+								<label>Last Name</label>
+								<input type="text" id="lastname" autocomplete="off" maxlength="20" />
+							</div>
+
+							<div class="half">
+								<label>Credits</label>
+								<div id="cred-amount">
+									<div id="cred-amount-scroll">
+										<?php for ($c=1; $c<=8; $c++) : ?>
+										<div class="amount<?php if ($c==1) echo " current"; ?>"><?php echo $c; ?></div>
+										<?php endfor; ?>
+									</div>
+								</div>
+								<div id="cred-toggle">
+									<div class="up">+</div>
+									<div class="down">-</div>
+								</div>
+							</div>
 							
-							<label>Last Name</label>
-							<input type="text" id="lastname" autocomplete="off" />
 						</div>
-						
-						<div class="half">
-							<label>Credits</label>
-							<div id="cred-amount">
-								<?php for ($c=1; $c<11; $c++) : ?>
-								<div class="amount"><?php echo $c; ?></div>
-								<?php endfor; ?>
+					
+						<div class="slide second">
+							<h4>Swipe Card To Purchase Credits</h4>
+							<div class="half">
+								<img id="swipe-img" src="<?php echo $cfg['img_path']; ?>payment.png" />
 							</div>
-							<div id="cred-toggle">
-								<div class="up">+</div>
-								<div class="down">-</div>
+							<div class="half">
+								<div id="fName"></div>
+								<div id="lName"></div>
+								<div id="cAmount"></div>
+								<div id="cCharge"></div>
 							</div>
 						</div>
-						
+					
 					</div>
 					
-					<div class="slide">
-						
-					</div>
-					
+				</div>
+				
+				<div id="purchase-buttons">
+					<div class="button previous">Back</div>
+					<div class="button proceed">Next</div>
 				</div>
 				
 				<?php include ('keyboard.php'); ?>
