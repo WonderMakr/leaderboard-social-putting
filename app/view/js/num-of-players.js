@@ -245,7 +245,6 @@ $(document).ready(function () {
 			}, 150);
 		}
 		
-		
 	});
 	
 	$('#purchase-buttons .button.previous').on(event_action, function() {
@@ -261,6 +260,15 @@ $(document).ready(function () {
 		});
 		
 	});
+	
+	function successPayment() {
+		
+		$('#slide-scroll').animate({
+			marginLeft: '-='+$('#slide-scroll .slide').css('width')
+		}, 500, function() {
+			$('#purchase-buttons .button.previous').css('opacity',0);
+		});
+	}
 	
 	if (cfg_screen == 'big') {
 

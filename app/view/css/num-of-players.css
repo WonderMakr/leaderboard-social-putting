@@ -293,9 +293,10 @@ p.error {
 }
 
 #purchase-buttons .previous {
-	color: #e4c771;
 	display: none;
+	color: #e4c771;
 	border-color: #e4c771;
+	transition: none;
 }
 #purchase-buttons .previous.active {
 	color: #FFF;
