@@ -160,9 +160,10 @@ const main = async () => {
 	app.service('putts').on('created', function (putt) {
 		// This may come back as an array on a multi patch
 		// console.log(hole);
-		if (putt.success) {
-			//displayGreatPuttWithPlayerId(putt.player_id);
-			//setTimeout(removeUserFlowScreen, 2000);
+		// This logic only works for game 1 and 2
+		if (putt.success && putt.ball !== 3) {
+			displayGreatPuttWithPlayerId(putt.player_id);
+			setTimeout(removeUserFlowScreen, 2000);
 		}
 	});
 
