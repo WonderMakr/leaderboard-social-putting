@@ -209,11 +209,14 @@ async function updateCurrentPlayer(playerId) {
 }
 
 async function updateWinner(playerId) {
-	const currentPlayer = await app.service('players').get(playerId);
+	// const currentPlayer = await app.service('players').get(playerId);
+	displayWinnerWithPlayerId("rocket", playerId);
+	/*
 	$(`#p${playerId} > .score`).html(`WINNER`);
 	setTimeout(function () {
 		window.location = 'index';
 	}, 5000)
+	*/
 	// document.getElementById('current-player').innerHTML = `WINNER: ${currentPlayer.name} (${currentPlayer.score} Points)`;
 }
 
@@ -380,7 +383,16 @@ async function getCurrentPlayerIndex() {
 		video.onended = function() {
 			console.log('Video Ended');
 			if (cfg_screen == 'small') {
-				
+				console.log('finished');
+							
+				$('#popup #p-content h1').text('Great Game');
+				$('#popup #p-content p').html('Thank you for playing.<br>We hope to see you again soon!');
+				$('#popup #p-content .button.cancel').remove();
+				$('#winner-container').fadeOut(1000, function() {
+					$('body').addClass('open-pop-up');
+					$('#popup').fadeIn(500);
+				});
+				/*
 				$.ajax({
 					method: "POST",
 					url: "process",
@@ -422,6 +434,7 @@ async function getCurrentPlayerIndex() {
 					}
 
 				});	
+				*/
 			}
 		};
 		
@@ -429,5 +442,10 @@ async function getCurrentPlayerIndex() {
 	
 	function displayWinnerWithPlayerNum(videoName, pNum) {
 		var $player = $('.p'+pNum+'.player');
+		displayWinnerWithName(videoName, $player.children('.name').text());
+	}
+
+	function displayWinnerWithPlayerId(videoName, pId) {
+		var $player = $('#p'+pId);
 		displayWinnerWithName(videoName, $player.children('.name').text());
 	}
