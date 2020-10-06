@@ -1,4 +1,5 @@
 <?php include ('include/top.php'); ?>
+<?php include('include/purchase-popup.php'); ?>
 
 <script>
 	var game_name = '<?php echo $game_name; ?>';
@@ -41,7 +42,8 @@
 		</div>
 		
 		<p class="t-center">Available Credits: <?php echo numOfCredits(); ?><span id="error"></span></p>
-			
+		
+		<div class="t-center"><div id="purchase" class="button">Purchase Credits</div></div>
 		<?php endif; ?>
 		
 	</div>

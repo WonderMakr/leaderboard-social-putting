@@ -1,6 +1,7 @@
 <div id="keyboard-container">
 
     <ul class="keyboard">
+		<?php if ($page != 'num-of-players') : ?>
 		<div class="key-left">
 			<li class="symbol num">1</li>
 			<li class="symbol num">2</li>
@@ -13,6 +14,7 @@
 			<li class="symbol num">9</li>
 			<li class="symbol num lastitem">0</li>
 		</div>
+		<?php endif; ?>
 		<div class="key-center">
 			<li class="letter">q</li>
 			<li class="letter">w</li>

@@ -1,8 +1,8 @@
 <?php
 
 // Required CSS and JS
-$required_css = array('num-of-players');
-$required_js = array('num-of-players' => 1);
+$required_css = array('keyboard', 'num-of-players');
+$required_js = array('keyboard' => 1, 'num-of-players' => 1);
 $required_modal = array();
 
 $pagedata['title']          = "";
