@@ -19,9 +19,10 @@ $cfg['server_path']  	= __DIR__;
 $cfg['salt']        	= '';
 $cfg['fb_appId']     	= '';
 $cfg['name_char_limit'] = 15;
-$cfg['guides']			= true;
-$cfg['fade_time']		= 200;
+$cfg['guides']			= false;
+$cfg['fade_time']		= 500;
 $cfg['index_timeout']	= 180000;
+$cfg['game_play_volume']= 0.5;
 
 // Page & Social defaults
 $pagedata['title']          = '';
