@@ -115,6 +115,7 @@ const main = async () => {
 			let multiplier = 1;
 			// New player turn
 			if (currentGame.id) {
+				// Also need to consider the fact that game type 3 is going to have logic that allows for less than 3 balls per turn
 				// The very first person has already putted
 				multiplier = 2;
 				let currentPlayerPutts = currentGame.players[getCurrentPlayerIndex()].putts;
@@ -215,7 +216,9 @@ async function updateCurrentPlayer(playerId) {
 
 async function updateWinner(playerId) {
 	// const currentPlayer = await app.service('players').get(playerId);
-	displayWinnerWithPlayerId(videos[Math.floor(Math.random() * (videos.length))], playerId);
+	// This will generate 2 different videos on the big screen vs small screen(figure out how to make them the same)
+	// Maybe only run this on small, but send socket message to big with the video name
+	displayWinnerWithPlayerId(videos[currentGame.id % videos.length], playerId);
 	/*
 	$(`#p${playerId} > .score`).html(`WINNER`);
 	setTimeout(function () {
