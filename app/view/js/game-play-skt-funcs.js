@@ -242,11 +242,27 @@ const main = async () => {
 		}
 
 		// This logic needs to be corrected for a single player
-		if (currentGame.current_ball === undefined || (game.current_player_id !== currentGame.current_player_id)) {
+		// Check if the player just putted
+		if (currentGame.id === undefined || (game.current_player_id !== currentGame.current_player_id)) {
+			let multiplier = 1;
 			// New player turn
-			tellSomeoneToPuttWithPlayerId(game.current_player_id);
-			setTimeout(removeUserFlowScreen, 2000);
+			if (currentGame.id) {
+				// The very first person has already putted
+				multiplier = 2;
+				displayScoreAndMessageWithPlayerId(currentGame.current_player_id, 0, "Cool!");
+			}
+
+			if (multiplier === 2) {
+				setTimeout(removeUserFlowScreen, 2000);
+			}
+
+			setTimeout(function() {
+				tellSomeoneToPuttWithPlayerId(game.current_player_id);
+			}, (multiplier-1)*4000);
+
+			setTimeout(removeUserFlowScreen, multiplier*4000);
 		}
+		
 
 		currentGame = game;
 	});
@@ -254,6 +270,15 @@ const main = async () => {
 	app.service('holes').on('patched', function (hole) {
 		// This may come back as an array on a multi patch
 		// console.log(hole);
+	});
+
+	app.service('putts').on('created', function (putt) {
+		// This may come back as an array on a multi patch
+		// console.log(hole);
+		if (putt.success) {
+			//displayGreatPuttWithPlayerId(putt.player_id);
+			//setTimeout(removeUserFlowScreen, 2000);
+		}
 	});
 
 	app.service('game-data').on('patched', function (gameData) {
@@ -313,6 +338,13 @@ async function updateWinner(playerId) {
 	// document.getElementById('current-player').innerHTML = `WINNER: ${currentPlayer.name} (${currentPlayer.score} Points)`;
 }
 
+async function getCurrentPlayerIndex() {
+	let lastPlayerId = currentGame.players[currentGame.player_count - 1].id;
+	let currentAndLastPlayerDifference = lastPlayerId - currentGame.current_player_id;
+	let currentPlayerIndex = (currentGame.player_count - 1) - currentAndLastPlayerDifference;
+	return currentPlayerIndex;
+  }
+
 /***** Andrew functions	****/
 	// Runs at beginning of someones turn
 	function tellSomeoneToPutt(name) {
@@ -349,6 +381,13 @@ async function updateWinner(playerId) {
 		var $player = $('.p'+pNum+'.player');
 		displayScoreAndMessageWithName($player.children('.name').text(), score, message);
 	}
+
+	// Calls displayScoreAndMessageWithName using the player ID
+	function displayScoreAndMessageWithPlayerId(pId, score, message) {
+		
+		var $player = $('#p'+pId);
+		displayScoreAndMessageWithName($player.children('.name').text(), score, message);
+	}
 	
 	// Display after a successful putt
 	function displayGreatPuttWithName(name) {
@@ -367,6 +406,12 @@ async function updateWinner(playerId) {
 	// Calls displayGreatPuttWithName using player number
 	function displayGreatPuttWithPlayerNum(pNum) {
 		var $player = $('.p'+pNum+'.player');
+		displayGreatPuttWithName($player.children('.name').text());
+	}
+
+	// Calls displayGreatPuttWithName using player ID
+	function displayGreatPuttWithPlayerId(pId) {
+		var $player = $('#p'+pId);
 		displayGreatPuttWithName($player.children('.name').text());
 	}
 	
