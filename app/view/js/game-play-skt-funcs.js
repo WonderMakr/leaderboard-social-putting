@@ -269,7 +269,15 @@ const main = async () => {
 
 	app.service('holes').on('patched', function (hole) {
 		// This may come back as an array on a multi patch
-		// console.log(hole);
+		console.log(hole);
+
+		if (!hole.length && hole.id) {
+			changeHoleColor(hole.id, 'green');
+		} else if (hole.length && hole[0].id) {
+			hole.forEach(function(holeData) {
+				changeHoleColor(holeData.id, 'green');
+			})
+		}
 	});
 
 	app.service('putts').on('created', function (putt) {
