@@ -315,6 +315,30 @@ function getCurrentPlayerIndex() {
 		});
 	}
 	
+	/* Tests */
+	if (cfg_screen == 'small') {
+		setTimeout(function() {
+			//socket.emit('game-play-alert', {func: 'removeUserFlowScreen', params : []});
+			//socket.emit('game-play-alert', {func: 'tellSomeoneToPutt', params : ['Andrew']});
+		}, 1000);
+		setTimeout(function() {
+			//socket.emit('game-play-alert', {func: 'removeUserFlowScreen', params : []});
+		}, 3000);
+		setTimeout(function() {
+			//socket.emit('game-play-alert', {func: 'displayScoreAndMessageWithName', params : ['Andrew', '0', 'Better Luck<br>Next Time']});
+			//socket.emit('game-play-alert', {func: 'displayScoreAndMessageWithPlayerNum', params : [1, '1', 'One is better<br>than nothing']});
+			//socket.emit('game-play-alert', {func: 'displayScoreAndMessageWithName', params : ['Andrew', '2', "Way to go!<br>Almost Perfect"]});
+			//socket.emit('game-play-alert', {func: 'displayScoreAndMessageWithPlayerNum', params : [2, '3', "We got a<br>pro over here!"]});
+		}, 1000);
+		setTimeout(function() {
+			//socket.emit('game-play-alert', {func: 'displayGreatPuttWithName', params : ['Andrew']});
+			//socket.emit('game-play-alert', {func: 'displayGreatPuttWithPlayerNum', params : [1]});
+		}, 7000);
+		setTimeout(function() {
+			//socket.emit('game-play-alert', {func: 'removeUserFlowScreen', params : []});
+		}, 9000);
+	}
+	
 	function changeHoleColor(hole, color) {
 		if (hole_colors.includes(color))
 			$('#hole-'+hole).removeClass().addClass('hole '+color);

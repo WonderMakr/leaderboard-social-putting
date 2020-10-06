@@ -8,10 +8,12 @@ $(document).ready(function () {
 		music.play();
 	}
 	
-	playSong();
-	music.onended = function() {
+	if (cfg_screen == 'big') {
 		playSong();
-	};
+		music.onended = function() {
+			playSong();
+		};
+	}
 	
 	$('.end.button').on(event_action, function() {
 		
