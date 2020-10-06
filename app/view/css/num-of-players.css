@@ -167,38 +167,26 @@ p.error {
     background-color: #fdfbe3;
 }
 
-#p-buttons .confirm.button {
-	color: #FFF;
-	border-color: #51b757;
-	background-color: #51b757;
-}
-
-#p-buttons .confirm.button.active {
-	color: #24362b;
-	border-color: #71f175;
-	background-color: #71f175;
-}
-
 #keyboard-container .key-left {
 	display: none;
 }
 
 #credit-info {
     width: 39.5vw;
-    height: 220px;
-    margin: 20px 0 10px;
+    height: 240px;
+    margin: 10px 0;
     text-align: left;
     overflow: hidden;
 }
 
 #slide-scroll {
 	width: 200%;
-	height: 200px;
+	height: 220px;
 }
 
 #slide-scroll .slide {
     width: 39.5vw;
-    height: 200px;
+    height: 100%;
 	float: left;
 }
 
@@ -288,34 +276,59 @@ p.error {
 }
 
 #purchase-buttons {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 #purchase-buttons .button {
+	margin-top: 0;
+}
+
+#purchase-buttons .proceed {
 	color: #29793d;
 	border-color: #29793d;
 }
-#purchase-buttons .button.active {
+#purchase-buttons .proceed.active {
 	color: #FFF;
 	background-color: #29793d;
 }
 
+#purchase-buttons .previous {
+	color: #e4c771;
+	display: none;
+	border-color: #e4c771;
+}
+#purchase-buttons .previous.active {
+	color: #FFF;
+	background-color: #e4c771;
+}
+
+#credit-info .second.slide .half {
+	height: 85%;
+}
+
 .second.slide h4 {
-	margin-top: 0;
+	margin: 0;
+	color: #29793d;
 	font-size: 28px;
 	text-transform: uppercase;
 }
+
 #fName, #lName, #cAmount, #cCharge {
-	color: #29793d;
-	font-size: 26px;
-    text-align: right;
+	font-size: 30px;
+	padding-left: 80px;
 }
-#cAmount {
-	padding: 10px 0;
-    font-family: 'DIN2014-Bold';
+#fName {
+	padding-top: 10px;
 }
 #cCharge {
-    font-size: 30px;
-    padding-top: 20px;
+    color: #f07171;
+    font-size: 40px;
+    padding-top: 10px;
     font-family: 'DIN2014-Bold';
+}
+
+#swipe-img {
+	width: auto;
+	height: 100%;
+	margin-left: 50px;
 }

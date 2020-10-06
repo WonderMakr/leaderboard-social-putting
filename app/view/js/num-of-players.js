@@ -234,14 +234,31 @@ $(document).ready(function () {
 			var cCharge = parseInt($('.amount.current').text()) * parseInt(cfg_credit_price);
 			$('#cCharge').text('Cost: $'+cCharge);
 			$('#slide-scroll').animate({
-				marginLeft: '-'+$('#slide-scroll .slide').css('width')
-			}, 500);
+				marginLeft: '-='+$('#slide-scroll .slide').css('width')
+			}, 500, function() {
+				$this.hide().removeClass('active');
+				$('#purchase-buttons .button.previous').css('display','inline-block');
+			});
 		} else {
 			setTimeout(function() {
 				$this.removeClass('active');
 			}, 150);
 		}
 		
+		
+	});
+	
+	$('#purchase-buttons .button.previous').on(event_action, function() {
+		
+		var $this = $(this);
+		$this.addClass('active');
+		
+		$('#slide-scroll').animate({
+			marginLeft: '+='+$('#slide-scroll .slide').css('width')
+		}, 500, function() {
+			$this.hide().removeClass('active');
+			$('#purchase-buttons .button.proceed').css('display','inline-block');
+		});
 		
 	});
 	

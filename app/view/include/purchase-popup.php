@@ -43,9 +43,9 @@
 						</div>
 					
 						<div class="slide second">
+							<h4>Swipe Card To Purchase Credits</h4>
 							<div class="half">
-								<h4>Swipe Card To<br>Purchase Credits</h4>
-								<div id="swipe-img">Swipe Card Img</div>
+								<img id="swipe-img" src="<?php echo $cfg['img_path']; ?>payment.png" />
 							</div>
 							<div class="half">
 								<div id="fName"></div>
@@ -60,7 +60,7 @@
 				</div>
 				
 				<div id="purchase-buttons">
-					<!--<div class="button previous">Back</div>-->
+					<div class="button previous">Back</div>
 					<div class="button proceed">Next</div>
 				</div>
 				
