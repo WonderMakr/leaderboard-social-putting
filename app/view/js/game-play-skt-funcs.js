@@ -272,10 +272,12 @@ const main = async () => {
 		console.log(hole);
 
 		if (!hole.length && hole.id) {
-			changeHoleColor(hole.id, 'green');
+			if (hole.active) changeHoleColor(hole.id, 'green');
+			if (!hole.active) changeHoleColor(hole.id, 'white');
 		} else if (hole.length && hole[0].id) {
 			hole.forEach(function(holeData) {
-				changeHoleColor(holeData.id, 'green');
+				if (holeData.active) changeHoleColor(holeData.id, 'green');
+			if (!holeData.active) changeHoleColor(holeData.id, 'white');
 			})
 		}
 	});
