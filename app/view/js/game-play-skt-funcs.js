@@ -125,6 +125,8 @@ const main = async () => {
 
 	app.service('games').on('patched', async function (game) {
 		console.log(game);
+		let currentPlayerChanged = game.current_player_id !== currentGame.current_player_id;
+
 		if (game.players.length) {
 			game.players.forEach(player => {
 				$(`#p${player.id} > .score`).html(`${player.score}`);
@@ -142,7 +144,7 @@ const main = async () => {
 
 		// This logic needs to be corrected for a single player
 		// Check if the player just putted
-		if (currentGame.id === undefined || (game.current_player_id !== currentGame.current_player_id)) {
+		if (currentGame.id === undefined || currentPlayerChanged) {
 			let multiplier = 1;
 			// New player turn
 			if (currentGame.id) {
