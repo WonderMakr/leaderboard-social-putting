@@ -141,12 +141,12 @@ const main = async () => {
 		console.log(hole);
 
 		if (!hole.length && hole.id) {
-			if (hole.active) changeHoleColor(hole.id, 'green');
-			if (!hole.active) changeHoleColor(hole.id, 'white');
+			if (hole.active) changeHoleColor(hole.id, 'white');
+			if (!hole.active) changeHoleColor(hole.id, 'green');
 		} else if (hole.length && hole[0].id) {
 			hole.forEach(function(holeData) {
-				if (holeData.active) changeHoleColor(holeData.id, 'green');
-			if (!holeData.active) changeHoleColor(holeData.id, 'white');
+				if (holeData.active) changeHoleColor(holeData.id, 'white');
+				if (!holeData.active) changeHoleColor(holeData.id, 'green');
 			})
 		}
 	});
