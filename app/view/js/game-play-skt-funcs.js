@@ -1,4 +1,6 @@
 var currentGame = {};
+var videos = ['fireworks', 'rocket', 'shark', 'trophy', 'wrecking-ball'];
+var hole_colors = ['white', 'green', 'yellow', 'red', 'blue'];
 
 $(document).ready(function () {
 	// displayGreatPuttWithPlayerNum(1);
@@ -105,9 +107,6 @@ const main = async () => {
 			// document.getElementById('game-info').innerHTML = `Current Game:`;
 
 			await updateWinner(game.winner_id);
-			setTimeout(function () {
-				// document.getElementById('current-player').innerHTML = `Current Player:`;
-			}, 10000);
 		}
 
 		// This logic needs to be corrected for a single player
@@ -210,7 +209,7 @@ async function updateCurrentPlayer(playerId) {
 
 async function updateWinner(playerId) {
 	// const currentPlayer = await app.service('players').get(playerId);
-	displayWinnerWithPlayerId("rocket", playerId);
+	displayWinnerWithPlayerId(videos[Math.floor(Math.random() * (videos.length))], playerId);
 	/*
 	$(`#p${playerId} > .score`).html(`WINNER`);
 	setTimeout(function () {
@@ -305,8 +304,6 @@ async function getCurrentPlayerIndex() {
 			$('#flow-screens #putt-message').html('');
 		});
 	}
-
-	var hole_colors = ['white', 'green', 'yellow', 'red', 'blue'];
 	
 	function changeHoleColor(hole, color) {
 		if (hole_colors.includes(color))
@@ -329,9 +326,6 @@ async function getCurrentPlayerIndex() {
 		}, 4000);
 	}
 	*/
-	
-	
-	var videos = ['fireworks', 'rocket', 'shark', 'trophy', 'wrecking-ball'];
 	
     function displayWinnerWithName(videoName, winnerName) {
 		
