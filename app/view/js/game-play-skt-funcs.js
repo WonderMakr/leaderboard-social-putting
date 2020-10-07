@@ -29,9 +29,10 @@ function playSong() {
 if (cfg_screen == 'big')
 	playSong();
 
-setTimeout(function() {
-	//displayScoreAndMessageWithName('Andrew', '0', 'Better Luck<br>Next Time');
-}, 2000);
+//setTimeout(function() {
+//	if (cfg_screen == 'small')
+//		displayWinnerWithPlayerNum('rocket', 1);
+//}, 2000);
 
 $(document).ready(function () {
 	// displayGreatPuttWithPlayerNum(1);
@@ -411,7 +412,8 @@ function getCurrentPlayerIndex() {
 		var video = document.getElementById('winner-video');
 		
 		video.load();
-		music.pause();
+		if (cfg_screen == 'big')
+			music.pause();
 		video.onloadeddata = function() {
 			$('#winner-container').fadeIn(500, function() {
 				video.play();
@@ -450,7 +452,8 @@ function getCurrentPlayerIndex() {
 		
 		video.onended = function() {
 			console.log('Video Ended');
-			music.play();
+			if (cfg_screen == 'big')
+				music.play();
 			if (cfg_screen == 'small') {
 				console.log('finished');
 							

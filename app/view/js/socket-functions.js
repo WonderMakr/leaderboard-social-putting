@@ -5,6 +5,7 @@ var feathersPORT = 3030;
 
 // Set up socket.io
 const feathersSocket = io(`${socketURL}:${feathersPORT}`);
+
 // Initialize a Feathers app
 const app = feathers();
 

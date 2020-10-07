@@ -292,26 +292,28 @@ body.big-screen #p-buttons .button {
     background-image: url("../images/grass.jpg");
 }
 
-#flow-screens h1 {
-	color: #71f175;
-	font-size: 7vw;
-	margin: 7vh 0 0;
-	text-transform: uppercase;
-	font-family: 'DIN2014-Bold';
-	-webkit-text-stroke: 2px #FFF;
-	text-shadow: 0px 1px 1px #0a2c13, 0px 2px 1px #0a2c13, 0px 3px 1px #0a2c13, 0px 4px 1px #0a2c13, 0px 5px 1px #0a2c13, 0px 6px 1px #0a2c13, 0px 7px 1px #0a2c13, 0px 8px 1px #0a2c13, 0px 9px 1px #0a2c13, 0px 10px 1px #0a2c13, 0px 11px 1px #0a2c13, 0px 12px 1px #0a2c13, 0px 13px 1px #0a2c13, 0px 14px 1px #0a2c13, 0px 15px 1px #0a2c13, 0px 16px 1px #0a2c13, 0px 17px 1px #0a2c13, 0px 18px 1px #0a2c13, 1px 19px 2px #000, 2px 20px 2px #000, 3px 21px 2px #000, 4px 22px 2px #000, 5px 23px 2px #000, 6px 24px 2px #000, 7px 25px 2px #000;
-}
-
+#flow-screens h1,
 #putt-score,
 #putt-message {
 	color: #71f175;
 	font-size: 7vw;
-	text-align: center;
-	line-height: 100%;
 	text-transform: uppercase;
     font-family: 'DIN2014-Bold';
-	-webkit-text-stroke: 2px #FFF;
+	-webkit-text-stroke: 0.2vh #FFF;
+	
 	text-shadow: 0px 1px 1px #0a2c13, 0px 2px 1px #0a2c13, 0px 3px 1px #0a2c13, 0px 4px 1px #0a2c13, 0px 5px 1px #0a2c13, 0px 6px 1px #0a2c13, 0px 7px 1px #0a2c13, 0px 8px 1px #0a2c13, 0px 9px 1px #0a2c13, 0px 10px 1px #0a2c13, 0px 11px 1px #0a2c13, 0px 12px 1px #0a2c13, 0px 13px 1px #0a2c13, 0px 14px 1px #0a2c13, 0px 15px 1px #0a2c13, 0px 16px 1px #0a2c13, 0px 17px 1px #0a2c13, 0px 18px 1px #0a2c13, 1px 19px 2px #000, 2px 20px 2px #000, 3px 21px 2px #000, 4px 22px 2px #000, 5px 23px 2px #000, 6px 24px 2px #000, 7px 25px 2px #000;
+	
+	text-shadow: 0vh 0.1vh 0.05vh #0a2c13, 0vh 0.2vh 0.05vh #0a2c13, 0vh 0.3vh 0.05vh #0a2c13, 0vh 0.4vh 0.05vh #0a2c13, 0vh 0.5vh 0.05vh #0a2c13, 0vh 0.6vh 0.05vh #0a2c13, 0vh 0.7vh 0.05vh #0a2c13, 0vh 0.8vh 0.05vh #0a2c13, 0vh 0.9vh 0.05vh #0a2c13, 0vh 1vh 0.05vh #0a2c13, 0vh 1.1vh 0.05vh #0a2c13, 0vh 1.2vh 0.05vh #0a2c13, 0vh 1.3vh 0.05vh #0a2c13, 0vh 1.4vh 0.05vh #0a2c13, 0vh 1.5vh 0.05vh #0a2c13, 0vh 1.6vh 0.05vh #0a2c13, 0vh 1.7vh 0.05vh #0a2c13, 0vh 1.8vh 0.05vh #0a2c13, 0.1vh 1.9vh 0.1vh #000, 0.2vh 2vh 0.1vh #000, 0.3vh 2.1vh 0.1vh #000, 0.4vh 2.2vh 0.1vh #000, 0.5vh 2.3vh 0.1vh #000, 0.6vh 2.4vh 0.1vh #000, 0.7vh 2.5vh 0.1vh #000;					
+}
+
+#flow-screens h1 {
+	margin: 7vh 0 0;
+}
+
+#putt-score,
+#putt-message {
+	text-align: center;
+	line-height: 100%;
 }
 
 #putt-score {
