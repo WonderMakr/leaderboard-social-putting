@@ -92,7 +92,7 @@
 			<?php for ($h=1; $h<7; $h++) : ?>
 			<div id="hole-<?php echo $h; ?>" class="hole white" style="-webkit-mask-image: url('<?php echo $cfg['img_path']; ?>masks/hole-<?php echo $h; ?>.png');"></div>
 			<?php endfor; ?>
-			<div id="round-info">Round <span id="c_round">1</span><span id="round-totals"> of <span id="round-max">9</span></span></div>
+			<div id="round-info">Round <span id="c_round">1</span><span id="round-totals"> of <span id="round-max">6</span></span></div>
 			
 		</div>
 		
