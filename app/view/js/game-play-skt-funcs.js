@@ -155,6 +155,8 @@ const main = async () => {
 				// use the "ball" number on the most recent putt to determine this
 				// The very first person has already putted
 				multiplier = 2;
+				console.log("currentGame");
+				console.log(currentGame);
 				let currentPlayerPutts = currentGame.players[getCurrentPlayerIndex()].putts;
 				let sumOfLastThreePutts = 
 					currentPlayerPutts[currentPlayerPutts.length - 1].success + 
