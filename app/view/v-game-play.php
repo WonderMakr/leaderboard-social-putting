@@ -23,9 +23,26 @@
 	
 	<div id="content">
 		
+		<div style="display: none">
 		<?php 
-		//for ($t=0;)
+			$conversion = 0.1;
+			for ($t=1; $t<19; $t++) {
+				echo '0vh ';
+				echo $t*$conversion;
+				echo 'vh 0.05vh #0a2c13, ';
+			}
+
+			for ($a=1; $a<8; $a++) {
+				$t2 = $a+18;
+				
+				echo $a*$conversion;
+				echo 'vh ';
+				echo $t2*$conversion;
+				echo 'vh ';
+				echo '0.1vh #000, ';
+			}
 		?>
+		</div>
 		
 		<div id="flow-screens">
 			<h1></h1>
