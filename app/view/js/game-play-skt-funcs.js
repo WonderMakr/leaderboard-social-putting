@@ -149,6 +149,7 @@ const main = async () => {
 			// New player turn
 			if (currentGame.id) {
 				// Also need to consider the fact that game type 3 is going to have logic that allows for less than 3 balls per turn
+				// use the "ball" number on the most recent putt to determine this
 				// The very first person has already putted
 				multiplier = 2;
 				let currentPlayerPutts = currentGame.players[getCurrentPlayerIndex()].putts;
@@ -194,7 +195,7 @@ const main = async () => {
 		// This may come back as an array on a multi patch
 		// console.log(hole);
 		// This logic only works for game 1 and 2
-		if (putt.success && putt.ball !== 3) {
+		if (putt.success && putt.ball !== 3 && putt.hole_id !== getCurrentPlayerScore()) {
 			displayGreatPuttWithPlayerId(putt.player_id);
 			setTimeout(removeUserFlowScreen, 2000);
 		}
@@ -267,6 +268,11 @@ function getCurrentPlayerIndex() {
 	let currentAndLastPlayerDifference = lastPlayerId - currentGame.current_player_id;
 	let currentPlayerIndex = (currentGame.player_count - 1) - currentAndLastPlayerDifference;
 	return currentPlayerIndex;
+  }
+
+  function getCurrentPlayerScore() {
+	let currentPlayerIndex = getCurrentPlayerIndex();
+	return currentGame.players[currentPlayerIndex].score; // There is a bug here somehow (when the current_player_id is 0, but game is running)
   }
 
 /***** Andrew functions	****/
