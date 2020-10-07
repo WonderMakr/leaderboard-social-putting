@@ -127,7 +127,7 @@ const main = async () => {
 	app.service('games').on('patched', async function (game) {
 		console.log(game);
 		$('#c_round').html(game.current_round);
-		if (game.game_type_id === 3) $('#round-info:visible').hide(); // Make this only happen once
+		if (game.game_type_id === 3 || game.game_type_id === 2) $('#round-info:visible').hide(); // Make this only happen once
 		let currentPlayerChanged = game.current_player_id !== currentGame.current_player_id;
 
 		if (game.players.length) {
