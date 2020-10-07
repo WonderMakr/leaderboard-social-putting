@@ -126,6 +126,7 @@ const main = async () => {
 
 	app.service('games').on('patched', async function (game) {
 		console.log(game);
+		$('#c_round').html(game.current_round);
 		let currentPlayerChanged = game.current_player_id !== currentGame.current_player_id;
 
 		if (game.players.length) {
