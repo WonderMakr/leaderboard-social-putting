@@ -4,12 +4,12 @@ var socketPORT = 3000;
 var feathersPORT = 3030;
 
 // Set up socket.io
-//const feathersSocket = io(`${socketURL}:${feathersPORT}`);
+const feathersSocket = io(`${socketURL}:${feathersPORT}`);
 // Initialize a Feathers app
 const app = feathers();
 
 // Register socket.io to talk to our server
-//app.configure(feathers.socketio(feathersSocket));
+app.configure(feathers.socketio(feathersSocket));
 
 function connectToSocket() {
 	
