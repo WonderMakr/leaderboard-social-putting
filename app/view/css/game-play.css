@@ -148,6 +148,11 @@ body.big-screen .player.current .num {
 	position: relative;
 }
 
+#board.game-mark-0 #round-info,
+#board.game-lights-out #round-info {
+	display: none;
+}
+
 #board > img {
 	right: 0;
 	bottom: 0;

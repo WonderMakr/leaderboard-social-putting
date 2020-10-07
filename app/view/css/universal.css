@@ -125,6 +125,7 @@ a, .button {
 	text-transform: uppercase;
     font-family: 'DIN2014-Demi';
 	transition: opacity 1.5s;
+    background-color: #fffbe3;
 }
 .button.b4-animate {
 	opacity: 0;

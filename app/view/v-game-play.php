@@ -2,7 +2,8 @@
 <?php include('include/endgame-popup.php'); ?>
 
 <script>
-	const music_options = <?php echo js_array($game_play_songs); ?>;
+	var cfg_game_play_volume = <?php echo gamePlayVolume(); ?>;
+	var music_options = <?php echo js_array($game_play_songs); ?>;
 	var current_game_id = <?php echo $current_game['id']; ?>
 </script>
 
@@ -86,13 +87,13 @@
 			
 		</div>
 		
-		<div id="board">
+		<div id="board" class="game-<?php echo $game_name;?>">
 			
 			<img id="game-board" src="<?php echo $cfg['img_path']; ?>board.jpg" />
 			<?php for ($h=1; $h<7; $h++) : ?>
 			<div id="hole-<?php echo $h; ?>" class="hole white" style="-webkit-mask-image: url('<?php echo $cfg['img_path']; ?>masks/hole-<?php echo $h; ?>.png');"></div>
 			<?php endfor; ?>
-			<div id="round-info">Round <span id="c_round">1</span><span id="round-totals"> of <span id="round-max">9</span></span></div>
+			<div id="round-info">Round <span id="c_round">1</span><span id="round-totals"> of <span id="round-max"><?php echo $cfg['total_rounds']; ?></span></span></div>
 			
 		</div>
 		

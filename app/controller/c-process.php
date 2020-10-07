@@ -20,11 +20,12 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['command']) ) {
 				$game = filter_var($_POST['game'], FILTER_SANITIZE_STRING);
 				$game_type_id = getGameTypeID($game);
 				$time = time();
+				$numOfPlayers = count($_POST['names']);
 				
 				$game_data = array(
 					"game_type_id" 	=> $game_type_id,
 					"status"		=> 'in_progress',
-					"player_count"	=> count($_POST['names']),
+					"player_count"	=> $numOfPlayers,
 					"created_at"	=> $time,
 					"updated_at"	=> $time
 				);
@@ -52,6 +53,9 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['command']) ) {
 					$insertPl->execute($player_data);
 					
 				}
+				
+				if (payment_system() != 'free_play')
+					decrementCredits($numOfPlayers);
 				
 				$output = array('result' => 'success', 'message' => "Game has been started");
 				exit(json_encode($output));

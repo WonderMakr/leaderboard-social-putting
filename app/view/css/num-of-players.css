@@ -240,7 +240,7 @@ p.error {
     color: #2a793d;
     overflow: hidden;
     font-size: 150px;
-    line-height: 170px;
+    line-height: 150px;
     text-align: center;
 	margin-right: 10px;
 	display: inline-block;
@@ -259,13 +259,13 @@ p.error {
 #cred-toggle .down {
     width: 90px;
     height: 70px;
+    color: #e7c772;
+    font-size: 50px;
     line-height: 70px;
+    text-align: center;
     vertical-align: top;
     border: 1px solid #e7c772;
     background-color: #fdfcf3;
-    text-align: center;
-    font-size: 50px;
-    color: #e7c772;
 }
 
 #cred-toggle .up.active,
@@ -339,4 +339,33 @@ p.error {
 
 #credit-info .third.slide {
 	text-align: center;
+}
+
+.third.slide h4 {
+	padding-top: 40px;
+}
+
+.slide.second {
+	position: relative;
+}
+
+#processing {
+    width: 100%;
+    height: 100%;
+	display: none;
+    position: absolute;
+    text-align: center;
+	padding-top: 20px;
+    background-color: #fffdea;
+}
+
+#processing p {
+    margin: 0.35em 0;
+    font-family: 'DIN2014-Regular';
+}
+
+#processing #err {
+    color: red;
+    font-size: 20px;
+    font-family: 'DIN2014-Demi';
 }

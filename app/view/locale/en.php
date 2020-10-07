@@ -25,7 +25,7 @@ $instructions = array (
 		'Each player gets 3 balls per turn',
 		'You may only putt out 1 of each cup per turn',
 		'Cup 1 is 1 point, cup 2 is 2 points,<br>cup 3 is 3 points, etc&hellip;',
-		'At the end of 9 turns, the player with<br>the highest score is the winner'
+		'At the end of '.$cfg['total_rounds'].' rounds, the player with<br>the highest score is the winner'
 	),
 	
 	'mark-0'	=> array (

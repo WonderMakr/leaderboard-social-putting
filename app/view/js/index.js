@@ -117,7 +117,7 @@ $(document).ready(function () {
 					var obj = $.parseJSON(msg);
 					if (obj.result == 'success') {
 
-						$('#credits').text(obj.credits);
+						$('#credits').html(obj.credits);
 
 						if (obj.credits == '<em>Free Play</em>' || obj.credits > 0 || obj.credits == 'swipe') {
 							socket.emit('change-screen', {new_screen: 'select-game'});
