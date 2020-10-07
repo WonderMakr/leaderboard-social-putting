@@ -127,6 +127,7 @@ const main = async () => {
 	app.service('games').on('patched', async function (game) {
 		console.log(game);
 		$('#c_round').html(game.current_round);
+		if (game.game_type_id === 3) $('#round-info:visible').hide(); // Make this only happen once
 		let currentPlayerChanged = game.current_player_id !== currentGame.current_player_id;
 
 		if (game.players.length) {
@@ -149,7 +150,7 @@ const main = async () => {
 		if (currentGame.id === undefined || currentPlayerChanged) {
 			let multiplier = 1;
 			// New player turn
-			if (currentGame.id) {
+			if (currentGame.id && currentGame.game_type_id != 3) {
 				// Also need to consider the fact that game type 3 is going to have logic that allows for less than 3 balls per turn
 				// use the "ball" number on the most recent putt to determine this
 				// The very first person has already putted
@@ -196,8 +197,8 @@ const main = async () => {
 	app.service('putts').on('created', function (putt) {
 		// This may come back as an array on a multi patch
 		// console.log(hole);
-		// This logic only works for game 1 and 2
-		if (putt.success && putt.ball !== 3 && putt.hole_id !== getCurrentPlayerScore()) {
+		// 
+		if (putt.success && putt.ball !== 3 && (((currentGame.game_type_id === 1 || currentGame.game_type_id === 2) && putt.hole_id !== getCurrentPlayerScore()) || (currentGame.game_type_id === 3 && getCurrentPlayerScore() != 15))) {
 			displayGreatPuttWithPlayerId(putt.player_id);
 			setTimeout(removeUserFlowScreen, 2000);
 		}
