@@ -419,11 +419,12 @@ body.big-screen #p-buttons .button {
 
 /* Winner name locations */
 #winner-is.fireworks {
-    top: 4vh;
+    top: 3.5vh;
 }
 #winner-is.fireworks h1 {
     width: 100vw;
-    font-size: 11vw;
+	color: #6fcdea;
+    font-size: 10.5vw;
     text-align: center;
 }
 #winner-is.fireworks h2 {
@@ -437,7 +438,7 @@ body.big-screen #p-buttons .button {
     top: 28vw;
     left: 0vw;
     width: 100vw;
-    color: #fdfd58;
+    color: #6fcdea;
     font-size: 9vw;
     position: absolute;
     text-align: center;
@@ -455,7 +456,7 @@ body.big-screen #p-buttons .button {
 #winner-is.shark h1 {
     left: 0vw;
     width: 100vw;
-    color: #fffeff;
+    color: #e9e246;
     font-size: 9vw;
     text-align: center;
     position: absolute;
@@ -474,11 +475,10 @@ body.big-screen #p-buttons .button {
 #winner-is.trophy h1 {
     right: 6.75vw;
     width: 100vw;
-    color: #dbc784;
+    color: #6fcdea;
     font-size: 9vw;
     position: absolute;
     text-align: right;
-    font-family: 'DIN2014-light';
 }
 #winner-is.trophy h2 {
     top: 15vh;
@@ -487,7 +487,6 @@ body.big-screen #p-buttons .button {
     color: #dbc784;
     font-size: 6.5vw;
     position: absolute;
-    font-family: 'DIN2014-light';
 }
 
 #winner-is.wrecking-ball {
@@ -496,7 +495,7 @@ body.big-screen #p-buttons .button {
 #winner-is.wrecking-ball h1 {
     left: 0vw;
     width: 100vw;
-    color: #e6b80e;
+    color: #6fcdea;
     font-size: 9vw;
     position: absolute;
     text-align: center;

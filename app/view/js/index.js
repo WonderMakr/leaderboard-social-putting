@@ -9,9 +9,12 @@ $(document).ready(function () {
 		$('#w-logo').removeClass('b4-animate');
 		
 		setTimeout(function() {
-			$('h3.playHere').removeClass('b4-animate');
+			$('h3.playHere .play').removeClass('b4-animate');
 			setTimeout(function() {
-				$('.button').removeClass('b4-animate');
+				$('h3.playHere .legend').removeClass('b4-animate');
+				setTimeout(function() {
+					$('.button').removeClass('b4-animate');
+				}, play_here_transitions);
 			}, play_here_transitions);
 		}, logo_transition);
 		
@@ -44,7 +47,7 @@ $(document).ready(function () {
 		function prepareAndPlayVideo() {
 			music.play();
 			$('#black-fade').fadeIn(cfg_fade_time, function() {
-				$('h3.playHere').addClass('b4-animate');
+				$('h3.playHere > span').addClass('b4-animate');
 				$('#page-content').addClass('vid-playing');
 				setTimeout(function() {
 					$('#black-fade').fadeOut(cfg_fade_time, function() {
@@ -64,15 +67,18 @@ $(document).ready(function () {
 			music.currentTime = 0;
 			$('#black-fade').fadeIn(cfg_fade_time, function() {
 				$('#page-content').removeClass('vid-playing');
-				$('#w-logo, h3.playHere').addClass('b4-animate');
+				$('#w-logo, h3.playHere > span').addClass('b4-animate');
 				setTimeout(function() {
 					$('#black-fade').fadeOut(cfg_fade_time, function() {
 						$('#w-logo').removeClass('b4-animate');
 						setTimeout(function() {
-							$('h3.playHere').removeClass('b4-animate');
+							$('h3.playHere .play').removeClass('b4-animate');
 							setTimeout(function() {
-								prepareAndPlayVideo();
-							}, play_here_transitions+5000);
+								$('h3.playHere .legend').removeClass('b4-animate');
+								setTimeout(function() {
+									prepareAndPlayVideo();
+								}, play_here_transitions);
+							}, play_here_transitions);
 						}, logo_transition);
 					});
 				}, logo_transition);

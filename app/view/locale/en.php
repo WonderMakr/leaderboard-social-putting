@@ -11,7 +11,7 @@ $lang_back = "Back";
 $lang_next = "Next";
 $lang_purchase = "Purchase Credits";
 
-$lang_aval_cred = "Available Credits:";
+$lang_aval_cred = "Available Credits";
 
 $lang_choose_game = "Choose the game you want to play";
 $lang_play_now = "Play Now";
@@ -27,7 +27,7 @@ $instructions = array (
 		'Cup 1 is 1 point, cup 2 is 2 points,<br>cup 3 is 3 points, etc&hellip;',
 		'At the end of 9 turns, the player with<br>the highest score is the winner'
 	),
-		
+	
 	'mark-0'	=> array (
 		'Each player gets 3 balls per turn',
 		'Players start with 30 points and the winner<br>is the first to get to 0',

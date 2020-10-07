@@ -155,6 +155,7 @@ $(document).ready(function () {
 		$(this).addClass('active');
 		$('body').addClass('open-pop-up');
 		$('#popup').fadeIn(500);
+		$('#firstname').focus();
 		
 	});
 	
@@ -192,7 +193,7 @@ $(document).ready(function () {
 		
 		$('#cred-amount-scroll').animate({
 			marginTop: change
-		}, 500, function() {
+		}, 300, function() {
 			$this.removeClass('active');
 			processing = false;
 		});
@@ -211,6 +212,8 @@ $(document).ready(function () {
 		});
 		
 	});
+	
+	$('#slide-scroll').width($('.slide').width()*$('.slide').length);
 	
 	$('#purchase-buttons .button.proceed').on(event_action, function() {
 		
@@ -231,6 +234,7 @@ $(document).ready(function () {
 			$('#fName').text(firstname);
 			$('#lName').text(lastname);
 			$('#cAmount').text('Credits: '+$('.amount.current').text());
+			$('.cAmount').text($('.amount.current').text());
 			var cCharge = parseInt($('.amount.current').text()) * parseInt(cfg_credit_price);
 			$('#cCharge').text('Cost: $'+cCharge);
 			$('#slide-scroll').animate({

@@ -29,10 +29,9 @@ function playSong() {
 if (cfg_screen == 'big')
 	playSong();
 
-//setTimeout(function() {
-//	if (cfg_screen == 'small')
-//		displayWinnerWithPlayerNum('rocket', 1);
-//}, 2000);
+setTimeout(function() {
+	displayWinnerWithPlayerNum('trophy', 1);
+}, 1000);
 
 $(document).ready(function () {
 	// displayGreatPuttWithPlayerNum(1);
@@ -117,7 +116,7 @@ $(document).ready(function () {
 	});
 	*/
 
-	main();
+	//main();
 	
 });
 

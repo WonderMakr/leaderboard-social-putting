@@ -262,15 +262,15 @@ h3.playHere {
 h3.playHere > span {
 	left: 0;
 	position: relative;
-	transition: all 1.25s;
+	transition: all 1.5s;
 	display: inline-block;
     white-space: break-spaces;
 }
 
-h3.playHere.b4-animate .play {
+h3.playHere .play.b4-animate {
 	left: -50vw;
 }
-h3.playHere.b4-animate .legend {
+h3.playHere .legend.b4-animate {
 	left: 60vw;
 }
 

@@ -55,6 +55,15 @@
 							</div>
 						</div>
 					
+						<div class="slide third">
+
+							<h4>Thank you for your purchase!</h4>
+							
+							<p><span class="cAmount">5</span> Credit(s) have been added</p>
+							<p>Enjoy the Game!</p>
+							
+						</div>
+						
 					</div>
 					
 				</div>
