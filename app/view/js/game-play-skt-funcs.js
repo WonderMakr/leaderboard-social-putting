@@ -156,10 +156,10 @@ const main = async () => {
     // This logic needs to be corrected for a single player
     // Check if the player just putted
     // This also gets triggered if currentGame.current_player_id == 0 and never gets set to the actual current game data
-    if (currentGame.id === undefined || currentPlayerChanged) {
+    if (currentPlayerChanged && currentGame.current_player_id) {
       let multiplier = 1;
       // New player turn
-      if (currentGame.id && currentGame.game_type_id != 3) {
+      if (currentGame.game_type_id != 3) {
         // Also need to consider the fact that game type 3 is going to have logic that allows for less than 3 balls per turn
         // use the "ball" number on the most recent putt to determine this
         // The very first person has already putted
@@ -260,6 +260,11 @@ async function startGame() {
   } else {
     console.log('Sorry, there is no game available to start.');
   }
+
+  // Only for the first player at the beginning of a game
+  tellSomeoneToPuttWithPlayerNum(1);
+
+  setTimeout(removeUserFlowScreen, 4000);
 }
 
 // End all games
@@ -324,6 +329,12 @@ function tellSomeoneToPutt(name) {
   );
   $('#flow-screens').fadeIn(flowscreen_fadetime);
   //$('#flow-screens').append('<div id="shots"><div id="s1" class="golf-ball"></div><div id="s2" class="golf-ball"></div><div id="s3" class="golf-ball"></div></div>');
+}
+
+// Calls tellSomeoneToPutt using the player number
+function tellSomeoneToPuttWithPlayerNum(pNum) {
+  var $player = $('.p' + pNum + '.player');
+  tellSomeoneToPutt($player.children('.name').text());
 }
 
 // Calls tellSomeoneToPutt using the player ID
