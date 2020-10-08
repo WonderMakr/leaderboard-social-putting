@@ -132,7 +132,12 @@ const main = async () => {
 
 		if (game.players.length) {
 			game.players.forEach(player => {
-				$(`#p${player.id} > .score`).html(`${player.score}`);
+				if (game.game_type_id === 3) {
+					let currentPlayerActiveHole = (0.5*(Math.sqrt((8*player.score)+1)-1))+1; // This equations is generated from solving for n in the series 0+1+2+...
+					$(`#p${player.id} > .score`).html(`${currentPlayerActiveHole} of 6`);
+				} else {
+					$(`#p${player.id} > .score`).html(`${player.score}`);
+				}
 			});
 		}
 		// document.getElementById('game-info').innerHTML = `Current Game: ${JSON.stringify(game, undefined, 2)}`;
@@ -141,12 +146,12 @@ const main = async () => {
 			updateCurrentPlayer(game.current_player_id);
 		} else if (!game.length && game.status === "completed" && game.winner_id) {
 			// document.getElementById('game-info').innerHTML = `Current Game:`;
-
 			await updateWinner(game.winner_id);
 		}
 
 		// This logic needs to be corrected for a single player
 		// Check if the player just putted
+		// This also gets triggered if currentGame.current_player_id == 0 and never gets set to the actual current game data
 		if (currentGame.id === undefined || currentPlayerChanged) {
 			let multiplier = 1;
 			// New player turn
@@ -199,7 +204,7 @@ const main = async () => {
 	app.service('putts').on('created', function (putt) {
 		// This may come back as an array on a multi patch
 		// console.log(hole);
-		// 
+
 		if (putt.success && putt.ball !== 3 && (((currentGame.game_type_id === 1 || currentGame.game_type_id === 2) && putt.hole_id !== getCurrentPlayerScore()) || (currentGame.game_type_id === 3 && getCurrentPlayerScore() != 15))) {
 			displayGreatPuttWithPlayerId(putt.player_id);
 			setTimeout(removeUserFlowScreen, 2000);
@@ -223,6 +228,7 @@ async function startGame() {
 			$limit: 1,
 		}
 	});
+	console.log("START GAME");
 	console.log(gameInProgress);
 	if (gameInProgress.length) {
 		let game = gameInProgress[0];
