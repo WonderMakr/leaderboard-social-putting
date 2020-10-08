@@ -323,7 +323,7 @@ body.big-screen #p-buttons .button {
 
 #putt-score {
 	font-size: 13vw;
-	margin: 6vh 0 4vh;
+	margin: 6vh 0 2.5vh;
 }
 #putt-score span {
 	font-size: 40%;
@@ -345,7 +345,7 @@ body.big-screen #p-buttons .button {
     padding-top: 5vh;
 }
 .greatShot #putt-message.animate {
-    transition: all 1.2s;
+    transition: all 2s;
 }
 .greatShot #putt-message.b4-animate {
 	font-size: 0;

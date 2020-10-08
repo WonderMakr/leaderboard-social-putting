@@ -3,7 +3,7 @@ var music;
 var videos = ['fireworks', 'rocket', 'shark', 'trophy', 'wrecking-ball'];
 var hole_colors = ['white', 'green', 'yellow', 'red', 'blue'];
 var game_play_songs = music_options.slice(0);
-
+var flowscreen_fadetime = 750;
 
 function playSong() {
 	
@@ -29,9 +29,11 @@ function playSong() {
 if (cfg_screen == 'big')
 	playSong();
 
-//setTimeout(function() {
-//	displayWinnerWithPlayerNum('trophy', 1);
-//}, 1000);
+setTimeout(function() {
+	//displayWinnerWithPlayerNum('trophy', 1);
+	//displayScoreAndMessageWithPlayerNum(1, 1, 'One is better<br>than nothing');
+	//displayGreatPuttWithPlayerNum(1);
+}, 1000);
 
 $(document).ready(function () {
 	// displayGreatPuttWithPlayerNum(1);
@@ -276,7 +278,7 @@ function getCurrentPlayerIndex() {
 		$('#flow-screens').addClass('putt3');
 		$('#flow-screens h1').text(name);
 		$('#flow-screens #putt-message').html('Putt<br><span class="lrg">3 Balls</span>');
-		$('#flow-screens').fadeIn(500);
+		$('#flow-screens').fadeIn(flowscreen_fadetime);
 		//$('#flow-screens').append('<div id="shots"><div id="s1" class="golf-ball"></div><div id="s2" class="golf-ball"></div><div id="s3" class="golf-ball"></div></div>');
 	}
 
@@ -289,13 +291,13 @@ function getCurrentPlayerIndex() {
 	// # for 3 and a randomized message (runs at the end of a player's turn)
 	function displayScoreAndMessageWithName(name, score, message) {
 		
-		$('#flow-screens #putt-score').fadeOut(500);
-		$('#flow-screens #putt-message').fadeOut(500, function() {
+		$('#flow-screens #putt-score').fadeOut(flowscreen_fadetime);
+		$('#flow-screens #putt-message').fadeOut(flowscreen_fadetime, function() {
 			$('#flow-screens').removeClass();
 			$('#flow-screens h1').text(name);
 			$('#flow-screens #putt-score').html(score+' <span>for</span> 3');
 			$('#flow-screens #putt-message').html(message);
-			$('#flow-screens, #putt-score, #putt-message').fadeIn(500);
+			$('#flow-screens, #putt-score, #putt-message').fadeIn(flowscreen_fadetime);
 		});
 	}
 	
@@ -315,15 +317,15 @@ function getCurrentPlayerIndex() {
 	
 	// Display after a successful putt
 	function displayGreatPuttWithName(name) {
-		$('#putt-score').fadeOut(500);
-		$('#flow-screens #putt-message').fadeOut(500, function() {
+		$('#putt-score').fadeOut(flowscreen_fadetime);
+		$('#flow-screens #putt-message').fadeOut(flowscreen_fadetime, function() {
 			$('#flow-screens').removeClass().addClass('greatShot');
 			$('#flow-screens h1').text(name);
 			$('#flow-screens #putt-message').addClass('b4-animate').html('<span class="lrg">Great<br>Shot!</span>').show().addClass('animate');
-			$('#flow-screens').fadeIn(500);
+			$('#flow-screens').fadeIn(flowscreen_fadetime);
 			setTimeout(function() {
 				$('#flow-screens #putt-message').removeClass('b4-animate');
-			}, 500);
+			}, flowscreen_fadetime);
 		});
 	}
 	
@@ -341,7 +343,7 @@ function getCurrentPlayerIndex() {
 	
 	// Hides the interstitial screen
 	function removeUserFlowScreen() {
-		$('#flow-screens').fadeOut(500, function() {
+		$('#flow-screens').fadeOut(flowscreen_fadetime, function() {
 			$('#flow-screens h1').html('');
 			$('#flow-screens #putt-score').html('');
 			$('#flow-screens #putt-message').html('');
@@ -408,7 +410,7 @@ function getCurrentPlayerIndex() {
 		if (cfg_screen == 'big')
 			music.pause();
 		video.onloadeddata = function() {
-			$('#winner-container').fadeIn(500, function() {
+			$('#winner-container').fadeIn(flowscreen_fadetime, function() {
 				video.play();
 				$('#winner-is h1').text(winnerName);
 				var winner_timeout;
@@ -455,7 +457,7 @@ function getCurrentPlayerIndex() {
 				$('#popup #p-content .button.cancel').remove();
 				$('#winner-container').fadeOut(1000, function() {
 					$('body').addClass('open-pop-up');
-					$('#popup').fadeIn(500);
+					$('#popup').fadeIn(flowscreen_fadetime);
 				});
 				/*
 				$.ajax({
