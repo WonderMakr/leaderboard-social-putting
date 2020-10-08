@@ -3,6 +3,7 @@
 
 <script>
 	var game_name = '<?php echo $game_name; ?>';
+	var cfg_credit_price = '<?php echo credit_price(); ?>';
 </script>
 
 <div id="page-content" class="w30-w70">

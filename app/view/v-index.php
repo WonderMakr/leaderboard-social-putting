@@ -6,7 +6,7 @@
 	
 		<div id="header">
 			<img id="w-logo" class="b4-animate" src="<?php echo $cfg['img_path']; ?>logo-white.png" />
-			<h3 class="playHere b4-animate"><span class="play"><?php echo $lang_play_here; ?> </span><span class="legend"><?php echo $lang_be_legend; ?></span></h3>
+			<h3 class="playHere"><span class="play b4-animate"><?php echo $lang_play_here; ?> </span><span class="legend b4-animate"><?php echo $lang_be_legend; ?></span></h3>
 		</div>
 
 		<div id="start" class="button large b4-animate"><?php echo $lang_start; ?></div>
@@ -19,7 +19,7 @@
 	<?php else : ?>
 	
 		<img id="w-logo" class="b4-animate" src="<?php echo $cfg['img_path']; ?>logo-white.png" />
-		<h3 class="playHere b4-animate"><span class="play"><?php echo $lang_play_here; ?> </span><span class="legend"><?php echo $lang_be_legend; ?></span></h3>
+		<h3 class="playHere"><span class="play b4-animate"><?php echo $lang_play_here; ?> </span><span class="legend b4-animate"><?php echo $lang_be_legend; ?></span></h3>
 
 		<div id="video-cont">
 			<video id="attract-video"><source src="<?php echo $cfg['vid_path']; ?>attract-video.mp4" type="video/mp4"></video>

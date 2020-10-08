@@ -33,5 +33,6 @@ if (DB_USER != "") {
 	} catch (PDOException $e) {
 		echo $e->getMessage();
 	}
+	$cfg['total_rounds'] = totalRounds();
 }
 ?>

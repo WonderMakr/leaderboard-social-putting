@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 01, 2020 at 11:49 PM
+-- Generation Time: Oct 07, 2020 at 10:51 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -15,6 +15,30 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `leaderboard_sp` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `leaderboard_sp`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `config_data`
+--
+
+CREATE TABLE `config_data` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `meta_data` varchar(150) NOT NULL,
+  `meta_value` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `config_data`
+--
+
+INSERT INTO `config_data` (`id`, `meta_data`, `meta_value`) VALUES
+(1, 'credits', '2'),
+(2, 'payment_system', 'free_play'),
+(3, 'credit_price', '5'),
+(4, 'game_volume', '0.5'),
+(5, 'name_char_limit', '12'),
+(7, 'total_rounds', '6');
 
 -- --------------------------------------------------------
 
@@ -34,26 +58,6 @@ CREATE TABLE `games` (
   `created_at` int(11) NOT NULL DEFAULT '0',
   `updated_at` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `game_data`
---
-
-CREATE TABLE `game_data` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `meta_data` varchar(150) NOT NULL,
-  `meta_value` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `game_data`
---
-
-INSERT INTO `game_data` (`id`, `meta_data`, `meta_value`) VALUES
-(1, 'credits', '5'),
-(2, 'payment', 'credits');
 
 -- --------------------------------------------------------
 
@@ -97,15 +101,15 @@ CREATE TABLE `players` (
 --
 
 --
--- Indexes for table `games`
+-- Indexes for table `config_data`
 --
-ALTER TABLE `games`
+ALTER TABLE `config_data`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `game_data`
+-- Indexes for table `games`
 --
-ALTER TABLE `game_data`
+ALTER TABLE `games`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -125,16 +129,16 @@ ALTER TABLE `players`
 --
 
 --
+-- AUTO_INCREMENT for table `config_data`
+--
+ALTER TABLE `config_data`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `games`
 --
 ALTER TABLE `games`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `game_data`
---
-ALTER TABLE `game_data`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `game_types`

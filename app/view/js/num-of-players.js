@@ -155,6 +155,7 @@ $(document).ready(function () {
 		$(this).addClass('active');
 		$('body').addClass('open-pop-up');
 		$('#popup').fadeIn(500);
+		$('#firstname').focus();
 		
 	});
 	
@@ -192,7 +193,7 @@ $(document).ready(function () {
 		
 		$('#cred-amount-scroll').animate({
 			marginTop: change
-		}, 500, function() {
+		}, 300, function() {
 			$this.removeClass('active');
 			processing = false;
 		});
@@ -211,6 +212,19 @@ $(document).ready(function () {
 		});
 		
 	});
+	
+	$('#slide-scroll').width($('.slide').outerWidth()*$('.slide').length);
+	
+	function processing_payment() {
+		$('#purchase-buttons .button.previous').css('opacity','0');
+		$('#processing').show();
+	}
+	
+	function successfulPayment() {
+		$('#slide-scroll').animate({
+			marginLeft: '-='+$('#slide-scroll .slide').css('width')
+		}, 500);
+	}
 	
 	$('#purchase-buttons .button.proceed').on(event_action, function() {
 		
@@ -231,6 +245,7 @@ $(document).ready(function () {
 			$('#fName').text(firstname);
 			$('#lName').text(lastname);
 			$('#cAmount').text('Credits: '+$('.amount.current').text());
+			$('.cAmount').text($('.amount.current').text());
 			var cCharge = parseInt($('.amount.current').text()) * parseInt(cfg_credit_price);
 			$('#cCharge').text('Cost: $'+cCharge);
 			$('#slide-scroll').animate({
@@ -238,6 +253,16 @@ $(document).ready(function () {
 			}, 500, function() {
 				$this.hide().removeClass('active');
 				$('#purchase-buttons .button.previous').css('display','inline-block');
+				
+				// Simulate transaction
+				setTimeout(function() {
+					processing_payment();
+					setTimeout(function() {
+						successfulPayment();
+					}, 2000);
+				}, 2000);
+				///////////////////////
+				
 			});
 		} else {
 			setTimeout(function() {
@@ -261,14 +286,6 @@ $(document).ready(function () {
 		
 	});
 	
-	function successPayment() {
-		
-		$('#slide-scroll').animate({
-			marginLeft: '-='+$('#slide-scroll .slide').css('width')
-		}, 500, function() {
-			$('#purchase-buttons .button.previous').css('opacity',0);
-		});
-	}
 	
 	if (cfg_screen == 'big') {
 

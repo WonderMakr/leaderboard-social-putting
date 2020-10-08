@@ -177,21 +177,24 @@ p.error {
     margin: 10px 0;
     text-align: left;
     overflow: hidden;
+    border: 1px solid #fdfbe3;
+    background-color: #fffdea;
+    box-shadow: inset 0 0 30px -20px #b9b9b9;
 }
 
 #slide-scroll {
-	width: 200%;
-	height: 220px;
+	height: 240px;
 }
 
 #slide-scroll .slide {
     width: 39.5vw;
     height: 100%;
 	float: left;
+    padding: 0 0px 0 25px;
 }
 
 #credit-info .half {
-	width: 35%;
+	width: 37%;
 	height: 100%;
 	padding-top: 20px;
 	vertical-align: top;
@@ -237,7 +240,7 @@ p.error {
     color: #2a793d;
     overflow: hidden;
     font-size: 150px;
-    line-height: 170px;
+    line-height: 150px;
     text-align: center;
 	margin-right: 10px;
 	display: inline-block;
@@ -256,13 +259,13 @@ p.error {
 #cred-toggle .down {
     width: 90px;
     height: 70px;
+    color: #e7c772;
+    font-size: 50px;
     line-height: 70px;
+    text-align: center;
     vertical-align: top;
     border: 1px solid #e7c772;
     background-color: #fdfcf3;
-    text-align: center;
-    font-size: 50px;
-    color: #e7c772;
 }
 
 #cred-toggle .up.active,
@@ -276,7 +279,7 @@ p.error {
 }
 
 #purchase-buttons {
-	margin-bottom: 20px;
+    margin: 30px 0 10px;
 }
 
 #purchase-buttons .button {
@@ -304,13 +307,15 @@ p.error {
 }
 
 #credit-info .second.slide .half {
-	height: 85%;
+    height: 70%;
+    padding-top: 10px;
 }
 
-.second.slide h4 {
+.slide h4 {
 	margin: 0;
 	color: #29793d;
 	font-size: 28px;
+	padding-top: 20px;
 	text-transform: uppercase;
 }
 
@@ -318,9 +323,7 @@ p.error {
 	font-size: 30px;
 	padding-left: 80px;
 }
-#fName {
-	padding-top: 10px;
-}
+
 #cCharge {
     color: #f07171;
     font-size: 40px;
@@ -332,4 +335,37 @@ p.error {
 	width: auto;
 	height: 100%;
 	margin-left: 50px;
+}
+
+#credit-info .third.slide {
+	text-align: center;
+}
+
+.third.slide h4 {
+	padding-top: 40px;
+}
+
+.slide.second {
+	position: relative;
+}
+
+#processing {
+    width: 100%;
+    height: 100%;
+	display: none;
+    position: absolute;
+    text-align: center;
+	padding-top: 20px;
+    background-color: #fffdea;
+}
+
+#processing p {
+    margin: 0.35em 0;
+    font-family: 'DIN2014-Regular';
+}
+
+#processing #err {
+    color: red;
+    font-size: 20px;
+    font-family: 'DIN2014-Demi';
 }

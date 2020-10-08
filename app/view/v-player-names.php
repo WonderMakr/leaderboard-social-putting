@@ -3,7 +3,7 @@
 <script>
 	var game_name = '<?php echo $game_name; ?>';
 	var num_of_players = <?php echo $num_of_players; ?>;
-	var char_limit = <?php echo $cfg['name_char_limit']; ?>;
+	var char_limit = <?php echo $nameCharLimit; ?>;
 </script>
 
 <div id="page-content" class="w30-w70">
@@ -19,10 +19,10 @@
 		
 		<?php if ($screen == 'small') : ?>
 		
-		<h4>Max <?php echo $cfg['name_char_limit']; ?> Characters</h4>
+		<h4>Max <?php echo $nameCharLimit; ?> Characters</h4>
 		
 		<div class="input">
-			<input type="text" id="player" maxlength="10" />
+			<input type="text" id="player" maxlength="<?php echo $nameCharLimit; ?>" />
 			<div id="name_error"></div>
 		</div>
 		

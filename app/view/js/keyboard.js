@@ -53,7 +53,7 @@ $(document).ready(function() {
     if ($(this).hasClass('opaque')) return false;
 	  
 	if ($('body').attr('id') == 'page-player-names') {
-		if ($('#player').val().length >= char_limit || $('.complete.button').length > 0)
+		if (($('#player').val().length >= char_limit || $('.complete.button').length > 0) && !$(this).hasClass('delete'))
 			return false;
 	}
 	if ($('body').attr('id') == 'page-num-of-players' && write) {

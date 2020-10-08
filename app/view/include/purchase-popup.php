@@ -14,7 +14,7 @@
 				<div id="credit-info">
 					
 					<div id="slide-scroll">
-
+					
 						<div class="slide">
 
 							<div class="half">
@@ -44,6 +44,11 @@
 					
 						<div class="slide second">
 							<h4>Swipe Card To Purchase Credits</h4>
+							<div id="processing">
+								<div id="ldr"><img src="<?php echo $cfg['img_path']; ?>loader.gif" /></div>
+								<p>Processing...</p>
+								<div id="err"></div>
+							</div>
 							<div class="half">
 								<img id="swipe-img" src="<?php echo $cfg['img_path']; ?>payment.png" />
 							</div>
@@ -54,7 +59,16 @@
 								<div id="cCharge"></div>
 							</div>
 						</div>
-					
+						
+						<div class="slide third">
+						
+							<h4>Thank you for your purchase!</h4>
+							
+							<p><span class="cAmount">5</span> Credit(s) have been added</p>
+							<p>Enjoy the Game!</p>
+							
+						</div>
+						
 					</div>
 					
 				</div>

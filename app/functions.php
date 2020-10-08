@@ -98,7 +98,7 @@ function getMetaValue($meta_data) {
 	global $db;
 	
 	try {		
-		$sql = "SELECT meta_value FROM game_data WHERE meta_data = :meta_data";
+		$sql = "SELECT meta_value FROM config_data WHERE meta_data = :meta_data";
 		$select = $db->prepare($sql);
 		$select->execute(array("meta_data" => $meta_data));
 		$meta_value = $select->fetch(PDO::FETCH_COLUMN);
@@ -115,18 +115,68 @@ function getMetaValue($meta_data) {
 }
 
 function numOfCredits() {
-	if (getMetaValue('payment') == 'free_play')
+	if (payment_system() == 'free_play')
 		return '<em>Free Play</em>';
 	else
 		return getMetaValue('credits');	
 }
 
 function payment_system() {
-	return getMetaValue('payment');
+	return getMetaValue('payment_system');
 }
 
 function credit_price() {
 	return getMetaValue('credit_price');
+}
+
+function nameCharLimit() {
+	return getMetaValue('name_char_limit');
+}
+
+function gamePlayVolume() {
+	return getMetaValue('game_volume');
+}
+
+function totalRounds() {
+	return getMetaValue('total_rounds');
+}
+
+function decrementCredits($credits) {
+	
+	global $db; 
+	
+	$data = array(
+		'credits' 	=> $credits,
+		'md'		=> 'credits'
+	);
+	
+	try {
+		$sql = "UPDATE `config_data` SET `meta_value` =  meta_value - :credits WHERE meta_data = :md;";
+		$update = $db->prepare($sql);
+		$update->execute($data);
+	} catch (PDOException $e) {
+		echo $e->getMessage();
+	}
+	
+}
+
+function incrementCredits($credits) {
+	
+	global $db; 
+	
+	$data = array(
+		'credits' 	=> $credits,
+		'md'		=> 'credits'
+	);
+	
+	try {
+		$sql = "UPDATE `config_data` SET `meta_value` =  meta_value + :credits WHERE meta_data = :md;";
+		$update = $db->prepare($sql);
+		$update->execute($data);
+	} catch (PDOException $e) {
+		echo $e->getMessage();
+	}
+	
 }
 
 function gameInProgress() {
