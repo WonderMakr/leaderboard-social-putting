@@ -3,6 +3,7 @@ var music;
 var videos = ['fireworks', 'rocket', 'shark', 'trophy', 'wrecking-ball'];
 var hole_colors = ['white', 'green', 'yellow', 'red', 'blue'];
 var game_play_songs = music_options.slice(0);
+// var setOnce = 0;
 
 
 function playSong() {
@@ -126,6 +127,7 @@ const main = async () => {
 
 	app.service('games').on('patched', async function (game) {
 		console.log("GAME UPDATE");
+		// if (!setOnce++) game.current_player_id = 0; // make this only happen on the first go around
 		console.log(game);
 		$('#c_round').html(game.current_round);
 		if (game.game_type_id === 3 || game.game_type_id === 2) $('#round-info:visible').hide(); // Make this only happen once
