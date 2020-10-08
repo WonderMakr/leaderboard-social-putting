@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+	$.post( "http://localhost:3030/lights", { 'attract': 'true' } );
 	
 	//ANIMATIONS
 	var logo_transition = parseFloat($('#w-logo').css('transition-duration').replace('s', ''))*1000;

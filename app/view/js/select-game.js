@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+	$.post( "http://localhost:3030/lights", { 'attract': 'false' } );
 	
 	if (cfg_screen == 'big') {
 		
