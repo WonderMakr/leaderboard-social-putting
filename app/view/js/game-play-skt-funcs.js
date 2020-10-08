@@ -125,6 +125,7 @@ const main = async () => {
 	await startGame();
 
 	app.service('games').on('patched', async function (game) {
+		console.log("GAME UPDATE");
 		console.log(game);
 		$('#c_round').html(game.current_round);
 		if (game.game_type_id === 3 || game.game_type_id === 2) $('#round-info:visible').hide(); // Make this only happen once
@@ -188,6 +189,7 @@ const main = async () => {
 
 	app.service('holes').on('patched', function (hole) {
 		// This may come back as an array on a multi patch
+		console.log("HOLE UPDATE");
 		console.log(hole);
 
 		if (!hole.length && hole.id) {
@@ -203,8 +205,10 @@ const main = async () => {
 
 	app.service('putts').on('created', function (putt) {
 		// This may come back as an array on a multi patch
-		// console.log(hole);
+		console.log("NEW PUTT");
+		console.log(putt);
 
+		// Game 1 still has this message being shown on the third ball somehow
 		if (putt.success && putt.ball !== 3 && (((currentGame.game_type_id === 1 || currentGame.game_type_id === 2) && putt.hole_id !== getCurrentPlayerScore()) || (currentGame.game_type_id === 3 && getCurrentPlayerScore() != 15))) {
 			displayGreatPuttWithPlayerId(putt.player_id);
 			setTimeout(removeUserFlowScreen, 2000);
