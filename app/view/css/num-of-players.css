@@ -24,7 +24,7 @@ body.big-screen h3 {
 }
 
 body.small-screen .w30-w70 .w70 {
-	padding-top: 12vh;
+	padding-top: 9vh;
 }
 
 .w70 .t-center {
@@ -309,6 +309,7 @@ p.error {
 #credit-info .second.slide .half {
     height: 70%;
     padding-top: 10px;
+	padding-left: 25px;
 }
 
 .slide h4 {
@@ -345,8 +346,9 @@ p.error {
 	padding-top: 40px;
 }
 
-.slide.second {
+#slide-scroll .slide.second {
 	position: relative;
+	padding-left: 0;
 }
 
 #processing {
@@ -357,6 +359,16 @@ p.error {
     text-align: center;
 	padding-top: 20px;
     background-color: #fffdea;
+}
+
+#processing p,
+#processing #ldr {
+	opacity: 0;
+}
+
+#processing.working p,
+#processing.working #ldr {
+	opacity: 1;
 }
 
 #processing p {

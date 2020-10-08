@@ -455,53 +455,12 @@ function getCurrentPlayerIndex() {
 				$('#popup #p-content h1').text('Great Game');
 				$('#popup #p-content p').html('Thank you for playing.<br>We hope to see you again soon!');
 				$('#popup #p-content .button.cancel').remove();
+				$('.clear.button, .new_game.button').show();
 				$('#winner-container').fadeOut(1000, function() {
 					$('body').addClass('open-pop-up');
 					$('#popup').fadeIn(flowscreen_fadetime);
 				});
-				/*
-				$.ajax({
-					method: "POST",
-					url: "process",
-					data: {
-						command		: 'complete-game',
-						game_id		: current_game_id
-					}
-				}).done(function( msg ) {
-
-					console.log(msg);
-					//return false;
-
-					try {
-
-						var obj = $.parseJSON(msg);
-
-						if (obj.result == 'success') {
-							
-							console.log('finished');
-							
-							$('#popup #p-content h1').text('Great Game');
-							$('#popup #p-content p').html('Thank you for playing.<br>We hope to see you again soon!');
-							$('#popup #p-content .button.cancel').remove();
-							$('#winner-container').fadeOut(1000, function() {
-								$('body').addClass('open-pop-up');
-								$('#popup').fadeIn(500);
-							});
-							
-							return false;
-
-						} else {
-							console.log(obj);
-							alert(obj.message);
-						}
-
-					} catch(err) {
-						console.log(err);
-						console.log(msg);
-					}
-
-				});	
-				*/
+				
 			}
 		};
 		

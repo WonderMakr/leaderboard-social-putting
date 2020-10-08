@@ -2,6 +2,125 @@ $(document).ready(function () {
 	
 	var processing = false;
 	
+	// CREDIT CARD VARIABLES ///////////
+	// AND FUNCTIONS ///////////////////
+	
+	var creditCard = {
+		number: "",
+		name: "",
+		date: "20"
+	};
+	var step = 0;
+	var dateCharCounter = 0;
+	var dataWipeTimer = null;
+	var card_is_read = false;
+	
+	function chargeCard(card, send_email) {
+		console.log("charge card called: ");
+		
+		$.post("process", {
+			
+			command			: "process-payment",
+			name			: $('#firstname').val() + ' ' + $('#lastname').val(),
+			credits			: parseInt($('.amount.current').text()),
+			card_number		: card.number,
+			expiration_date	: card.date
+			
+		}).then(function (res) {
+			console.log(res);
+			/*
+			if (res.responseCode == 1) {
+				$("#card-response").text("Successful Card Transaction!");
+				$('#black-out').fadeIn(fadeTime, function() {
+					window.location = "vend?product="+product+"&column="+column;
+				});
+			} else {
+				$("#card-response").text(
+					`${res.errors[0].errorText}${
+					  res.errors[0].errorCode == 11
+						? " Please wait 15 seconds before trying again."
+						: ""
+					}`
+				);
+			}
+			*/
+		});
+	}
+	
+	function registerCardListener() {
+		console.log("Card listener registered");
+		
+		$("html").keypress(function (msg) {
+			
+			if (card_is_read)
+				return false;
+			
+			console.log("dataWipeTimer: "+dataWipeTimer);
+			$('#processing #err').text('');
+			$('#processing').show().addClass('working');
+			$('.button.previous').css('opacity', 0);
+			
+			// reset all data after a specific deley (ie. 5 seconds) have the timer start on first char
+			if (!dataWipeTimer) {
+				dataWipeTimer = setTimeout(function () {
+					creditCard = {
+						number: "",
+						name: "",
+						date: "20"
+					};
+
+					step = 0;
+					dateCharCounter = 0;
+					$('#processing').removeClass('working');
+					$('.button.previous').css('opacity', 1);
+					$('#processing #err').text('Invalid card type. Please try again');
+					dataWipeTimer = null;
+					
+				}, 2000);
+			}
+
+			if (
+				(msg.key === "^" && step === 0)
+				|| (msg.key === "^" && step === 1)
+				|| (msg.key === ";" && step === 2)
+				|| (msg.key === "=" && step === 3)
+				|| (msg.key === "?" && step === 4)
+			) {
+				step++;
+				return;
+			}
+
+			if (step === 1) creditCard.name = (creditCard.name + msg.key).trim();
+			if (step === 3) creditCard.number = creditCard.number + msg.key;
+			if (step === 4) {
+				if (++dateCharCounter < 5) {
+					creditCard.date =
+						creditCard.date + (dateCharCounter === 3 ? "-" : "") + msg.key;
+				}
+			}
+			if (step === 5) {
+				card_is_read = true;
+				console.log("credit card: ");
+				console.log(creditCard);
+				// Make authorize.net call here
+				chargeCard(creditCard);
+				clearTimeout(dataWipeTimer);
+				dataWipeTimer = null;
+				creditCard = {
+					number: "",
+					name: "",
+					date: "20"
+				};
+
+				step = 0;
+				dateCharCounter = 0;
+			}
+		});
+	}
+	
+	////////////////////////////////////
+	
+	
 	$('.back.button').on(event_action, function() {
 	
 		if (processing)
@@ -32,7 +151,7 @@ $(document).ready(function () {
 		
 		$('.next.button').removeClass('no-cred').removeClass('active');
 		$('p').removeClass('error');
-		$('#error').html('');
+		$('#error').html('<br>&nbsp;');
 		
 		if ( (current_players == '8' && $this.hasClass('plus')) || (current_players == '0' && $this.hasClass('minus')) ) {
 			setTimeout(function() {
@@ -79,7 +198,7 @@ $(document).ready(function () {
 		var current_players = $current.text();
 		
 		$this.removeClass('no-cred');
-		$('#error').html('');
+		$('#error').html('<br>&nbsp;');
 		
 		if (current_players == '0') {
 			setTimeout(function() {
@@ -106,20 +225,6 @@ $(document).ready(function () {
 					
 					$('#credits').text(obj.credits);
 					
-					/*if (obj.credits == 'swipe') {
-						
-						if (confirm('Did you pay already?', 'Yes', 'No')) {
-							socket.emit('change-screen', {new_screen: 'player-names?game='+game_name+'&players='+current_players});
-							changeScreen("player-names?game="+game_name+"&players="+current_players);
-						} else {
-							$this.addClass('no-cred');
-							$('p').addClass('error');
-							var money = current_players * 5;
-							$('#error').html('<br>Please pay $'+money+' to play the game.');
-							processing = false;
-						}
-						
-					} else */
 					if (obj.credits == '<em>Free Play</em>' || parseInt(obj.credits) >= current_players) {
 						
 						socket.emit('change-screen', {new_screen: 'player-names?game='+game_name+'&players='+current_players});
@@ -157,6 +262,10 @@ $(document).ready(function () {
 		$('#popup').fadeIn(500);
 		$('#firstname').focus();
 		
+	});
+	
+	$("#firstname, #lastname").keydown(function(event) { 
+		return false;
 	});
 	
 	$('#cred-toggle > div').on(event_action, function() {
@@ -203,6 +312,9 @@ $(document).ready(function () {
 	
 	$('#popup .cancel.button').on(event_action, function() {
 		
+		if ($('#processing').hasClass('working'))
+			return false;
+		
 		var $this = $(this);
 		$this.addClass('active');
 		$('#purchase.button').removeClass('active');
@@ -215,11 +327,6 @@ $(document).ready(function () {
 	
 	$('#slide-scroll').width($('.slide').outerWidth()*$('.slide').length);
 	
-	function processing_payment() {
-		$('#purchase-buttons .button.previous').css('opacity','0');
-		$('#processing').show();
-	}
-	
 	function successfulPayment() {
 		$('#slide-scroll').animate({
 			marginLeft: '-='+$('#slide-scroll .slide').css('width')
@@ -227,6 +334,11 @@ $(document).ready(function () {
 	}
 	
 	$('#purchase-buttons .button.proceed').on(event_action, function() {
+		
+		if (processing)
+			return false;
+		
+		processing = true;
 		
 		var $this = $(this); 
 		$(this).addClass('active');
@@ -252,20 +364,24 @@ $(document).ready(function () {
 				marginLeft: '-='+$('#slide-scroll .slide').css('width')
 			}, 500, function() {
 				$this.hide().removeClass('active');
+				processing = false;
+				$('input').blur();
+				registerCardListener();
 				$('#purchase-buttons .button.previous').css('display','inline-block');
-				
-				// Simulate transaction
+				// Simulate transaction 
+				/*
 				setTimeout(function() {
 					processing_payment();
 					setTimeout(function() {
 						successfulPayment();
 					}, 2000);
-				}, 2000);
+				}, 2000); */
 				///////////////////////
 				
 			});
 		} else {
 			setTimeout(function() {
+				processing = false;
 				$this.removeClass('active');
 			}, 150);
 		}
@@ -274,12 +390,21 @@ $(document).ready(function () {
 	
 	$('#purchase-buttons .button.previous').on(event_action, function() {
 		
+		if (processing || $('#processing').hasClass('working'))
+			return false;
+		
+		processing = true;
+		
 		var $this = $(this);
 		$this.addClass('active');
-		
+		$('#processing').hide();
+		$('#processing #err').text('');
+
 		$('#slide-scroll').animate({
 			marginLeft: '+='+$('#slide-scroll .slide').css('width')
 		}, 500, function() {
+			processing = false;
+			$("html").off('keypress');
 			$this.hide().removeClass('active');
 			$('#purchase-buttons .button.proceed').css('display','inline-block');
 		});
