@@ -15,35 +15,62 @@ $(document).ready(function () {
 	var dataWipeTimer = null;
 	var card_is_read = false;
 	
-	function chargeCard(card, send_email) {
+	function chargeCard(card) {
 		console.log("charge card called: ");
-		
-		$.post("process", {
-			
-			command			: "process-payment",
-			name			: $('#firstname').val() + ' ' + $('#lastname').val(),
-			credits			: parseInt($('.amount.current').text()),
-			card_number		: card.number,
-			expiration_date	: card.date
-			
-		}).then(function (res) {
-			console.log(res);
-			/*
-			if (res.responseCode == 1) {
-				$("#card-response").text("Successful Card Transaction!");
-				$('#black-out').fadeIn(fadeTime, function() {
-					window.location = "vend?product="+product+"&column="+column;
-				});
-			} else {
-				$("#card-response").text(
-					`${res.errors[0].errorText}${
-					  res.errors[0].errorCode == 11
-						? " Please wait 15 seconds before trying again."
-						: ""
-					}`
-				);
+
+		$.ajax({
+			method: "POST",
+			url: "process",
+			data: {
+				command			: "process-payment",
+				firstname		: $('#lastname').val(),
+				lastname		: $('#firstname').val(),
+				credits			: parseInt($('.amount.current').text()),
+				card_number		: card.number,
+				name_on_card	: card.name,
+				expiration_date	: card.date
 			}
-			*/
+			
+		}).done(function( msg ) {
+			
+			//console.log(msg);
+			
+			try {
+				
+				var obj = $.parseJSON(msg);
+				console.log(obj);
+
+				$('#processing').removeClass('working');
+				
+				if (obj.result == "success") {
+				
+					$('#aval_cred').html(obj.new_credits);
+					$('.third.slide #succ').text(obj.message);
+					
+					$('#slide-scroll').animate({
+						marginLeft: '-='+$('#slide-scroll .slide').css('width')
+					}, 500, function() {
+						$('#purchase-buttons .close').css('display','inline-block');
+						$('.next.button').removeClass('no-cred').removeClass('active');
+						$('p').removeClass('error');
+						$('#error').html('<br>&nbsp;');
+					});
+				
+				} else {
+					
+					card_is_read = false;
+					$('.button.previous').css('display','inline-block');
+					$('#processing #err').text(obj.message);
+				}
+				
+				
+			} catch (err) {
+				
+				console.log(err);
+				console.log(msg);
+				
+			}
+		
 		});
 	}
 	
@@ -57,8 +84,8 @@ $(document).ready(function () {
 			
 			console.log("dataWipeTimer: "+dataWipeTimer);
 			$('#processing #err').text('');
+			$('.button.previous').hide();
 			$('#processing').show().addClass('working');
-			$('.button.previous').css('opacity', 0);
 			
 			// reset all data after a specific deley (ie. 5 seconds) have the timer start on first char
 			if (!dataWipeTimer) {
@@ -72,7 +99,7 @@ $(document).ready(function () {
 					step = 0;
 					dateCharCounter = 0;
 					$('#processing').removeClass('working');
-					$('.button.previous').css('opacity', 1);
+					$('.button.previous').css('display','inline-block');
 					$('#processing #err').text('Invalid card type. Please try again');
 					dataWipeTimer = null;
 					
@@ -310,7 +337,7 @@ $(document).ready(function () {
 		
 	});
 	
-	$('#popup .cancel.button').on(event_action, function() {
+	$('#popup .cancel.button, #popup .close.button').on(event_action, function() {
 		
 		if ($('#processing').hasClass('working'))
 			return false;
@@ -360,6 +387,7 @@ $(document).ready(function () {
 			$('.cAmount').text($('.amount.current').text());
 			var cCharge = parseInt($('.amount.current').text()) * parseInt(cfg_credit_price);
 			$('#cCharge').text('Cost: $'+cCharge);
+			
 			$('#slide-scroll').animate({
 				marginLeft: '-='+$('#slide-scroll .slide').css('width')
 			}, 500, function() {
@@ -368,17 +396,8 @@ $(document).ready(function () {
 				$('input').blur();
 				registerCardListener();
 				$('#purchase-buttons .button.previous').css('display','inline-block');
-				// Simulate transaction 
-				/*
-				setTimeout(function() {
-					processing_payment();
-					setTimeout(function() {
-						successfulPayment();
-					}, 2000);
-				}, 2000); */
-				///////////////////////
-				
 			});
+			
 		} else {
 			setTimeout(function() {
 				processing = false;

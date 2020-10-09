@@ -9,7 +9,7 @@
 				</div>
 				
 				<h1><?php echo $lang_purchase; ?></h1>
-				<p>Fill out the information below to purchase more credits.<br><b>1 Credit = $<?php echo credit_price(); ?></b></p>
+				<p><?php echo $lang_fillout_info; ?><br><b><?php echo $lang_one_cred_is . credit_price(); if (monerisState() != 'live') echo ' (Test Mode)'; ?></b></p>
 				
 				<div id="credit-info">
 					
@@ -62,9 +62,9 @@
 						
 						<div class="slide third">
 						
-							<h4>Thank you for your purchase!</h4>
+							<h4><?php echo $lang_thanks_for_purch; ?></h4>
 							
-							<p><span class="cAmount">5</span> Credit(s) have been added</p>
+							<p id="succ"></p>
 							<p>Enjoy the Game!</p>
 							
 						</div>
@@ -76,6 +76,7 @@
 				<div id="purchase-buttons">
 					<div class="button previous"><?php echo $lang_back; ?></div>
 					<div class="button proceed"><?php echo $lang_next; ?></div>
+					<div class="button close"><?php echo $lang_close; ?></div>
 				</div>
 				
 				<?php include ('keyboard.php'); ?>

@@ -1,6 +1,6 @@
 		<?php 
 		getJS('jquery-3.5.1.min', 1);
-		getJS('feathers.js', 1);
+		getJS('feathers', 1);
 		getJS('socket.io.slim', 1);
 		getJS('socket-functions', 1);
 		getJS('universal?v=3.1', 1);
