@@ -44,7 +44,7 @@
 			<li class="letter">b</li>
 			<li class="letter">n</li>
 			<li class="letter">m</li>
-			<li class="delete lastitem"><?php /* &#8678; */ ?><span>&#9665;</span>&#9249;</li>
+			<li class="delete lastitem">&nbsp;<span>delete</span><?php /* <span>&#9665;</span>&#9249; &#8678;*/ ?></li>
 			<li class="spacer newrow first">&nbsp;</li>
 			<li class="symbol hyphen">-</li>
 			<li class="space">&nbsp;</li>
