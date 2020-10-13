@@ -514,7 +514,7 @@ function changeAllHoleColors(color) {
 				$('#popup #p-content h1').text('Great Game');
 				$('#popup #p-content p').html('Thank you for playing.<br>We hope to see you again soon!');
 				$('#popup #p-content .button.cancel').remove();
-				$('.clear.button, .new_game.button').show();
+				$('.clear.button, .new_game.button').css('display','inline-block');
 				$('#winner-container').fadeOut(1000, function() {
 					$('body').addClass('open-pop-up');
 					$('#popup').fadeIn(flowscreen_fadetime);
