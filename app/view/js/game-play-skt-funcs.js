@@ -494,6 +494,7 @@ function changeAllHoleColors(color) {
 			music.pause();
 		video.onloadeddata = function() {
 			$('#winner-container').fadeIn(flowscreen_fadetime, function() {
+				video.volume = 1;
 				video.play();
 				$('#winner-is h1').text(winnerName);
 				var winner_timeout;

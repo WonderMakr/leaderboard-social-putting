@@ -21,6 +21,16 @@ body.big-screen ol li {
     font-size: 74px;
     font-size: 3.75vw;
     text-align: left;
+	/*
+	color: #71f175;
+    font-family: 'DIN2014-Bold';
+	-webkit-text-stroke: 0.2vh #0a2c13;
+	text-shadow: 0vh 0.1vh 0.05vh #0a2c13, 0vh 0.2vh 0.05vh #0a2c13, 0vh 0.3vh 0.05vh #0a2c13, 0vh 0.4vh 0.05vh #0a2c13, 0vh 0.5vh 0.05vh #0a2c13;
+	*/
+}
+
+body.big-screen ol li span {
+	padding-left: 2vw;
 }
 
 h3 {
