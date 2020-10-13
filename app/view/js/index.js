@@ -155,7 +155,7 @@ $(document).ready(function () {
 	
 	$('#games').on(event_action, function() {
 		
-		if (processing)
+		if (processing || $(this).hasClass('freeplay'))
 			return false;
 		
 		processing = true;
