@@ -223,13 +223,19 @@ const main = async () => {
     console.log('NEW PUTT');
     console.log(putt);
 
-    // Game 1 still has this message being shown on the third ball somehow
+    let isGame1or2 = currentGame.game_type_id === 1 || currentGame.game_type_id === 2;
+    let currentHoleIsNotCurrentPlayerScore = putt.hole_id !== getCurrentPlayerScore();
+    let isGame3 = currentGame.game_type_id === 3;
+    let currentPlayerScoreIsNot15 = getCurrentPlayerScore() != 15; // This means they are on last putt
+
+    // Game 1 still has this message being shown on the third ball somehow?
+    // Alice said this at one point. It might not be the case.
     if (
       putt.success &&
-      putt.ball !== 3 &&
-      (((currentGame.game_type_id === 1 || currentGame.game_type_id === 2) &&
-        putt.hole_id !== getCurrentPlayerScore()) ||
-        (currentGame.game_type_id === 3 && getCurrentPlayerScore() != 15))
+      (putt.ball !== 3 || isGame3) &&
+      ((isGame1or2 &&
+        currentHoleIsNotCurrentPlayerScore) ||
+        (isGame3 && currentPlayerScoreIsNot15))
     ) {
       displayGreatPuttWithPlayerId(putt.player_id);
       setTimeout(removeUserFlowScreen, 2000);
