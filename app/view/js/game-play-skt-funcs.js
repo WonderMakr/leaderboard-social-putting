@@ -510,7 +510,7 @@ function changeAllHoleColors(color) {
 				music.play();
 			if (cfg_screen == 'small') {
 				console.log('finished');
-							
+				
 				$('#popup #p-content h1').text('Great Game');
 				$('#popup #p-content p').html('Thank you for playing.<br>We hope to see you again soon!');
 				$('#popup #p-content .button.cancel').remove();

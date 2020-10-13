@@ -17,6 +17,7 @@ if (!isActiveGame($game_name)) {
 	exit();
 }
 
+$pay_system = payment_system();
 
 // Load the view
 require ($cfg['server_path'].'/view/v-num-of-players.php');

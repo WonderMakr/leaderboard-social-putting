@@ -23,7 +23,7 @@ body.big-screen h3 {
     background-image: url("../images/checkers.jpg");
 }
 
-body.small-screen .w30-w70 .w70 {
+body.small-screen .w30-w70 .w70.credits {
 	padding-top: 9vh;
 }
 

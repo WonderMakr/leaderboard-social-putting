@@ -13,7 +13,7 @@
 		<img id="game-img" src="<?php echo $cfg['img_path'].$game_name; ?>.png" />
 	</div>
 	
-	<div class="w70">
+	<div class="w70 <?php echo $pay_system; ?>">
 		
 		<div id="num-toggle">
 			
@@ -44,7 +44,10 @@
 		
 		<p id="aval_cred" class="t-center"><?php echo $lang_aval_cred . ': ' . numOfCredits(); ?><span id="error"><br>&nbsp;</span></p>
 		
-		<div class="t-center"><div id="purchase" class="button"><?php echo $lang_purchase; ?></div></div>
+			<?php if ($pay_system == 'credits') : ?>
+				<div class="t-center"><div id="purchase" class="button"><?php echo $lang_purchase; ?></div></div>
+			<?php endif; ?>
+		
 		<?php endif; ?>
 		
 	</div>
