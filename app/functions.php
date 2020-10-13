@@ -141,6 +141,10 @@ function totalRounds() {
 	return getMetaValue('total_rounds');
 }
 
+function monerisState() {
+	return getMetaValue('moneris_state');
+}
+
 function decrementCredits($credits) {
 	
 	global $db; 

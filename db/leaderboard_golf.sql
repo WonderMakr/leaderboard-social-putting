@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 07, 2020 at 10:51 PM
+-- Generation Time: Oct 09, 2020 at 09:49 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -33,12 +33,13 @@ CREATE TABLE `config_data` (
 --
 
 INSERT INTO `config_data` (`id`, `meta_data`, `meta_value`) VALUES
-(1, 'credits', '2'),
-(2, 'payment_system', 'free_play'),
+(1, 'credits', '18'),
+(2, 'payment_system', 'credits'),
 (3, 'credit_price', '5'),
 (4, 'game_volume', '0.5'),
 (5, 'name_char_limit', '12'),
-(7, 'total_rounds', '6');
+(7, 'total_rounds', '6'),
+(8, 'moneris_state', 'testing');
 
 -- --------------------------------------------------------
 
@@ -96,6 +97,24 @@ CREATE TABLE `players` (
   `updated_at` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `name_on_card` varchar(200) NOT NULL,
+  `receipt_id` varchar(50) NOT NULL,
+  `reference_num` varchar(50) NOT NULL,
+  `credits` int(10) UNSIGNED NOT NULL,
+  `amount` varchar(10) NOT NULL,
+  `datetime` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Indexes for dumped tables
 --
@@ -125,6 +144,12 @@ ALTER TABLE `players`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -132,7 +157,7 @@ ALTER TABLE `players`
 -- AUTO_INCREMENT for table `config_data`
 --
 ALTER TABLE `config_data`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `games`
@@ -151,3 +176,9 @@ ALTER TABLE `game_types`
 --
 ALTER TABLE `players`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;

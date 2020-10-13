@@ -465,118 +465,81 @@ function changeAllHoleColors(color) {
 		}, 4000);
 	}
 	*/
-
-function displayWinnerWithName(videoName, winnerName) {
-  if (!videos.includes(videoName))
-    videoName = videos[Math.floor(Math.random() * videos.length)];
-
-  $('#winner-is')
-    .removeClass()
-    .addClass(videoName);
-  $('#winner-video source').attr(
-    'src',
-    $('#winner-container').attr('data-vid-loc') + videoName + '.mp4'
-  );
-
-  var video = document.getElementById('winner-video');
-
-  video.load();
-  if (cfg_screen == 'big') music.pause();
-  video.onloadeddata = function() {
-    $('#winner-container').fadeIn(flowscreen_fadetime, function() {
-      video.play();
-      $('#winner-is h1').text(winnerName);
-      var winner_timeout;
-      switch (videoName) {
-        case 'rocket':
-          winner_timeout = 3000;
-          break;
-
-        case 'wrecking-ball':
-          winner_timeout = 5000;
-          break;
-
-        case 'shark':
-        case 'trophy':
-          winner_timeout = 5500;
-          break;
-
-        case 'fireworks':
-          winner_timeout = 7000;
-          break;
-
-        default:
-          winner_timeout = 10000;
-          break;
-      }
-
-      setTimeout(function() {
-        $('#winner-is').fadeIn(1000);
-      }, winner_timeout);
-    });
-  };
-
-  video.onended = function() {
-    console.log('Video Ended');
-    if (cfg_screen == 'big') music.play();
-    if (cfg_screen == 'small') {
-      console.log('finished');
-
-      $('#popup #p-content h1').text('Great Game');
-      $('#popup #p-content p').html(
-        'Thank you for playing.<br>We hope to see you again soon!'
-      );
-      $('#popup #p-content .button.cancel').remove();
-      $('#winner-container').fadeOut(1000, function() {
-        $('body').addClass('open-pop-up');
-        $('#popup').fadeIn(flowscreen_fadetime);
-      });
-      /*
-				$.ajax({
-					method: "POST",
-					url: "process",
-					data: {
-						command		: 'complete-game',
-						game_id		: current_game_id
-					}
-				}).done(function( msg ) {
-
-					console.log(msg);
-					//return false;
-
-					try {
-
-						var obj = $.parseJSON(msg);
-
-						if (obj.result == 'success') {
+	
+    function displayWinnerWithName(videoName, winnerName) {
+		
+		if (!videos.includes(videoName))
+			videoName = videos[Math.floor(Math.random() * videos.length)];
+		
+		$('#winner-is').removeClass().addClass(videoName);
+		$('#winner-video source').attr('src', $('#winner-container').attr('data-vid-loc') + videoName + '.mp4');
+		
+		var video = document.getElementById('winner-video');
+		
+		video.load();
+		if (cfg_screen == 'big')
+			music.pause();
+		video.onloadeddata = function() {
+			$('#winner-container').fadeIn(flowscreen_fadetime, function() {
+				video.play();
+				$('#winner-is h1').text(winnerName);
+				var winner_timeout;
+				switch(videoName) {
+					
+					case 'rocket':
+						winner_timeout = 3000;
+					break;
+					
+					case 'wrecking-ball':
+						winner_timeout = 5000;
+					break;
+					
+					case 'shark':
+					case 'trophy':
+						winner_timeout = 5500;
+					break;
+					
+					case 'fireworks':
+						winner_timeout = 7000;
+					break;
+					
+					default:
+						winner_timeout = 10000;
+					break;
+				}
+				
+				setTimeout(function() {
+					$('#winner-is').fadeIn(1000);
+				}, winner_timeout);
+				
+			});
+		}
+		
+		video.onended = function() {
+			console.log('Video Ended');
+			if (cfg_screen == 'big')
+				music.play();
+			if (cfg_screen == 'small') {
+				console.log('finished');
 							
-							console.log('finished');
-							
-							$('#popup #p-content h1').text('Great Game');
-							$('#popup #p-content p').html('Thank you for playing.<br>We hope to see you again soon!');
-							$('#popup #p-content .button.cancel').remove();
-							$('#winner-container').fadeOut(1000, function() {
-								$('body').addClass('open-pop-up');
-								$('#popup').fadeIn(500);
-							});
-							
-							return false;
-
-						} else {
-							console.log(obj);
-							alert(obj.message);
-						}
-
-					} catch(err) {
-						console.log(err);
-						console.log(msg);
-					}
-
-				});	
-				*/
-    }
-  };
-}
+				$('#popup #p-content h1').text('Great Game');
+				$('#popup #p-content p').html('Thank you for playing.<br>We hope to see you again soon!');
+				$('#popup #p-content .button.cancel').remove();
+				$('.clear.button, .new_game.button').show();
+				$('#winner-container').fadeOut(1000, function() {
+					$('body').addClass('open-pop-up');
+					$('#popup').fadeIn(flowscreen_fadetime);
+				});
+				
+			}
+		};
+		
+	}
+	
+	function displayWinnerWithPlayerNum(videoName, pNum) {
+		var $player = $('.p'+pNum+'.player');
+		displayWinnerWithName(videoName, $player.children('.name').text());
+	}
 
 function displayWinnerWithPlayerNum(videoName, pNum) {
   var $player = $('.p' + pNum + '.player');

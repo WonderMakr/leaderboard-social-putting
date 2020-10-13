@@ -43,15 +43,15 @@
 
 .keyboard .delete {
 	width: 14%;
-	font-size: 60px;
-	line-height: 46.8px;
+	position: relative;
 }
 
 .keyboard .delete span {
-	font-size: 30px;
-    margin-left: 10px;
-    margin-right: -5px;
+    left: 15%;
+    bottom: 10%;
+	font-size: 20px;
     vertical-align: top;
+    position: absolute;
 }
 
 .lastitem {

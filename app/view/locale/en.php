@@ -9,6 +9,7 @@ $lang_start = "Start";
 $lang_games = "Games";
 $lang_back = "Back";
 $lang_next = "Next";
+$lang_close = "Close";
 $lang_purchase = "Purchase Credits";
 
 $lang_aval_cred = "Available Credits";
@@ -45,5 +46,9 @@ $instructions = array (
 
 );
 
+// Purcahse popout
+$lang_fillout_info = "Fill out the information below to purchase more credits.";
+$lang_one_cred_is = "1 Credit = $";
+$lang_thanks_for_purch = "Thank you for your purchase!";
 
 ?>

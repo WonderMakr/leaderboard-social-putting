@@ -96,6 +96,14 @@ $(document).ready(function () {
 		processing = true;
 		var $this = $(this);
 		
+		$this.addClass('active');
+		
+		socket.emit('change-screen', {new_screen: 'select-game'});
+		changeScreen("select-game");
+
+		/*
+		NOT CHECKING FOR CREDITS AT START PAGE ANYMORE
+		
 		$('#error').text('');
 		$('p').removeClass('error');
 		$this.removeClass('active no-cred');
@@ -143,6 +151,7 @@ $(document).ready(function () {
 			});
 			
 		}, 200);
+		*/
 		
 	});
 	

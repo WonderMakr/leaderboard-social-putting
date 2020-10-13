@@ -42,7 +42,7 @@
 			<div class="next button"><?php echo $lang_next; ?></div>
 		</div>
 		
-		<p class="t-center"><?php echo $lang_aval_cred . ': ' . numOfCredits(); ?><span id="error"></span></p>
+		<p id="aval_cred" class="t-center"><?php echo $lang_aval_cred . ': ' . numOfCredits(); ?><span id="error"><br>&nbsp;</span></p>
 		
 		<div class="t-center"><div id="purchase" class="button"><?php echo $lang_purchase; ?></div></div>
 		<?php endif; ?>

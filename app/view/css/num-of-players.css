@@ -24,7 +24,7 @@ body.big-screen h3 {
 }
 
 body.small-screen .w30-w70 .w70 {
-	padding-top: 12vh;
+	padding-top: 9vh;
 }
 
 .w70 .t-center {
@@ -240,7 +240,7 @@ p.error {
     color: #2a793d;
     overflow: hidden;
     font-size: 150px;
-    line-height: 150px;
+    line-height: 130px;
     text-align: center;
 	margin-right: 10px;
 	display: inline-block;
@@ -279,6 +279,7 @@ p.error {
 }
 
 #purchase-buttons {
+    min-height: 90px;
     margin: 30px 0 10px;
 }
 
@@ -286,10 +287,16 @@ p.error {
 	margin-top: 0;
 }
 
+#purchase-buttons .close {
+	display: none;
+}
+
+#purchase-buttons .close, 
 #purchase-buttons .proceed {
 	color: #29793d;
 	border-color: #29793d;
 }
+#purchase-buttons .close.active,
 #purchase-buttons .proceed.active {
 	color: #FFF;
 	background-color: #29793d;
@@ -309,6 +316,7 @@ p.error {
 #credit-info .second.slide .half {
     height: 70%;
     padding-top: 10px;
+	padding-left: 25px;
 }
 
 .slide h4 {
@@ -345,8 +353,9 @@ p.error {
 	padding-top: 40px;
 }
 
-.slide.second {
+#slide-scroll .slide.second {
 	position: relative;
+	padding-left: 0;
 }
 
 #processing {
@@ -359,6 +368,16 @@ p.error {
     background-color: #fffdea;
 }
 
+#processing p,
+#processing #ldr {
+	opacity: 0;
+}
+
+#processing.working p,
+#processing.working #ldr {
+	opacity: 1;
+}
+
 #processing p {
     margin: 0.35em 0;
     font-family: 'DIN2014-Regular';
@@ -366,6 +385,6 @@ p.error {
 
 #processing #err {
     color: red;
-    font-size: 20px;
+    font-size: 22px;
     font-family: 'DIN2014-Demi';
 }
