@@ -1,9 +1,13 @@
-<?php include ('include/top.php'); ?>
+<?php include('include/top.php'); ?>
 <?php include('include/purchase-popup.php'); ?>
 
 <script>
 	var game_name = '<?php echo $game_name; ?>';
 	var cfg_credit_price = '<?php echo credit_price(); ?>';
+	
+	var js_err_invalid_card = '<?php echo $lang_js_err_invalid_card; ?>';
+	var js_err_slash_reg_cred = '<?php echo $lang_js_err_slash_reg_cred; ?>';
+	var js_err_one_cred_is = '<?php echo $lang_js_err_one_cred_is; ?>';
 </script>
 
 <div id="page-content" class="w30-w70">

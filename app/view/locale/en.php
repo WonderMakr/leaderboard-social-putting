@@ -46,9 +46,37 @@ $instructions = array (
 
 );
 
+$lang_firstname = "First Name";
+$lang_lastname = "Last Name";
+$lang_credits = "Credits";
+$lang_swipe_to_purchase = "Swipe Card To Purchase Credits";
+$lang_processing = "Processing...";
+$lang_enjoy_the_game = "Enjoy the Game!";
+
+$lang_js_err_invalid_card = "Invalid card type. Please try again";
+$lang_js_err_slash_reg_cred = " / Required Credits: ";
+$lang_js_err_one_cred_is = "<br>1 Credit = 1 player | 1 Credit = $";
+
 // Purcahse popout
 $lang_fillout_info = "Fill out the information below to purchase more credits.";
+$OneplyisOneCred = "1 Credit = 1 player";
 $lang_one_cred_is = "1 Credit = $";
 $lang_thanks_for_purch = "Thank you for your purchase!";
+
+
+$lang_enter_pl_name = 'Enter Player #<span id="play_num">1</span> Name';
+$lang_max = "Max ";
+$lang_characters = " Characters";
+
+// Game Play
+$lang_great_shot = '<span class="lrg">Great<br>Shot!</span>';
+$lang_better_luck = 'Better Luck<br>Next Time';
+$lang_better_than_none = 'One is better<br>than nothing';
+$lang_almost_perfect = 'Way to go!<br>Almost Perfect';
+$lang_got_a_pro = 'We got a<br>pro over here!';
+
+$lang_great_game = "Great Game";
+$lang_thanks_for_playing = "Thank you for playing.";
+$lang_see_you_soon = "We hope to see you again soon!";
 
 ?>

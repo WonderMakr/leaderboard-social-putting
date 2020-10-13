@@ -100,7 +100,7 @@ $(document).ready(function () {
 					dateCharCounter = 0;
 					$('#processing').removeClass('working');
 					$('.button.previous').css('display','inline-block');
-					$('#processing #err').text('Invalid card type. Please try again');
+					$('#processing #err').text(js_err_invalid_card);
 					dataWipeTimer = null;
 					
 				}, 2000);
@@ -265,7 +265,7 @@ $(document).ready(function () {
 						var plural = "";
 						if (more_credits > 1)
 							plural = "s";
-						$('#error').html(' / Required Credits: '+current_players+'<br>1 Credit is $'+cfg_credit_price);
+						$('#error').html(js_err_slash_reg_cred+current_players+js_err_one_cred_is+cfg_credit_price);
 						processing = false;
 					}
 					

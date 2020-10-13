@@ -147,6 +147,14 @@ p.error {
 	position: relative;
 }
 
+#p-content h1 {
+	margin-bottom: 0;
+}
+
+#p-content p.fillout {
+	margin-top: 0.5em;
+}
+
 #p-buttons .cancel.button {
     top: 0;
     right: 0;
