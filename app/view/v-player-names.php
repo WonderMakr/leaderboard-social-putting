@@ -15,11 +15,11 @@
 	
 	<div class="w70">
 		
-		<h3>Enter Player #<span id="play_num">1</span> Name</h3>
+		<h3><?php echo $lang_enter_pl_name; ?></h3>
 		
 		<?php if ($screen == 'small') : ?>
 		
-		<h4>Max <?php echo $nameCharLimit; ?> Characters</h4>
+		<h4><?php echo $lang_max . $nameCharLimit . $lang_characters; ?></h4>
 		
 		<div class="input">
 			<input type="text" id="player" maxlength="<?php echo $nameCharLimit; ?>" />

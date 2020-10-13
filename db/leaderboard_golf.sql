@@ -39,7 +39,8 @@ INSERT INTO `config_data` (`id`, `meta_data`, `meta_value`) VALUES
 (4, 'game_volume', '0.5'),
 (5, 'name_char_limit', '12'),
 (7, 'total_rounds', '6'),
-(8, 'moneris_state', 'testing');
+(8, 'moneris_state', 'testing'),
+(9, 'unit_name', 'give_unit_a_name');
 
 -- --------------------------------------------------------
 

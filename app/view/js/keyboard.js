@@ -16,6 +16,10 @@ $(document).ready(function() {
     });
 	*/
 
+  $('#purchase-buttons .button').on(event_action, function() {
+	 write = false; 
+  });
+	
   // Change the input on focus change
   $('input:not([type=checkbox])').focus(function() {
 	  

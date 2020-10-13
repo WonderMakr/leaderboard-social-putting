@@ -9,7 +9,7 @@
 				</div>
 				
 				<h1><?php echo $lang_purchase; ?></h1>
-				<p><?php echo $lang_fillout_info; ?><br><b><?php echo $lang_one_cred_is . credit_price(); if (monerisState() != 'live') echo ' (Test Mode)'; ?></b></p>
+				<p class="fillout"><?php echo $lang_fillout_info; ?><br><b><?php echo $OneplyisOneCred; ?><br><?php echo $lang_one_cred_is . credit_price(); if (monerisState() != 'live') echo ' (Test Mode)'; ?></b></p>
 				
 				<div id="credit-info">
 					
@@ -18,15 +18,15 @@
 						<div class="slide">
 
 							<div class="half">
-								<label>First Name</label>
+								<label><?php echo $lang_firstname; ?></label>
 								<input type="text" id="firstname" autocomplete="off" maxlength="20" />
 
-								<label>Last Name</label>
+								<label><?php echo $lang_lastname; ?></label>
 								<input type="text" id="lastname" autocomplete="off" maxlength="20" />
 							</div>
 
 							<div class="half">
-								<label>Credits</label>
+								<label><?php echo $lang_credits; ?></label>
 								<div id="cred-amount">
 									<div id="cred-amount-scroll">
 										<?php for ($c=1; $c<=8; $c++) : ?>
@@ -41,12 +41,12 @@
 							</div>
 							
 						</div>
-					
+						
 						<div class="slide second">
-							<h4>Swipe Card To Purchase Credits</h4>
+							<h4><?php echo $lang_swipe_to_purchase; ?></h4>
 							<div id="processing">
 								<div id="ldr"><img src="<?php echo $cfg['img_path']; ?>loader.gif" /></div>
-								<p>Processing...</p>
+								<p><?php echo $lang_processing; ?></p>
 								<div id="err"></div>
 							</div>
 							<div class="half">
@@ -65,7 +65,7 @@
 							<h4><?php echo $lang_thanks_for_purch; ?></h4>
 							
 							<p id="succ"></p>
-							<p>Enjoy the Game!</p>
+							<p><?php echo $lang_enjoy_the_game; ?></p>
 							
 						</div>
 						

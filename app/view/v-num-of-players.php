@@ -1,9 +1,13 @@
-<?php include ('include/top.php'); ?>
+<?php include('include/top.php'); ?>
 <?php include('include/purchase-popup.php'); ?>
 
 <script>
 	var game_name = '<?php echo $game_name; ?>';
 	var cfg_credit_price = '<?php echo credit_price(); ?>';
+	
+	var js_err_invalid_card = '<?php echo $lang_js_err_invalid_card; ?>';
+	var js_err_slash_reg_cred = '<?php echo $lang_js_err_slash_reg_cred; ?>';
+	var js_err_one_cred_is = '<?php echo $lang_js_err_one_cred_is; ?>';
 </script>
 
 <div id="page-content" class="w30-w70">
@@ -13,7 +17,7 @@
 		<img id="game-img" src="<?php echo $cfg['img_path'].$game_name; ?>.png" />
 	</div>
 	
-	<div class="w70">
+	<div class="w70 <?php echo $pay_system; ?>">
 		
 		<div id="num-toggle">
 			
@@ -44,7 +48,10 @@
 		
 		<p id="aval_cred" class="t-center"><?php echo $lang_aval_cred . ': ' . numOfCredits(); ?><span id="error"><br>&nbsp;</span></p>
 		
-		<div class="t-center"><div id="purchase" class="button"><?php echo $lang_purchase; ?></div></div>
+			<?php if ($pay_system == 'credits') : ?>
+				<div class="t-center"><div id="purchase" class="button"><?php echo $lang_purchase; ?></div></div>
+			<?php endif; ?>
+		
 		<?php endif; ?>
 		
 	</div>

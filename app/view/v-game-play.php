@@ -4,7 +4,17 @@
 <script>
 	var cfg_game_play_volume = <?php echo gamePlayVolume(); ?>;
 	var music_options = <?php echo js_array($game_play_songs); ?>;
-	var current_game_id = <?php echo $current_game['id']; ?>
+	var current_game_id = <?php echo $current_game['id']; ?>;
+	
+	var lang_great_shot = '<?php echo $lang_great_shot; ?>';
+	var lang_better_luck = '<?php echo $lang_better_luck; ?>';
+	var lang_better_than_none = '<?php echo $lang_better_than_none; ?>';
+	var lang_almost_perfect = '<?php echo $lang_almost_perfect; ?>';
+	var lang_got_a_pro = '<?php echo $lang_got_a_pro; ?>';
+	
+	var lang_great_game = '<?php echo $lang_great_game; ?>';
+	var lang_thanks_for_playing = '<?php echo $lang_thanks_for_playing; ?>';
+	var lang_see_you_soon = '<?php echo $lang_see_you_soon; ?>';
 </script>
 
 <div id="winner-container" data-vid-loc="<?php echo $cfg['vid_path']; ?>">

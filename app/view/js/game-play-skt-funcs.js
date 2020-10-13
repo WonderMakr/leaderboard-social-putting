@@ -173,10 +173,10 @@ const main = async () => {
           currentPlayerPutts[currentPlayerPutts.length - 2].success +
           currentPlayerPutts[currentPlayerPutts.length - 3].success;
         let messageArray = [
-          'Better Luck<br>Next Time',
-          'One is better<br>than nothing',
-          'Way to go!<br>Almost Perfect',
-          'We got a<br>pro over here!'
+			lang_better_luck,
+			lang_better_than_none,
+			lang_almost_perfect,
+			lang_got_a_pro
         ];
         displayScoreAndMessageWithPlayerId(
           currentGame.current_player_id,
@@ -394,7 +394,7 @@ function displayGreatPuttWithName(name) {
     $('#flow-screens h1').text(name);
     $('#flow-screens #putt-message')
       .addClass('b4-animate')
-      .html('<span class="lrg">Great<br>Shot!</span>')
+      .html(lang_great_shot)
       .show()
       .addClass('animate');
     $('#flow-screens').fadeIn(flowscreen_fadetime);
@@ -480,6 +480,7 @@ function changeAllHoleColors(color) {
 		if (!videos.includes(videoName))
 			videoName = videos[Math.floor(Math.random() * videos.length)];
 		
+		$('.cancel.button').trigger(event_action);
 		$('#winner-is').removeClass().addClass(videoName);
 		$('#winner-video source').attr('src', $('#winner-container').attr('data-vid-loc') + videoName + '.mp4');
 		
@@ -530,11 +531,11 @@ function changeAllHoleColors(color) {
 				music.play();
 			if (cfg_screen == 'small') {
 				console.log('finished');
-							
-				$('#popup #p-content h1').text('Great Game');
-				$('#popup #p-content p').html('Thank you for playing.<br>We hope to see you again soon!');
+				
+				$('#popup #p-content h1').text(lang_great_game);
+				$('#popup #p-content p').html(lang_thanks_for_playing+'<br>'+lang_see_you_soon);
 				$('#popup #p-content .button.cancel').remove();
-				$('.clear.button, .new_game.button').show();
+				$('.clear.button, .new_game.button').css('display','inline-block');
 				$('#winner-container').fadeOut(1000, function() {
 					$('body').addClass('open-pop-up');
 					$('#popup').fadeIn(flowscreen_fadetime);
