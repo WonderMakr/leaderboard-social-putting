@@ -16,7 +16,7 @@
 		<meta property="og:description" content="<?php echo ($pagedata['og:description']); ?>" />
 		<meta property="og:image" content="<?php echo ($pagedata['og:image']); ?>" />
 		<meta property="fb:app_id" content="<?php echo ($cfg['fb_appId']); ?>" />
-		 
+		
 		<?php
 		// Include page CSS
 		getCSS('normalize');
@@ -47,12 +47,14 @@
 				event_action = 'touchstart';
 			
 			console.log(event_action);
+			// Not used anymore
+			var cfg_index_timeout = <?php echo $cfg['index_timeout']; ?>;
 			
 			var cfg_url = '<?php echo $cfg['url']; ?>';
 			var cfg_screen = '<?php echo $screen; ?>';
 			var cfg_fade_time = <?php echo $cfg['fade_time']; ?>;
 			var cfg_sound_path = '<?php echo $cfg['sound_path']; ?>';
-			var cfg_index_timeout = <?php echo $cfg['index_timeout']; ?>;
+			var cfg_timeout_to_attract = <?php echo timeoutToAttractScreen(); ?>;
 		</script>
 		
 		<div id="black-fade"></div>

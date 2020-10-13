@@ -145,6 +145,10 @@ function monerisState() {
 	return getMetaValue('moneris_state');
 }
 
+function timeoutToAttractScreen() {
+	return getMetaValue('timeout_to_attract');
+}
+
 function decrementCredits($credits) {
 	
 	global $db; 

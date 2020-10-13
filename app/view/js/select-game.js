@@ -31,6 +31,11 @@ $(document).ready(function () {
 			
 		}
 		
+	} else {
+		setTimeout(function() {
+			socket.emit('change-screen', {new_screen: 'index'});
+			changeScreen("index");
+		}, cfg_timeout_to_attract);
 	}
 	
 	var processing = false;
@@ -55,7 +60,5 @@ $(document).ready(function () {
 		}
 		
 	});
-	
-	
 	
 });

@@ -540,6 +540,11 @@ function changeAllHoleColors(color) {
 				$('#popup #p-content p').html(lang_thanks_for_playing+'<br>'+lang_see_you_soon);
 				$('#popup #p-content .button.cancel').remove();
 				$('.clear.button, .new_game.button').css('display','inline-block');
+					
+				setTimeout(function() {
+					$('.clear.button').trigger(event_action);
+				}, cfg_timeout_to_attract);
+
 				$('#winner-container').fadeOut(1000, function() {
 					$('body').addClass('open-pop-up');
 					$('#popup').fadeIn(flowscreen_fadetime);
