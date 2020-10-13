@@ -208,12 +208,10 @@ const main = async () => {
     console.log(hole);
 
     if (!hole.length && hole.id) {
-      if (hole.active) changeHoleColor(hole.id, 'white');
-      if (!hole.active) changeHoleColor(hole.id, 'green');
+      changeHoleColor(hole.id, hole.color);
     } else if (hole.length && hole[0].id) {
       hole.forEach(function(holeData) {
-        if (holeData.active) changeHoleColor(holeData.id, 'white');
-        if (!holeData.active) changeHoleColor(holeData.id, 'green');
+        changeHoleColor(holeData.id, hole.color);
       });
     }
   });
@@ -450,10 +448,15 @@ if (cfg_screen == 'small') {
 }
 
 function changeHoleColor(hole, color) {
-  if (hole_colors.includes(color))
-    $('#hole-' + hole)
-      .removeClass()
-      .addClass('hole ' + color);
+  var rgbHex = color.slice(0,7);
+  var whiteValue = color.slice(7);
+
+  if (whiteValue !== '00') {
+    rgbHex = `#${whiteValue}${whiteValue}${whiteValue}`;
+  }
+
+  $('#hole-' + hole)
+      .css( "background-color", rgbHex );
 }
 
 function changeAllHoleColors(color) {
