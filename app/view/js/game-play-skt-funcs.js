@@ -189,6 +189,9 @@ const main = async () => {
         setTimeout(removeUserFlowScreen, 2000);
       }
 
+      // Don't love this, but it's a quick fix for now
+      if (currentGame.game_type_id === 3) multiplier = 2;
+
       setTimeout(function() {
         tellSomeoneToPuttWithPlayerId(game.current_player_id);
       }, (multiplier - 1) * 4000);
