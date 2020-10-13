@@ -35,7 +35,7 @@ $(document).ready(function () {
 	
 	if (cfg_screen == 'big') {
 		
-		var music = new Audio(cfg_sound_path+'high-dreams-full.wav');
+		var music = new Audio(cfg_sound_path+'play-this-game.wav');
 		music.onended = function() {
 			//playSong();
 			//music.pause();
