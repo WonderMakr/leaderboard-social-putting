@@ -55,7 +55,7 @@
 		?>
 		</div>
 		
-		<div id="flow-screens">
+		<div id="flow-screens"<?php echo $flowscreen_class; ?>>
 			<h1></h1>
 			<div id="putt-score"></div>
 			<div id="putt-message"></div>

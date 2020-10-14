@@ -297,6 +297,11 @@ body.big-screen #p-buttons .button {
     background-image: url("../images/grass.jpg");
 }
 
+#content > #flow-screens.no-grass {
+	background-image: none;
+    background-color: rgba(36, 54, 43, 78%);
+}
+
 #flow-screens h1,
 #putt-score,
 #putt-message {
