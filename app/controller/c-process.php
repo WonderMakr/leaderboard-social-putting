@@ -198,7 +198,8 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['command']) ) {
 				/****************************** Request Object *******************************/
 				$mpgRequest = new mpgRequest($mpgTxn);
 				$mpgRequest->setProcCountryCode("CA"); //"US" for sending transaction to US environment
-				$mpgRequest->setTestMode(true); //false or comment out this line for production transactions
+				if (monerisState() != 'live') {
+					$mpgRequest->setTestMode(true); //false or comment out this line for production transactions
 				/***************************** HTTPS Post Object *****************************/
 				/* Status Check Example
 				$mpgHttpPost  =new mpgHttpsPostStatus($store_id,$api_token,$status_check,$mpgRequest);
