@@ -42,11 +42,20 @@
 		<?php } ?>
 		
 		<script>
-			var event_action = 'click';
-			if ('ontouchstart' in document.documentElement)
-				event_action = 'touchstart';
 			
+			var event_action = 'mousedown';
+			
+			var isTouchCapable = 'ontouchstart' in window ||
+				window.DocumentTouch && document instanceof window.DocumentTouch ||
+				navigator.maxTouchPoints > 0 || 
+				window.navigator.msMaxTouchPoints > 0;
+
+			if (isTouchCapable)
+				event_action = 'touchstart';
+
 			console.log(event_action);
+			
+			
 			// Not used anymore
 			var cfg_index_timeout = <?php echo $cfg['index_timeout']; ?>;
 			
