@@ -56,7 +56,7 @@ html {
 *:after {
 	box-sizing: inherit;
 	-webkit-user-select: none;
-	overscroll-behavior-y: none;
+	overscroll-behavior: none;
 }
 
 body {
