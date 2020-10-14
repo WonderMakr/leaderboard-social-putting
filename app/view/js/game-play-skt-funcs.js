@@ -134,7 +134,7 @@ const main = async () => {
         if (game.game_type_id === 3) {
           let currentPlayerActiveHole =
             0.5 * (Math.sqrt(8 * player.score + 1) - 1) + 1; // This equations is generated from solving for n in the series 0+1+2+...
-          $(`#p${player.id} > .score`).html(`${currentPlayerActiveHole} of 6`);
+          $(`#p${player.id} > .score`).html(`${currentPlayerActiveHole < 7 ? currentPlayerActiveHole : 6} of 6`);
         } else {
           $(`#p${player.id} > .score`).html(`${player.score}`);
         }
