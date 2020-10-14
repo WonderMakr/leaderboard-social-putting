@@ -168,7 +168,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['command']) ) {
 				// Optional Values //
 				$type				= 'purchase';
 				$cust_id			= 'CID-' . $clean_name . '-' . $time;
-				$dynamic_descriptor	= 'Sale: $' . $amount . '|' . $credits . ' Crd' ;
+				$dynamic_descriptor	= 'Leaderboard: ' . $credits . ' Crd';//'Sale: $' . $amount . '|' . $credits . ' Crd' ;
 				$status_check 		= 'false';
 				/////////////////////
 				
