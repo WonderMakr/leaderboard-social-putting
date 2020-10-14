@@ -130,6 +130,7 @@ const main = async () => {
     let currentPlayerChanged = game.current_player_id !== currentGame.current_player_id;
     let currentRoundChanged = game.current_round !== currentGame.current_round;
     let currentPlayerOrRoundChanged = currentPlayerChanged || currentRoundChanged;
+    let isGame3With1Player = currentGame.game_type_id === 3 && currentGame.player_count === 1;
 
     if (game.players.length) {
       game.players.forEach(player => {
@@ -158,7 +159,7 @@ const main = async () => {
     // This logic needs to be corrected for a single player
     // Check if the player just putted
     // This also gets triggered if currentGame.current_player_id == 0 and never gets set to the actual current game data
-    if (currentPlayerOrRoundChanged && currentGame.current_player_id) {
+    if (currentPlayerOrRoundChanged && currentGame.current_player_id && !isGame3With1Player) {
       let multiplier = 1;
       // New player turn
       if (currentGame.game_type_id != 3) {
