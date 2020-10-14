@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 09, 2020 at 09:49 PM
+-- Generation Time: Oct 14, 2020 at 03:48 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -33,14 +33,15 @@ CREATE TABLE `config_data` (
 --
 
 INSERT INTO `config_data` (`id`, `meta_data`, `meta_value`) VALUES
-(1, 'credits', '18'),
-(2, 'payment_system', 'credits'),
+(1, 'credits', '1'),
+(2, 'payment_system', 'free_play'),
 (3, 'credit_price', '5'),
 (4, 'game_volume', '0.5'),
 (5, 'name_char_limit', '12'),
 (7, 'total_rounds', '6'),
 (8, 'moneris_state', 'testing'),
-(9, 'unit_name', 'give_unit_a_name');
+(9, 'unit_name', 'give_name'),
+(10, 'timeout_to_attract', '600000');
 
 -- --------------------------------------------------------
 
@@ -113,6 +114,7 @@ CREATE TABLE `transactions` (
   `reference_num` varchar(50) NOT NULL,
   `credits` int(10) UNSIGNED NOT NULL,
   `amount` varchar(10) NOT NULL,
+  `moneris_state` varchar(50) NOT NULL,
   `datetime` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -158,7 +160,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `config_data`
 --
 ALTER TABLE `config_data`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `games`

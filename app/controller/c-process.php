@@ -144,8 +144,9 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['command']) ) {
 				$mm					= $expiration_date[1];
 				$time 				= time();
 				
+				$moneris_state = monerisState();
 				/**************************** Request Variables *******************************/
-				if (monerisState() == 'live') {
+				if ($moneris_state == 'live') {
 					// LIVE VARIABLES
 					$store_id			= 'monmpg4964';
 					$api_token			= 'zRTkmvM3P1OhmjoYwSPY';
@@ -198,7 +199,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['command']) ) {
 				/****************************** Request Object *******************************/
 				$mpgRequest = new mpgRequest($mpgTxn);
 				$mpgRequest->setProcCountryCode("CA"); //"US" for sending transaction to US environment
-				if (monerisState() != 'live')
+				if ($moneris_state != 'live')
 					$mpgRequest->setTestMode(true); //false or comment out this line for production transactions
 				/***************************** HTTPS Post Object *****************************/
 				/* Status Check Example
@@ -268,9 +269,10 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['command']) ) {
 						"reference_num"	=> $mpgResponse->getReferenceNum(),
 						"credits"		=> $credits,
 						"amount"	 	=> $amount,
-						"datetime"		=> time()
+						"moneris_state" => $moneris_state,
+						"datetime"		=> $time
 					);
-					$insert = $db->prepare("INSERT INTO `transactions` (`firstname`, `lastname`, `name_on_card`, `receipt_id`, `reference_num`, `credits`, `amount`, `datetime`) VALUES (:firstname, :lastname, :name_on_card, :receipt_id, :reference_num, :credits, :amount, :datetime)");
+					$insert = $db->prepare("INSERT INTO `transactions` (`firstname`, `lastname`, `name_on_card`, `receipt_id`, `reference_num`, `credits`, `amount`, `moneris_state`, `datetime`) VALUES (:firstname, :lastname, :name_on_card, :receipt_id, :reference_num, :credits, :amount, :moneris_state, :datetime)");
 					$insert->execute($trans_data);
 					
 					$output = array('result' => 'success', 'mpgMessage' => $mpgResponse->getMessage(), 
