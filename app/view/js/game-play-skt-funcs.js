@@ -261,13 +261,17 @@ async function startGame() {
   });
   console.log('START GAME');
   console.log(gameInProgress);
-  if (gameInProgress.length) {
-    let game = gameInProgress[0];
-    await app.service('games').patch(game.id, {
-      status: 1
-    });
-  } else {
-    console.log('Sorry, there is no game available to start.');
+
+  // Call on small screen so it only happens once
+  if (cfg_screen == 'small') {
+    if (gameInProgress.length) {
+      let game = gameInProgress[0];
+      await app.service('games').patch(game.id, {
+        status: 1
+      });
+    } else {
+      console.log('Sorry, there is no game available to start.');
+    }
   }
 
   // Only for the first player at the beginning of a game
