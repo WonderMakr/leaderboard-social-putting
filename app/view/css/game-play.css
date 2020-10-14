@@ -391,7 +391,7 @@ body.big-screen #p-buttons .button {
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	z-index: 500;
+	z-index: 1000;
 	display: none;
 	position: absolute;
 	background-color: #000;
