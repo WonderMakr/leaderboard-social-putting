@@ -126,8 +126,10 @@ const main = async () => {
     $('#c_round').html(game.current_round);
     if (game.game_type_id === 3 || game.game_type_id === 2)
       $('#round-info:visible').hide(); // Make this only happen once
-    let currentPlayerChanged =
-      game.current_player_id !== currentGame.current_player_id;
+
+    let currentPlayerChanged = game.current_player_id !== currentGame.current_player_id;
+    let currentRoundChanged = game.current_round !== currentGame.current_round;
+    let currentPlayerOrRoundChanged = currentPlayerChanged || currentRoundChanged;
 
     if (game.players.length) {
       game.players.forEach(player => {
@@ -156,7 +158,7 @@ const main = async () => {
     // This logic needs to be corrected for a single player
     // Check if the player just putted
     // This also gets triggered if currentGame.current_player_id == 0 and never gets set to the actual current game data
-    if (currentPlayerChanged && currentGame.current_player_id) {
+    if (currentPlayerOrRoundChanged && currentGame.current_player_id) {
       let multiplier = 1;
       // New player turn
       if (currentGame.game_type_id != 3) {
