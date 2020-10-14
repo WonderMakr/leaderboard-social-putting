@@ -1,6 +1,4 @@
 $(document).ready(function () {
-
-	$.post( "http://localhost:3030/lights", { 'attract': 'true' } );
 	
 	//ANIMATIONS
 	var logo_transition = parseFloat($('#w-logo').css('transition-duration').replace('s', ''))*1000;
@@ -33,6 +31,12 @@ $(document).ready(function () {
 		}, cfg_index_timeout);
 		
 	} */
+
+	if (cfg_screen == 'small') {
+
+		$.post( "http://localhost:3030/lights", { 'attract': 'true' } );
+		
+	}
 	
 	
 	if (cfg_screen == 'big') {
