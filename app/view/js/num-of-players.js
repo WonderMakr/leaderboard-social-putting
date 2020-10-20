@@ -165,10 +165,10 @@ $(document).ready(function () {
 	
 	$('#toggles > div').on(event_action, function() {
 		
-		if (processing)
-			return false;
-		
 		var $this = $(this);
+		
+		if (processing || $this.hasClass('spacer'))
+			return false;
 		
 		processing = true;
 		$this.addClass('active');
@@ -178,9 +178,9 @@ $(document).ready(function () {
 		
 		$('.next.button').removeClass('no-cred').removeClass('active');
 		$('p').removeClass('error');
-		$('#error').html('<br>&nbsp;');
+		$('#error').html(js_err_one_cred_is+cfg_credit_price);
 		
-		if ( (current_players == '8' && $this.hasClass('plus')) || (current_players == '0' && $this.hasClass('minus')) ) {
+		if ( (current_players == '8' && $this.hasClass('plus')) || (current_players == '0' && $this.hasClass('minus'))) {
 			setTimeout(function() {
 				$this.removeClass('active');
 				processing = false;

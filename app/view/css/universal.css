@@ -63,6 +63,7 @@ body {
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
+	position: relative;
 	font-family: 'DIN2014-Regular', "Helvetica Neue", Helvetica, Arial, "sans-serif";
 }
 
@@ -274,6 +275,18 @@ h3.playHere .play.b4-animate {
 }
 h3.playHere .legend.b4-animate {
 	left: 60vw;
+}
+
+#special_message {
+    left: 1%;
+    bottom: 1.5%;
+    color: #e4c771;
+    font-size: 22px;
+    line-height: 130%;
+    text-align: left;
+    position: absolute;
+    font-family: 'DIN2014-light';
+    text-shadow: -1px 1px 5px black;
 }
 
 /* POP UP STYLES */

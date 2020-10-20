@@ -145,6 +145,10 @@ function monerisState() {
 	return getMetaValue('moneris_state');
 }
 
+function unitName() {
+	return getMetaValue('unit_name');
+}
+
 function timeoutToAttractScreen() {
 	return getMetaValue('timeout_to_attract');
 }

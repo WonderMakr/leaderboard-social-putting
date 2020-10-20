@@ -46,9 +46,12 @@ $instructions = array (
 
 );
 
+// INSTRUCTIONS
+
 $lang_firstname = "First Name";
 $lang_lastname = "Last Name";
 $lang_credits = "Credits";
+$lang_num_of_players = "Enter the number of Players";
 $lang_swipe_to_purchase = "Swipe Card To Purchase Credits";
 $lang_processing = "Processing...";
 $lang_enjoy_the_game = "Enjoy the Game!";
@@ -57,9 +60,8 @@ $lang_js_err_invalid_card = "Invalid card type. Please try again";
 $lang_js_err_slash_reg_cred = " / Required Credits: ";
 $lang_js_err_one_cred_is = "<br>1 Credit = 1 player | 1 Credit = $";
 
-// Purcahse popout
 $lang_fillout_info = "Fill out the information below to purchase more credits.";
-$OneplyisOneCred = "1 Credit = 1 player";
+$lang_one_ply_is_one_cred = "1 Credit = 1 player";
 $lang_one_cred_is = "1 Credit = $";
 $lang_thanks_for_purch = "Thank you for your purchase!";
 
@@ -78,5 +80,8 @@ $lang_got_a_pro = 'We got a<br>pro over here!';
 $lang_great_game = "Great Game";
 $lang_thanks_for_playing = "Thank you for playing.";
 $lang_see_you_soon = "We hope to see you again soon!";
+
+//special messaging
+$lang_special_message = "Please see the front desk for sanitized putters and balls.<br>Please return putters and balls when you are finished playing.<br>Remember to wash and sanitize your hands";
 
 ?>

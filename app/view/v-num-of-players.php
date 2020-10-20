@@ -19,6 +19,8 @@
 	
 	<div class="w70 <?php echo $pay_system; ?>">
 		
+		<h3><?php echo $lang_num_of_players; ?></h3>
+		
 		<div id="num-toggle">
 			
 			<div id="num">
@@ -46,7 +48,7 @@
 			<div class="next button"><?php echo $lang_next; ?></div>
 		</div>
 		
-		<p id="aval_cred" class="t-center"><?php echo $lang_aval_cred . ': ' . numOfCredits(); ?><span id="error"><br>&nbsp;</span></p>
+		<p id="aval_cred" class="t-center"><?php echo $lang_aval_cred . ': ' . numOfCredits(); ?><span id="error"><br><?php echo $lang_one_ply_is_one_cred. ' | ' . $lang_one_cred_is . credit_price(); ?></span></p>
 		
 			<?php if ($pay_system == 'credits') : ?>
 				<div class="t-center"><div id="purchase" class="button"><?php echo $lang_purchase; ?></div></div>

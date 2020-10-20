@@ -9,7 +9,7 @@
 				</div>
 				
 				<h1><?php echo $lang_purchase; ?></h1>
-				<p class="fillout"><?php echo $lang_fillout_info; ?><br><b><?php echo $OneplyisOneCred; ?><br><?php echo $lang_one_cred_is . credit_price(); if (monerisState() != 'live') echo ' (Test Mode)'; ?></b></p>
+				<p class="fillout"><?php echo $lang_fillout_info; ?><br><b><?php echo $lang_one_ply_is_one_cred; ?><br><?php echo $lang_one_cred_is . credit_price(); if (monerisState() != 'live') echo ' (Test Mode)'; ?></b></p>
 				
 				<div id="credit-info">
 					
@@ -50,7 +50,7 @@
 								<div id="err"></div>
 							</div>
 							<div class="half">
-								<img id="swipe-img" src="<?php echo $cfg['img_path']; ?>payment.png" />
+								<img id="swipe-img" src="<?php echo $cfg['img_path']; ?>swipe-card.png" />
 							</div>
 							<div class="half">
 								<div id="fName"></div>
