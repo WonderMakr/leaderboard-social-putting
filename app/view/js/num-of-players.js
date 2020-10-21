@@ -23,8 +23,8 @@ $(document).ready(function () {
 			url: "process",
 			data: {
 				command			: "process-payment",
-				firstname		: $('#lastname').val(),
-				lastname		: $('#firstname').val(),
+				firstname		: $('#firstname').val(),
+				lastname		: $('#lastname').val(),
 				credits			: parseInt($('.amount.current').text()),
 				card_number		: card.number,
 				name_on_card	: card.name,
@@ -74,8 +74,62 @@ $(document).ready(function () {
 		});
 	}
 	
-	function registerCardListener() {
-		console.log("Card listener registered");
+	function managerOverride(card) {
+		console.log("manager override called: ");
+		
+		$.ajax({
+			method: "POST",
+			url: "process",
+			data: {
+				command			: "manager-override",
+				credits			: parseInt($('.amount.current').text()),
+				card_number		: card.number
+			}
+			
+		}).done(function( msg ) {
+			
+			//console.log(msg);
+			
+			try {
+				
+				var obj = $.parseJSON(msg);
+				console.log(obj);
+				
+				$('#processing').removeClass('working');
+				
+				if (obj.result == "success") {
+				
+					$('#aval_cred').html(obj.new_credits);
+					$('.third.slide #succ').text(obj.message);
+					
+					$('#slide-scroll').animate({
+						marginLeft: '-='+$('#slide-scroll .slide').css('width')
+					}, 500, function() {
+						$('#purchase-buttons .close').css('display','inline-block');
+						$('.next.button').removeClass('no-cred').removeClass('active');
+						$('p').removeClass('error');
+						$('#error').html('<br>&nbsp;');
+					});
+				
+				} else {
+					
+					card_is_read = false;
+					$('.button.previous').css('display','inline-block');
+					$('#processing #err').text(obj.message);
+				}
+				
+			} catch (err) {
+				
+				console.log(err);
+				console.log(msg);
+				
+			}
+		
+		});
+	}
+	
+	function registerCreditCardListener() {
+		console.log("Credit Card listener registered");
 		
 		$("html").keypress(function (msg) {
 			
@@ -139,6 +193,70 @@ $(document).ready(function () {
 					date: "20"
 				};
 
+				step = 0;
+				dateCharCounter = 0;
+			}
+		});
+	}
+	
+	function registerCompCardListener() {
+		console.log("Comp Card listener registered");
+		
+		$("html").keypress(function (msg) {
+			
+			if (card_is_read)
+				return false;
+			
+			console.log("dataWipeTimer: "+dataWipeTimer);
+			$('#processing #err').text('');
+			$('.button.previous').hide();
+			$('#processing').show().addClass('working');
+			
+			// reset all data after a specific deley (ie. 5 seconds) have the timer start on first char
+			if (!dataWipeTimer) {
+				dataWipeTimer = setTimeout(function () {
+					creditCard = {
+						number: "",
+						name: "",
+						date: "20"
+					};
+
+					step = 0;
+					dateCharCounter = 0;
+					$('#processing').removeClass('working');
+					$('.button.previous').css('display','inline-block');
+					$('#processing #err').text(js_err_invalid_card);
+					dataWipeTimer = null;
+					
+				}, 2000);
+			}
+			
+			if (
+				(msg.key === "%" && step === 0)
+				|| (msg.key === "?" && step === 1)
+				|| (msg.key === ";" && step === 2)
+				|| (msg.key === "?" && step === 3)
+			) {
+				step++;
+				return;
+			}
+
+			if (step === 3) creditCard.number = creditCard.number + msg.key;
+			
+			if (step === 4) {
+				card_is_read = true;
+				console.log("comp card: ");
+				console.log(creditCard);
+				// Make authorize.net call here
+				managerOverride(creditCard);
+				clearTimeout(dataWipeTimer);
+				dataWipeTimer = null;
+				creditCard = {
+					number: "",
+					name: "",
+					date: "20"
+				};
+				
 				step = 0;
 				dateCharCounter = 0;
 			}
@@ -394,7 +512,10 @@ $(document).ready(function () {
 				$this.hide().removeClass('active');
 				processing = false;
 				$('input').blur();
-				registerCardListener();
+				if (firstname == 'Free' && lastname == 'Play')
+					registerCompCardListener();
+				else
+					registerCreditCardListener();
 				$('#purchase-buttons .button.previous').css('display','inline-block');
 			});
 			
@@ -457,6 +578,15 @@ $(document).ready(function () {
 			console.log('toggling numbers: ' + msg);
 			toggle(msg.direction);
 		});
+		
+	} else {
+		
+		setInterval(function() {
+			if ($('#lastname').val() == "") {
+				socket.emit('change-screen', {new_screen: 'index'});
+				changeScreen("index");
+			}
+		}, cfg_timeout_to_attract);
 		
 	}
 	

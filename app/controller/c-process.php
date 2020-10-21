@@ -301,6 +301,54 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['command']) ) {
 			
 		break;
 			
+		case 'manager-override':
+			
+			if (isset($_POST['card_number']) && isset($_POST['credits'])) {
+				
+				$credits 		= filter_var($_POST['credits'], FILTER_SANITIZE_NUMBER_INT);
+				$card_number	= filter_var($_POST['card_number'], FILTER_SANITIZE_NUMBER_INT);
+				$amount			= $credits * credit_price();
+				$moneris_state 	= monerisState();
+				
+				$managers_id = strstr(substr($card_number, -11), '01');
+				
+				$manager_info = isManager($managers_id);
+				
+				if ($manager_info != -1) {
+					
+					incrementCredits($credits);
+					
+					$trans_data = array(
+						"firstname" 	=> $manager_info['firstname'],
+						"lastname"		=> $manager_info['lastname'],
+						"name_on_card"	=> "Override",
+						"receipt_id" 	=> $manager_info['id'],
+						"reference_num"	=> "None",
+						"credits"		=> $credits,
+						"amount"	 	=> $amount,
+						"moneris_state" => $moneris_state,
+						"datetime"		=> time()
+					);
+					$insert = $db->prepare("INSERT INTO `transactions` (`firstname`, `lastname`, `name_on_card`, `receipt_id`, `reference_num`, `credits`, `amount`, `moneris_state`, `datetime`) VALUES (:firstname, :lastname, :name_on_card, :receipt_id, :reference_num, :credits, :amount, :moneris_state, :datetime)");
+					$insert->execute($trans_data);
+					
+					$output = array('result' => 'success', 'new_credits' => $lang_aval_cred . ': ' . numOfCredits() . '<span id="error"><br>&nbsp;</span>', 
+									'message' => "$credits credit(s) have been added", 'name' => $manager_info['firstname'] . ' ' . $manager_info['lastname']);
+					
+				} else {
+					$output = array('result' => 'Error', 'card' => $managers_id, 'message' => 'Invalid Managers ID. Please try again');
+				}
+				
+				exit(json_encode($output));
+			
+			} else {
+				
+				$output = array('result' => 'error', 'message' => 'Error processing payment');
+				exit (json_encode($output));
+			}
+			
+		break;
+			
 		default :
 			$output = array('result' => 'error', 'message' => 'Invalid command');
 			exit (json_encode($output));

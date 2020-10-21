@@ -153,6 +153,28 @@ function timeoutToAttractScreen() {
 	return getMetaValue('timeout_to_attract');
 }
 
+function isManager($card_number) {
+	
+	global $db;
+	
+	try {		
+		$sql = "SELECT id, firstname, lastname FROM managers WHERE active = 1 AND card_number = :card_number";
+		$select = $db->prepare($sql);
+		$select->execute(array("card_number" => $card_number));
+		$name = $select->fetch(PDO::FETCH_ASSOC);
+
+	} catch (PDOException $e) {
+		echo $e->getMessage();
+	}
+	
+	if ($name === false)
+		return -1;
+		
+	else
+		return $name;
+	
+}
+
 function decrementCredits($credits) {
 	
 	global $db; 

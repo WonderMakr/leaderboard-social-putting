@@ -336,7 +336,7 @@ p.error {
 
 #fName, #lName, #cAmount, #cCharge {
 	font-size: 30px;
-	padding-left: 80px;
+	padding-left: 50px;
 }
 
 #cCharge {

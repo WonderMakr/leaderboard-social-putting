@@ -78,7 +78,8 @@ $lang_almost_perfect = 'Way to go!<br>Almost Perfect';
 $lang_got_a_pro = 'We got a<br>pro over here!';
 
 $lang_great_game = "Great Game";
-$lang_thanks_for_playing = "Thank you for playing.";
+$lang_thanks_for_playing = "Thank you for playing.<br>";
+$lang_return_message = "<br>Please return putters and balls.<br>Remember to wash and sanitize your hands.<br>";
 $lang_see_you_soon = "We hope to see you again soon!";
 
 //special messaging

@@ -13,7 +13,7 @@
 	var lang_got_a_pro = '<?php echo $lang_got_a_pro; ?>';
 	
 	var lang_great_game = '<?php echo $lang_great_game; ?>';
-	var lang_thanks_for_playing = '<?php echo $lang_thanks_for_playing; ?>';
+	var lang_thanks_for_playing = '<?php echo $lang_thanks_for_playing; if (unitName() == 'Bingemans') echo $lang_return_message; ?>';
 	var lang_see_you_soon = '<?php echo $lang_see_you_soon; ?>';
 </script>
 
