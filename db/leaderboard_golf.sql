@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 14, 2020 at 03:48 PM
+-- Generation Time: Oct 22, 2020 at 04:17 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -33,14 +33,14 @@ CREATE TABLE `config_data` (
 --
 
 INSERT INTO `config_data` (`id`, `meta_data`, `meta_value`) VALUES
-(1, 'credits', '1'),
-(2, 'payment_system', 'free_play'),
+(1, 'credits', '16'),
+(2, 'payment_system', 'credits'),
 (3, 'credit_price', '5'),
 (4, 'game_volume', '0.5'),
 (5, 'name_char_limit', '12'),
 (7, 'total_rounds', '6'),
 (8, 'moneris_state', 'testing'),
-(9, 'unit_name', 'give_name'),
+(9, 'unit_name', 'unit_name'),
 (10, 'timeout_to_attract', '600000');
 
 -- --------------------------------------------------------
@@ -83,6 +83,34 @@ INSERT INTO `game_types` (`id`, `game`, `slug`, `active`) VALUES
 (1, 'Six Hole Challenge', 'six-hole', 1),
 (2, 'Mark It Zero', 'mark-0', 1),
 (3, 'Lights Out', 'lights-out', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `managers`
+--
+
+CREATE TABLE `managers` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `firstname` varchar(25) NOT NULL,
+  `lastname` varchar(25) NOT NULL,
+  `card_number` varchar(20) NOT NULL,
+  `active` tinyint(1) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `managers`
+--
+
+INSERT INTO `managers` (`id`, `firstname`, `lastname`, `card_number`, `active`) VALUES
+(1, 'Michelle', 'Playfair', '0100034598', 1),
+(2, 'Morgan', 'Patey', '0100034599', 1),
+(3, 'Anna', 'Mullins', '0100034600', 1),
+(4, 'Michael', 'Gough', '01000345601', 1),
+(5, 'Jenny', 'Wong', '0100034602', 1),
+(6, 'Jessica', 'Hubert', '0100034603', 1),
+(7, 'Extra', 'Extra', '01000345604', 1),
+(8, 'Tester', 'Mc Test', '0100082931', 1);
 
 -- --------------------------------------------------------
 
@@ -141,6 +169,12 @@ ALTER TABLE `game_types`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `managers`
+--
+ALTER TABLE `managers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `players`
 --
 ALTER TABLE `players`
@@ -173,6 +207,12 @@ ALTER TABLE `games`
 --
 ALTER TABLE `game_types`
   MODIFY `id` int(2) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `managers`
+--
+ALTER TABLE `managers`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `players`
