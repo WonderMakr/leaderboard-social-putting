@@ -5,7 +5,7 @@ function getCSS($lib) {
 	
 	$lib_version = explode("?",$lib);
 	$lib = $lib_version[0];
-	$version = isset($lib_version[1]) ? "?".$lib_version[1] : "?v=0.38";
+	$version = isset($lib_version[1]) ? "?".$lib_version[1] : "?v=0.40";
 	
 	$output = '<link href="'.$cfg['url'].'view/css/'.$lib.'.css'.$version.'" rel="stylesheet" type="text/css" />';
 	echo ($output."\n\t\t");
@@ -16,7 +16,7 @@ function getJS($lib, $hosted) {
 	if ($hosted == 1) {
 		$lib_version = explode("?",$lib);
 		$lib = $lib_version[0];
-		$version = isset($lib_version[1]) ? "?".$lib_version[1] : "?v=0.38";
+		$version = isset($lib_version[1]) ? "?".$lib_version[1] : "?v=0.40";
 
 		$output = '<script src="'.$cfg['url'].'view/js/'.$lib.'.js'.$version.'" type="text/javascript"></script>';
 	} else {
