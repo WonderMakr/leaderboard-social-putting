@@ -3,43 +3,18 @@ $(document).ready(function () {
 	if (cfg_screen == 'small') {
 
 		$.post( "http://localhost:3030/lights", { 'attract': 'false' } );
-		
-	}
-	
-	if (cfg_screen == 'big') {
-		
-		var balls = $('.golf-ball');
-		var putt = new Audio(cfg_sound_path+'golf-putt-sound.mp3');
-		var ball_transition = parseFloat($('.golf-ball').css('transition-duration').replace('s', ''))*1000;
-
-		for (var b = 0; b < balls.length; b++) {
-			//console.log(b);
-			var delay = balls.length - b;
-			animateBall(balls[b], delay*1000, ball_transition);
-		}
-		
-		function animateBall(ball, delay, reveal_game_delay) {
-			//console.log(ball);
-			setTimeout(function() {
-				
-				putt.pause();
-				putt.currentTime = 0;
-				putt.play();
-				$(ball).removeClass('b4-animate');
-				setTimeout(function() {
-					$(ball).addClass('after-animate');
-					$(ball).children('img').removeClass('b4-animate');
-				}, reveal_game_delay);
-				
-			}, delay);
-			
-		}
-		
-	} else {
 		setTimeout(function() {
 			socket.emit('change-screen', {new_screen: 'index'});
 			changeScreen("index");
 		}, cfg_timeout_to_attract);
+		
+	}
+	
+	var video = document.getElementById('games-video');
+	video.play();
+	video.onended = function() {
+		video.currentTime = 0;
+		video.play();
 	}
 	
 	var processing = false;

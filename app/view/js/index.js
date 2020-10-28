@@ -1,93 +1,52 @@
 $(document).ready(function () {
 	
-	//ANIMATIONS
-	var logo_transition = parseFloat($('#w-logo').css('transition-duration').replace('s', ''))*1000;
-	var play_here_transitions = parseFloat($('h3.playHere > span').css('transition-duration').replace('s', ''))*1000;
-	
-	setTimeout(function() {
-		
-		$('#w-logo').removeClass('b4-animate');
-		
-		setTimeout(function() {
-			$('h3.playHere .play').removeClass('b4-animate');
-			setTimeout(function() {
-				$('h3.playHere .legend').removeClass('b4-animate');
-				setTimeout(function() {
-					$('.button').removeClass('b4-animate');
-				}, play_here_transitions);
-			}, play_here_transitions);
-		}, logo_transition);
-		
-	}, cfg_fade_time+150);
-	
 	var processing = false;
 	
-	/*
+	var video1 = document.getElementById('attract-video1');
+	video1.play();
+	
 	if (cfg_screen == 'small') {
-
-		setTimeout(function() {
-			socket.emit('change-screen', {new_screen: 'attract'});
-			changeScreen("attract");
-		}, cfg_index_timeout);
 		
-	} */
-
-	if (cfg_screen == 'small') {
+		setTimeout(function() {
+			$('.button').removeClass('b4-animate');
+		}, 5000);
 
 		$.post( "http://localhost:3030/lights", { 'attract': 'true' } );
 		
+		video1.onended = function() {
+			video1.currentTime = 0;
+			video1.play();
+		}
 	}
 	
 	
 	if (cfg_screen == 'big') {
 		
 		var music = new Audio(cfg_sound_path+'play-this-game.wav');
-		music.onended = function() {
-			//playSong();
-			//music.pause();
-			//music.currentTime = 0;
-			//music.play();
-		};
-		var video = document.getElementById('attract-video');
+		var video2 = document.getElementById('attract-video2');
 		
-		function prepareAndPlayVideo() {
-			music.play();
+		video1.onended = function() {
 			$('#black-fade').fadeIn(cfg_fade_time, function() {
-				$('h3.playHere > span').addClass('b4-animate');
-				$('#page-content').addClass('vid-playing');
-				setTimeout(function() {
-					$('#black-fade').fadeOut(cfg_fade_time, function() {
-						video.play();
-					});
-				}, play_here_transitions);
+				$('#attract-video1').hide();
+				video1.currentTime = 0;
+				$('#attract-video2').show();
+				$('#black-fade').fadeOut(cfg_fade_time, function() {
+					music.play();
+					video2.play();
+				});
 			});
-			
 		}
 		
-		setTimeout(function() {
-			prepareAndPlayVideo();
-		}, logo_transition+play_here_transitions+5000);
-		
-		video.onended = function() {
+		video2.onended = function() {
 			music.pause();
 			music.currentTime = 0;
 			$('#black-fade').fadeIn(cfg_fade_time, function() {
-				$('#page-content').removeClass('vid-playing');
-				$('#w-logo, h3.playHere > span').addClass('b4-animate');
-				setTimeout(function() {
-					$('#black-fade').fadeOut(cfg_fade_time, function() {
-						$('#w-logo').removeClass('b4-animate');
-						setTimeout(function() {
-							$('h3.playHere .play').removeClass('b4-animate');
-							setTimeout(function() {
-								$('h3.playHere .legend').removeClass('b4-animate');
-								setTimeout(function() {
-									prepareAndPlayVideo();
-								}, play_here_transitions);
-							}, play_here_transitions);
-						}, logo_transition);
-					});
-				}, logo_transition);
+				$('#attract-video2').hide();
+				video2.currentTime = 0;
+				$('#attract-video1').show();
+				$('#black-fade').fadeOut(cfg_fade_time, function() {
+					video1.play();
+				});
 			});
 		}
 	} 

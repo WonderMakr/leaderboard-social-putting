@@ -2,9 +2,25 @@ node_modules
 
 app/.htaccess
 app/config.inc.php
+
 app/view/videos/attract-video.mov
 app/view/videos/attract-video.mp4
+
 .DS_Store
+
 app/view/js/_index.js
 app/view/images/board-old.jpg
 app/view/videos/_shark.mp4
+
+app/admin/*
+app/admin/.htaccess
+app/admin/config.inc.php
+app/view/_v-index.php
+app/view/css/_games-preview.css
+app/view/css/_index.css
+app/view/css/_select-game.css
+app/view/js/_games-preview.js
+app/view/js/_select-game.js
+app/view/videos/attract-video1.mp4
+app/view/videos/attract-video2.mp4
+app/view/videos/game-logos.mp4

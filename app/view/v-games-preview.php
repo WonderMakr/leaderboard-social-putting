@@ -1,8 +1,8 @@
 <?php include ('include/top.php'); ?>
 
+<video id="games-video" class="video"><source src="<?php echo $cfg['vid_path']; ?>game-logos.mp4" type="video/mp4"></video>
+
 <div id="page-content">
-	
-	<div id="header"><img id="g-logo" src="<?php echo $cfg['img_path']; ?>logo-green.jpg" /></div>
 	
 	<?php $activeGames = getActiveGames(); ?>
 	
@@ -11,16 +11,6 @@
 		<?php foreach ($activeGames as $slug) : ?>
 		
 		<div class="game">
-			
-			<?php if ($screen == 'big') : ?>
-			
-			<div class="golf-ball b4-animate">
-				<img class="b4-animate" src="<?php echo $cfg['img_path'] . $slug; ?>.png" /><br>
-			</div>
-			
-			<?php else : ?>
-				<img src="<?php echo $cfg['img_path'] . $slug; ?>.png" /><br>
-			<?php endif; ?>
 			
 			<?php if ($screen == 'small') : ?>
 			<div class="button" data-link="game-instructions?game=<?php echo $slug; ?>"><?php echo $lang_how_to_play; ?></div>
