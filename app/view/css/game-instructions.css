@@ -1,5 +1,17 @@
 @charset "UTF-8";
 
+.video {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+#page-content {
+	position: relative;
+}
+
 h3 {
 	margin: 0 auto 3vh;
 	font-size: 2.75vw;

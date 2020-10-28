@@ -192,6 +192,13 @@ p.available {
     max-height: 259px;
 }
 
+#header #g-logo-png {
+    width: auto;
+    height: 8vh;
+    max-height: 259px;
+    margin-top: 6vh;
+}
+
 .w30-w70 {
 	font-size: 0;
 	vertical-align: top;

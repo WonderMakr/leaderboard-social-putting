@@ -1,9 +1,11 @@
 <?php include ('include/top.php'); ?>
 
+<video id="lines-video" class="video"><source src="<?php echo $cfg['vid_path']; ?>green-lines.mp4" type="video/mp4"></video>
+
 <div id="page-content" class="w30-w70">
 	
 	<div class="w30">
-		<div id="header"><img id="g-logo" src="<?php echo $cfg['img_path']; ?>logo-green.jpg" /></div>
+		<div id="header"><img id="g-logo-png" src="<?php echo $cfg['img_path']; ?>logo-score.png" /></div>
 		<img id="game-img" src="<?php echo $cfg['img_path'].$game_name; ?>.png" />
 	</div>
 	

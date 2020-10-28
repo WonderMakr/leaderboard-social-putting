@@ -2,6 +2,13 @@ $(document).ready(function () {
 	
 	var processing = false;
 	
+	var video = document.getElementById('lines-video');
+	video.play();
+	video.onended = function() {
+		video.currentTime = 0;
+		video.play();
+	}
+	
 	// CREDIT CARD VARIABLES ///////////
 	// AND FUNCTIONS ///////////////////
 	

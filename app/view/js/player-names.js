@@ -1,5 +1,12 @@
 $(document).ready(function () {
 	
+	var video = document.getElementById('lines-video');
+	video.play();
+	video.onended = function() {
+		video.currentTime = 0;
+		video.play();
+	}
+	
 	var player_names = [];
 	
 	$('#player').focus();
